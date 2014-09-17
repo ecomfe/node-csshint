@@ -1,0 +1,368 @@
+#cwsir_sendweibo_qr a:hover{
+	color:#FFF;
+}
+#cwsir_sendweibo_qr a:visited{
+    color:#FFF;
+}
+#cwsir_sendweibo_qr a{
+    color:#FFF;
+}
+
+
+.cwsir_sendweibo_qr {
+    position: absolute;
+    display: inline-block;
+    padding: 0px;
+    left: 478px;
+    top: 145px;
+    font-size: 12px;
+}
+
+.cwsir_sendweibo_createqr_button {
+border: none;
+border-radius: 4px;
+color: #FFF;
+background: -webkit-linear-gradient(top, #5FD676, #3AB258);
+cursor: pointer;
+line-height: 25px;
+text-align: center;
+text-decoration: none;
+display: inline;
+float: right;
+width: 95px;
+margin: 20px 0;
+height: 36px;
+line-height: 3;
+}
+
+.cwsir_sendweibo_createqr_button:hover{
+	text-decoration:none;
+	color:#ececec;
+}
+
+#cwsir_sendweibo_qr_container {
+    height: 75px;
+    margin: 0;
+    display: none;
+}
+
+.cwsir_sendweibo_qr_line {
+    border-bottom: 2px solid #ea1429;
+    height: 6px;
+    margin: 7px 0 10px;
+}
+
+.cwsir_sendweibo_qr_tabarrow {
+    background-color: rgb(236, 236, 236);
+    width: 40px;
+    display: block;
+    height: 8px;
+    margin: 0;
+    position: absolute;
+    left: 508px;
+    background-image: url("http://cwsir.sinaapp.com/CWSirExtensions/images/icon_weibo_arrow.png");
+    background-position: -4px 14px;
+}
+
+#cwsir_sendweibo_qr_textarea {
+    resize: none;
+    margin: 0px 35px 0px 0px;
+    background-color: #fff;
+    width: 438px;
+    height: 60px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    border-right: none;
+    border-bottom: none;
+    font-size: 14px;
+    font-family: Tahoma, 宋体;
+    word-wrap: break-word;
+    line-height: 18px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    outline: none;
+}
+
+.cwsir_sendweibo_makeqr_button {
+    -webkit-border-radius: 2px;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 27px;
+    outline: 0;
+    padding: 0 8px;
+    background-color: #d14836;
+    background-image: -webkit-linear-gradient(top,#dd4b39,#d14836);
+
+border: 1px solid transparent;
+color: #fff !important;
+text-shadow: 0 1px rgba(0,0,0,0.1);
+text-transform: uppercase;
+min-width: 80px;
+margin-right: auto;
+height: 29px;
+display: inline-block;
+cursor: pointer;
+text-decoration: none;
+margin-left: 5px;
+text-decoration:none;
+font-family: 'Microsoft Yahei', 微软雅黑;
+}
+.cwsir_sendweibo_makeqr_button:hover{
+text-decoration:none;
+color:#ececec;
+}
+.cwsir_sendweibo_qr input{
+margin-right: 3px;
+}
+
+.cwsir_sendweibo_uploading {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+}
+
+.cwsir_sendweibo_uploading span {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+    line-height: 3.3;
+    color: #fff;
+    left: 0;
+    font-size: 12px;
+}
+
+.cwsir_sendweibo_uploading p {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: black;
+    opacity: 0.6;
+}
+
+#cwsir_sendweibo_div {
+    z-index: 1000000000;
+    position: fixed;
+    top: 0px;
+    left: 50%;
+    margin-left: -310px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: white;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    visibility: visible;
+    color: #4B4B4B !important;
+    font-family: "Microsoft Yahei" "微软雅黑";
+}
+
+#cwsir_sendweibo_div_bottom {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    position: absolute;
+    bottom: -8px;
+    width: 100%;
+    height: 14px;
+    background: #c6c6c6;
+    z-index: 0;
+}
+
+#cwsir_sendweibo_wrap {
+    background: #ececec;
+    height: auto;
+    padding: 10px 20px 20px 20px;
+    position: relative;
+    z-index: 1;
+    border-bottom: 1px solid #fdfdfd;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#cwsir_sendweibo_textarea_container {
+    position: relative;
+    border-radius: 3px;
+    margin: 0 auto;
+}
+
+#cwsir_sendweibo_textarea {
+    resize: none;
+    margin: 0px 0px 10px -1px;
+    background-color: #fff;
+    width: 571px;
+    height: 75px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    border-right: none;
+    border-bottom: none;
+    font-size: 14px;
+    font-family: Tahoma, 宋体;
+    word-wrap: break-word;
+    line-height: 18px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    outline: none;
+}
+
+#cwsir_sendweibo_textarea:focus {
+    border-color: #ffb941 !important;
+    -webkit-box-shadow: 1px 1px 1px 0px #ddd inset;
+    -moz-box-shadow: 1px 1px 1px 0px #ddd inset;
+    box-shadow: 1px 1px 1px 0px #ddd inset;
+}
+
+#cwsir_sendweibo_succpic {
+    display: none;
+    width: 109px;
+    height: 45px;
+    position: absolute;
+    top: 25px;
+    left: 236px;
+    background: url(chrome-extension://dnackofefjpolkafgappmpjipfipfaeh/images/send_weibo.png) no-repeat -50px -113px;
+}
+
+#cwsir_sendweibo_loading {
+    display: none;
+    top: -3px;
+    margin: 3px 0 0 141px;
+    position: absolute;
+    width: 582px;
+    height: 86px;
+    line-height: 96px;
+    text-align: center;
+    background-position: 160px 55px;
+    z-index: 100000000;
+    background: #fff url(http://img.t.sinajs.cn/t5/style/images/common/loading.gif) no-repeat 208px 42px;
+    border-radius: 5px;
+    font-size: 14px;
+    left: -142px;
+}
+
+.cwsir_addphoto {
+    position: relative;
+    float: left;
+    margin: 0px 5px 3px 5px;
+}
+
+.cwsir_addphoto img {
+    height: 57px;
+    float: left;
+    position: relative;
+    width: 60px;
+    top: -2px;
+}
+
+.cwsir_addphoto input {
+    cursor: pointer;
+    -moz-opacity: 0;
+    filter: alpha(opacity = 0);
+
+opacity:
+    0;
+
+background:none;
+
+border:none;
+
+height:
+    50px;
+
+position:absolute;
+
+top:
+    0;
+
+left:
+    0;
+
+width:
+    50px;
+}
+
+#cwsir_sendweibo_filepic {
+    min-height: 60px;
+    text-align: center;
+    padding: 10px 10px 5px 10px;
+    position: relative;
+    top: 0px;
+    font-size: 14px;
+    color: #4B4B4B;
+    height: auto;
+    width: 428px;
+    background-color: #fff;
+    border: 1px solid #CCC;
+    border-right: none;
+    border-bottom: none;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#cwsir_sendweibo_picNum {
+    position: absolute;
+    display: inline-block;
+    padding: 0px;
+    left: 423px;
+    top: 100px;
+    font-size: 12px;
+	font-family: 'Microsoft Yahei', 微软雅黑;
+}
+
+#cwsir_sendweibo_picNum em{
+	font-size: 12px;
+    font-family: 'Microsoft Yahei', 微软雅黑;
+}
+
+#cwsir_sendweibo_div .cwsir_sendweibo_filepic_bknone {
+    background: #fff
+}
+
+#cwsir_sendweibo_speech {
+    border: 0px;
+    left: 450px;
+    position: absolute;
+    display: inline-block;
+    top: 100px;
+    background: transparent;
+    width: 25px;
+    height: 25px;
+    padding: 0px;
+}
+
+#cwsir_sendweibo_sendbtn {
+    left: 483px;
+    position: absolute;
+    top: 100px;
+    display: inline-block;
+    width: 98px;
+    height: 31px;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    line-height: 31px;
+    text-decoration: none;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e3e3e3), color-stop(100%,#cccccc));
+    background: -webkit-linear-gradient(top,  #e3e3e3 0%,#cccccc 100%);
+    text-shadow:1px 1px 1px #ccc,-1px -1px 1px #ccc;
+    box-shadow:1px 2px 0 #bdbdbd;
+	font-family: 'Microsoft Yahei', 微软雅黑;
+    }
+    #cwsir_sendweibo_sendbtn:hover{
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a0bf39), color-stop(100%,#7ea422));
+        background: -webkit-linear-gradient(top,  #a0bf39 0%,#7ea422 100%);     
+    }
+    #cwsir_sendweibo_sendbtn:active{
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a0bf39), color-stop(100%,#7ea422));
+        background: -webkit-linear-gradient(top,  #a0bf39 0%,#7ea422 100%);     
+        box-shadow:none;
+    }
+    /*#cwsir_sendweibo_sendbtn:hover{
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#aecb48), color-stop(100%,#9abf40));
+    background: -webkit-linear-gradient(top,  #aecb48 0%,#9abf40 100%);
+    border-color:#bcd467
+    }*/
+    #cwsir_sendweibo_trigger{left: 600px; top: 30px; width: 34px; height: 15px; background-image: url(chrome-extension://dnackofefjpolkafgappmpjipfipfaeh/images/dragger.png); text-decoration: none; text-align: center; color: white; float: left; cursor: pointer; position: relative; display: none; background-position: 0px 0px; background-repeat: no-repeat no-repeat;}

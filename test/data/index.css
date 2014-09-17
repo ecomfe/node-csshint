@@ -1,0 +1,54 @@
+body{background:#f4f4f4;color:#3a3a3a;}
+.fl{float:left;}
+.fr{float:right;}
+/*两种清浮动方法*/
+.clearfix:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+.clearfix {display: inline-block;}
+/* Hides from IE-mac */
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+.clear{clear:both;height:0;font:0/0 Arial;visibility:hidden;}
+/*两种清浮动方法*/
+
+.header_wrap{background:#000;height:38px;}
+.header_wrap .header{width:960px;margin:0 auto;height:38px;}
+.header .logo{float:left;margin-top:2px;width:103px;height:38px;background:url(http://cwsir.sinaapp.com/CWSirExtensions/images/logo.png) no-repeat center 0;}
+.header .nickname{float:right;color:#fff;line-height:38px;}
+.banner{height:278px;background:#7c0006 url(http://cwsir.sinaapp.com/CWSirExtensions/images/banner.jpg) no-repeat center 0;}
+
+.main_wrap{background:url(http://cwsir.sinaapp.com/CWSirExtensions/images/bg_repeat.png) repeat-x 0 bottom;}
+.main_content{width:960px;margin:0 auto;}
+.main_content .tips{padding:30px 0;border-bottom:1px solid #e7e7e7;font-size:16px;line-height:30px;font-family:"Microsoft Yahei" "微软雅黑";}
+
+.function{padding-bottom:20px;border-bottom:1px solid #e3e3e3}
+.function li{float:left;width:480px;height:156px;overflow:hidden;}
+.function .f01{background:url(http://cwsir.sinaapp.com/CWSirExtensions/images/f01.jpg) no-repeat;}
+.function .f02{background:url(http://cwsir.sinaapp.com/CWSirExtensions/images/f02.jpg) no-repeat;}
+.function .f03{background:url(http://cwsir.sinaapp.com/CWSirExtensions/images/f03.jpg) no-repeat;}
+.function .f04{background:url(http://cwsir.sinaapp.com/CWSirExtensions/images/f04.jpg) no-repeat;}
+
+.download_wrap {padding:20px 0 0 0;font-size:0;}
+.download_wrap p{margin-bottom:30px;}
+.download_wrap .icon,
+.download_wrap .btn{vertical-align:middle;margin-right:15px;}
+.download_wrap .chrome_icon{display:inline-block;width:49px;height:50px;background:url(http://cwsir.sinaapp.com/CWSirExtensions/images/btns.png) no-repeat 0 -200px;}
+.download_wrap .chrome_cwsir{display:inline-block;width:183px;height:38px;background:url(http://cwsir.sinaapp.com/CWSirExtensions/images/btns.png) no-repeat 0 0;}
+.download_wrap .chrome_cwsir:hover{background-position:0 -50px;}
+.download_wrap .chrome_download{display:inline-block;width:109px;height:38px;background:url(http://cwsir.sinaapp.com/CWSirExtensions/images/btns.png) no-repeat -200px 0;margin-right:30px;}
+.download_wrap .chrome_download:hover{background-position:-200px -50px;}
+
+.download_wrap .s360_lighting_icon{display:inline-block;width:55px;height:55px;background:url(http://cwsir.sinaapp.com/CWSirExtensions/images/btns.png) no-repeat -60px -200px;}
+.download_wrap .s360_safe_icon{display:inline-block;width:60px;height:56px;background:url(http://cwsir.sinaapp.com/CWSirExtensions/images/btns.png) no-repeat -120px -200px;}
+
+.download_wrap .s360_cwsir{display:inline-block;width:155px;height:49px;background:url(http://cwsir.sinaapp.com/CWSirExtensions/images/btns.png) no-repeat 0 -100px;}
+.download_wrap .s360_cwsir:hover{background-position:0 -150px;}
+.download_wrap .s360_lighting{display:inline-block;width:103px;height:49px;background:url(http://cwsir.sinaapp.com/CWSirExtensions/images/btns.png) no-repeat -200px -100px;}
+.download_wrap .s360_lighting:hover{background-position:-200px -150px;}
+.download_wrap .s360_safe{display:inline-block;width:103px;height:49px;background:url(http://cwsir.sinaapp.com/CWSirExtensions/images/btns.png) no-repeat -318px -100px;margin-right:0;}
+.download_wrap .s360_safe:hover{background-position:-318px -150px;}
+
+.footer_wrap{background:#898989;box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.2);}
+.footer_wrap .footer{width:960px;margin:0 auto;padding:28px 0;}
+.footer_wrap .footer p{line-height:20px;color:#b7b6b6;}
+.footer_wrap .footer p a{color:#b7b6b6;}

@@ -1,0 +1,23 @@
+{
+  "name": "csshint",
+  "description": "Csshint your css code",
+  "version": "0.0.1-beta.1",
+  "maintainers": [
+    {
+      "name": "ielgnaw",
+      "email": "wuji0223@gmail.com"
+    }
+  ],
+  "dependencies": {
+    "chalk": "^0.5.1",
+    "edp-core": "^1.0.28",
+    "parserlib": "~0.2.2"
+  },
+  "bin": {
+    "csshint": "./bin/csshint-cli"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ielgnaw/node-csshint"
+  }
+}
