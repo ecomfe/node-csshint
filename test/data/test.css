@@ -1,0 +1,25 @@
+
+.aa {
+    color: red;
+}
+
+p.bb {
+    color: green;
+}
+
+#cc {
+    color: #fff;
+}
+
+div#cc {
+    color: #000;
+}
+
+li.selected > a:hover {
+    color: #ccc;
+}
+
+
+/*li.selected > a:hover {*/
+    /*color: red;*/
+/*}*/
