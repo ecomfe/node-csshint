@@ -1,5 +1,9 @@
 
-.aa {
+.a.a {
+    color: red;
+}
+
+/*.aa {
     color: red;
 }
 
@@ -17,7 +21,7 @@ div#cc {
 
 li.selected > a:hover {
     color: #ccc;
-}
+}*/
 
 
 /*li.selected > a:hover {*/

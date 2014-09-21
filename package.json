@@ -1,7 +1,7 @@
 {
   "name": "csshint",
   "description": "Csshint your css code",
-  "version": "0.0.1-beta.1.1",
+  "version": "0.0.1-beta.1.2",
   "maintainers": [
     {
       "name": "ielgnaw",
@@ -13,7 +13,7 @@
     "edp-core": "^1.0.28",
     "parserlib": "~0.2.2"
   },
-  "main": "./lib/test.js",
+  "main": "./lib/checker.js",
   "bin": {
     "csshint": "./bin/csshint-cli"
   },
