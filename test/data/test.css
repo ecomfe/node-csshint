@@ -1,7 +1,11 @@
 
-.a.a {
+/*.a.a {
     color: red;
-}
+}*/
+
+/*.c .d {
+    width: 20px;
+}*/
 
 /*.aa {
     color: red;
@@ -9,6 +13,10 @@
 
 p.bb {
     color: green;
+}
+
+a:hover {
+    color: red;
 }
 
 #cc {
@@ -19,7 +27,50 @@ div#cc {
     color: #000;
 }
 
-li.selected > a:hover {
+a:hover {
+    color: #ccc;
+}*/
+
+
+/*.post .cc, .page .dd, .comment .ee .gg{
+    line-height: 1.5;
+}
+
+a.aa {
+    color: red;
+}
+
+.aad, a {
+    color: red;
+}
+
+.pagesss .cc, .page .dd{
+    line-height: 1.5;
+}*/
+
+/*.aaa,  .bbb, .ccc, .ddd{
+    color: red;
+}*/
+
+/*.CWSIR_page_tab_radious .CWSIR_page_t_itm, .CWSIR_page_tab_radious .CWSIR_page_t_opt, .CWSIR_page_tab_radious .CWSIR_page_W_vline, .aaa .bbb .ccc {
+ float: left;
+ display: inline;
+ margin: 0 8px 0 0;
+ line-height: 22px;
+ text-align: center;
+}
+
+.aad, a.ddd {
+    color: red;
+}*/
+
+#ccc .fff .qqq, #ccc .fff .qqq a, #ccc .fff a.cwsirrss_entry-source-title, #ccc .fff a.cwsirrss_entry-post-author-name {
+    color: #15c;
+}
+
+
+
+/*li.selected > a:hover > a:focus {
     color: #ccc;
 }*/
 
