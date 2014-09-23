@@ -6,8 +6,6 @@
 var chalk = require('chalk');
 var util = require('../lib/util');
 
-
-
 /**
  * startrule 事件回调函数
  * 这个函数的上下文是 addListener 时 bind 的数据对象
@@ -15,10 +13,10 @@ var util = require('../lib/util');
  * @param {Object} event 事件对象
  */
 function startRule(event) {
-    var data = this;
-    var parser = data.parser;
-    var fileContent = data.fileContent;
-    var invalidList = data.invalidList;
+    var me = this;
+    var parser = me.parser;
+    var fileContent = me.fileContent;
+    var invalidList = me.invalidList;
 
     // 当前行内容
     var lineContent;
@@ -49,7 +47,7 @@ function startRule(event) {
         selector = selectors[i];
 
         curSelectorLineNum = selector.line;
-        if (lastSelectorLineNum == curSelectorLineNum) {
+        if (lastSelectorLineNum === curSelectorLineNum) {
             perLineFlag = false;
         }
         lastSelectorLineNum = curSelectorLineNum;
@@ -73,6 +71,13 @@ function startRule(event) {
                 col: selector.col,
                 message: '`'
                     + lineContent.slice(0, selector.col - 1)
+                    + lineContent.slice(selector.col - 1, selector.col + selectorPartsStrLen)
+                    + lineContent.slice(selector.col + selectorPartsStrLen, lineContent.length)
+                    + '` '
+                    + 'When a rule contains multiple selector, '
+                    + 'each selector statement must be on a separate line.',
+                colorMessage: '`'
+                    + lineContent.slice(0, selector.col - 1)
                     + lineContent.slice(selector.col - 1, selector.col + selectorPartsStrLen).replace(
                         selectorPartsStr,
                         chalk.magenta(selectorPartsStr)
@@ -89,7 +94,7 @@ function startRule(event) {
         for (var j = 0; j < partsLen; j++) {
             part = selector.parts[j];
 
-            if (part.type == parser.SELECTOR_PART_TYPE && part.elementName) {
+            if (part.type === parser.SELECTOR_PART_TYPE && part.elementName) {
                 var partElementNameTextLen = part.elementName.text.length;
 
                 for (var k = 0, modifierLen = part.modifiers.length; k < modifierLen; k++) {
@@ -104,6 +109,15 @@ function startRule(event) {
                                 + lineContent.slice(
                                     part.elementName.col - 1,
                                     part.elementName.col + partElementNameTextLen
+                                )
+                                + lineContent.slice(part.elementName.col + partElementNameTextLen, lineContent.length)
+                                + '` '
+                                + 'Not allowed to add a type selector is limited to ID, class selector. ',
+                            colorMessage: '`'
+                                + lineContent.slice(0, part.elementName.col - 1)
+                                + lineContent.slice(
+                                    part.elementName.col - 1,
+                                    part.elementName.col + partElementNameTextLen
                                 ).replace(
                                     part.elementName.text,
                                     chalk.magenta(part.elementName.text)
@@ -112,9 +126,6 @@ function startRule(event) {
                                 + '` '
                                 + chalk.grey(''
                                     + 'Not allowed to add a type selector is limited to ID, class selector. '
-                                    // + 'You should use `'
-                                    // + chalk.green(modifier.text)
-                                    // + '`.'
                                 )
                         });
                     }
