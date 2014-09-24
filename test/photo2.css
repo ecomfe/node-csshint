@@ -50,8 +50,7 @@ body {
     outline-style: none;
 }
 
-.CWSIR_Search input[type =
-"text"], input[type = "password"], textarea {
+.CWSIR_Search input[type ="text"], input[type = "password"], textarea {
     outline-style: none;
     -webkit-appearance: none;
 }
@@ -1096,25 +1095,25 @@ height:50px;
 .CWSIR_Search .CWSIR_content::-webkit-scrollbar {
     width: 12px;
 }
- 
+
 .CWSIR_Search .CWSIR_content::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     -webkit-border-radius: 10px;
     border-radius: 10px;
     border:1px solid #666666;
 }
- 
+
 .CWSIR_Search .CWSIR_content::-webkit-scrollbar-thumb {
     -webkit-border-radius: 10px;
     border-radius: 10px;
-    background: rgba(0,0,0,0.6); 
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    background: rgba(0,0,0,0.6);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 }
 .CWSIR_Search .CWSIR_content::-webkit-scrollbar-thumb:window-inactive {
-background: rgba(0,0,0,0.4); 
+background: rgba(0,0,0,0.4);
 }
- 
- 
+
+
 .CWSIR_explode{display:inline-block;width:33px;height:33px;position:relative;z-index:100000000; cursor:pointer;border:0 #important;}
         .CWSIR_entry_icon{display:inline-block;width:33px;height:33px;position:relative;background:url("http://cwsir.sinaapp.com/CWSirExtensions/images/icon.png") no-repeat -120px 0;z-index:10;}
         .CWSIR_icon{display:inline-block;left:5px;top:5px;position:absolute;width:26px;height:25px;background:url("http://cwsir.sinaapp.com/CWSirExtensions/images/icon.png") no-repeat;opacity:0;-webkit-transition:all .3s ease-in;z-index:1;}
@@ -1129,7 +1128,7 @@ background: rgba(0,0,0,0.4);
         .CWSIR_explode_hover .CWSIR_icon02{left:24px;top:-17px;-webkit-transition-delay:.05s}
         .CWSIR_explode_hover .CWSIR_icon03{left:-15px;top:24px;-webkit-transition-delay:.1s}
         .CWSIR_explode_hover .CWSIR_icon04{left:24px;top:24px;-webkit-transition-delay:.2s}
-		
+
 .cwsir_submit_filter{
 	background: -webkit-linear-gradient(top,#008DFD 0,#0370EA 100%);
 border: 1px solid #076BD2;

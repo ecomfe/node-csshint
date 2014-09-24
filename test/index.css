@@ -15,7 +15,7 @@ body{background:#f4f4f4;color:#3a3a3a;}
 .header_wrap .header{width:960px;margin:0 auto;height:38px;}
 .header .logo{float:left;margin-top:2px;width:103px;height:38px;background:url(http://cwsir.sinaapp.com/CWSirExtensions/images/logo.png) no-repeat center 0;}
 .header .nickname{float:right;color:#fff;line-height:38px;}
-.banner{height:278px;background:#7c0006 url(http://cwsir.sinaapp.com/CWSirExtensions/images/banner.jpg) no-repeat center 0;}
+div.banner{height:278px;background:#7c0006 url(http://cwsir.sinaapp.com/CWSirExtensions/images/banner.jpg) no-repeat center 0;}
 
 .main_wrap{background:url(http://cwsir.sinaapp.com/CWSirExtensions/images/bg_repeat.png) repeat-x 0 bottom;}
 .main_content{width:960px;margin:0 auto;}

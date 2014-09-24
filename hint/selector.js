@@ -23,7 +23,6 @@ function startRule(event) {
 
     var selector;
     var part;
-    var modifier;
 
     var partsLen;
 
@@ -59,35 +58,15 @@ function startRule(event) {
             var selectorPartsStr = selector.parts.join('');
             var selectorPartsStrLen = selectorPartsStr.length;
 
-            // util.addInvalid(
-            //     invalidList,
-            //     line: selector.line,
-            //     col: selector.col,
-            //     message:
-            // );
-
-            invalidList.push({
+            addInvalid({
+                invalidList: invalidList,
+                lineContent: lineContent,
                 line: selector.line,
                 col: selector.col,
-                message: '`'
-                    + lineContent.slice(0, selector.col - 1)
-                    + lineContent.slice(selector.col - 1, selector.col + selectorPartsStrLen)
-                    + lineContent.slice(selector.col + selectorPartsStrLen, lineContent.length)
-                    + '` '
-                    + 'When a rule contains multiple selector, '
-                    + 'each selector statement must be on a separate line.',
-                colorMessage: '`'
-                    + lineContent.slice(0, selector.col - 1)
-                    + lineContent.slice(selector.col - 1, selector.col + selectorPartsStrLen).replace(
-                        selectorPartsStr,
-                        chalk.magenta(selectorPartsStr)
-                    )
-                    + lineContent.slice(selector.col + selectorPartsStrLen, lineContent.length)
-                    + '` '
-                    + chalk.grey(''
-                        + 'When a rule contains multiple selector, '
-                        + 'each selector statement must be on a separate line.'
-                    )
+                midIndex: selector.col + selectorPartsStrLen,
+                needColorStr: selectorPartsStr,
+                info: 'When a rule contains multiple selector, '
+                    + 'each selector statement must be on a separate line.'
             });
         }
 
@@ -95,44 +74,95 @@ function startRule(event) {
             part = selector.parts[j];
 
             if (part.type === parser.SELECTOR_PART_TYPE && part.elementName) {
-                var partElementNameTextLen = part.elementName.text.length;
-
-                for (var k = 0, modifierLen = part.modifiers.length; k < modifierLen; k++) {
-                    modifier = part.modifiers[k];
-                    if (modifier.type === 'id' || modifier.type === 'class') {
-                        lineContent = util.getLineContent(modifier.line, fileContent);
-                        invalidList.push({
-                            line: modifier.line,
-                            col: part.elementName.col,
-                            message: '`'
-                                + lineContent.slice(0, part.elementName.col - 1)
-                                + lineContent.slice(
-                                    part.elementName.col - 1,
-                                    part.elementName.col + partElementNameTextLen
-                                )
-                                + lineContent.slice(part.elementName.col + partElementNameTextLen, lineContent.length)
-                                + '` '
-                                + 'Not allowed to add a type selector is limited to ID, class selector. ',
-                            colorMessage: '`'
-                                + lineContent.slice(0, part.elementName.col - 1)
-                                + lineContent.slice(
-                                    part.elementName.col - 1,
-                                    part.elementName.col + partElementNameTextLen
-                                ).replace(
-                                    part.elementName.text,
-                                    chalk.magenta(part.elementName.text)
-                                )
-                                + lineContent.slice(part.elementName.col + partElementNameTextLen, lineContent.length)
-                                + '` '
-                                + chalk.grey(''
-                                    + 'Not allowed to add a type selector is limited to ID, class selector. '
-                                )
-                        });
-                    }
-                }
+                loopPartModifiers(part, fileContent, invalidList);
             }
         }
     }
+}
+
+/**
+ * 循环 part.modifiers
+ * 这样抽出来写是为了 jshint 通过
+ *
+ * @param {Object} part selector.parts 中的每一项
+ * @param {string} fileContent 当前文件内容
+ * @param {Array} invalidList 错误信息的数组
+ */
+function loopPartModifiers(part, fileContent, invalidList) {
+    var partElementNameTextLen = part.elementName.toString().length;
+    var modifiers = part.modifiers;
+    for (var k = 0, modifierLen = modifiers.length; k < modifierLen; k++) {
+        var modifier = modifiers[k];
+        var lineContent = util.getLineContent(modifier.line, fileContent);
+        if (modifier.type === 'id' || modifier.type === 'class') {
+            addInvalid({
+                invalidList: invalidList,
+                lineContent: lineContent,
+                line: modifier.line,
+                col: part.elementName.col,
+                midIndex: part.elementName.col + partElementNameTextLen,
+                needColorStr: part.elementName.toString(),
+                info: 'Not allowed to add a type selector is limited to ID, class selector.'
+            });
+        }
+    }
+}
+/**
+ * 把错误信息推入到 invalidList 中
+ *
+ * 一条错误信息示例如下:
+ * line 63, col 7: `.aad, a.ddd {` Not allowed to add a type selector is limited to ID, class selector.
+ * 本行的内容如下:
+ * lineContent: .aad, a.ddd {
+ *
+ * 如上示例，出错的索引应该是 a.ddd 中的 a，这里是把 lineContent 分为了三部分，
+ * 第一部分是 `.aad, ` ，第二部分是 `a` ，第三部分是 `.ddd {`
+ *
+ * 这么做的目的是为了精确飘红错误信息的位置，这个方法内部调用，所以不用做参数的校验了
+ *
+ * @param {Array} invalidList 错误信息的数组
+ * @param {string} lineContent 当前行的内容
+ * @param {number} line 当前的行号
+ * @param {number} col lineContent 截取的开始索引，这个值就是 selector 的 col
+ * @param {number} midIndex lineContent 截取的中间索引
+ * @param {string} needColorStr 需要变色的错误信息
+ * @param {string} info 错误信息的描述
+ */
+function addInvalid(params) {
+
+    var invalidList = params.invalidList;
+    var lineContent = params.lineContent;
+    var line = params.line;
+    var col = params.col;
+    var midIndex = params.midIndex;
+    var needColorStr = params.needColorStr;
+    var info = params.info;
+
+    var endIndex = lineContent.length;
+
+    var startStr = lineContent.slice(0, col - 1);
+    var midStr = lineContent.slice(col - 1, midIndex);
+    var endStr = lineContent.slice(midIndex, endIndex);
+
+    invalidList.push({
+        line: line,
+        col: col,
+        message: '` '
+            + startStr
+            + midStr
+            + endStr
+            + '` '
+            + info,
+        colorMessage: '`'
+            + startStr
+            + midStr.replace(
+                needColorStr,
+                chalk.magenta(needColorStr)
+            )
+            + endStr
+            + '` '
+            + chalk.grey(info)
+    });
 }
 
 /**
