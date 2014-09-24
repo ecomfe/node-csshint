@@ -120,7 +120,7 @@ function loopPartModifiers(part, fileContent, invalidList) {
  *
  * 这么做的目的是为了精确飘红错误信息的位置，这个方法内部调用，所以不用做参数的校验了
  *
- * @param {Array} invalidList 错误信息的数组
+ * @param {Array.<Object>} invalidList 错误信息的数组
  * @param {string} lineContent 当前行的内容
  * @param {number} line 当前的行号
  * @param {number} col lineContent 截取的开始索引，这个值就是 selector 的 col
