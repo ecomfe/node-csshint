@@ -7,18 +7,6 @@
 var chalk = require('chalk');
 var util = require('../lib/util');
 
-/**
- * startrule 事件回调函数
- * 这个函数的上下文是 addListener 时 bind 的数据对象
- *
- * @param {Object} event 事件对象
- */
-function startRule(event) {
-    var me = this;
-    // console.warn(event);
-    // console.log(require('util').inspect(event, { showHidden: true, depth: null }));
-}
-
 
 /**
  * tab 字符的 ascii 码
@@ -86,12 +74,6 @@ module.exports = function (parser, fileContent, ruleName, invalidList) {
     // 空格连续出现的次数
     var spaceCount = 0;
 
-    // 空格连续出现的最大次数
-    var spaceMaxCount = 0;
-
-    // 空格连续出现最多次时，最后一个空格的索引
-    var spaceMaxIndex = 0;
-
     // 前一个字符是否是空格的标识
     var prevAsciiIsSpace = false;
 
@@ -105,7 +87,7 @@ module.exports = function (parser, fileContent, ruleName, invalidList) {
                 var line = util.getLine(i + 1, fileContent);
                 var lineContent = util.getLineContent(line, fileContent);
                 var colorStr = String.fromCharCode(nextAscii)
-                    + lineContent.split(/[\.#;{]/)[0]; // 这里的 split 是为了把开头的第一个完整单词输出出来
+                    + lineContent.substr(0, 20) + ' ...';
 
                 invalidList.push({
                     line: line,
@@ -131,6 +113,28 @@ module.exports = function (parser, fileContent, ruleName, invalidList) {
 
         if (ascii === ASCII_CODE_SPACE && prevAsciiIsSpace) {
             if (nextAscii !== ASCII_CODE_SPACE) {
+                if (spaceCount != 4) {
+                    var line = util.getLine(i + 1, fileContent);
+                    var lineContent = util.getLineContent(line, fileContent);
+                    var colorStr = String.fromCharCode(ascii)
+                        + lineContent.substr(0, 20) + ' ...';
+
+                    invalidList.push({
+                        line: line,
+                        col: i,
+                        message: '`'
+                            + colorStr
+                            + '` '
+                            + msg,
+                        colorMessage: '`'
+                            + chalk.magenta(
+                                colorStr
+                            )
+                            + '` '
+                            + chalk.grey(msg)
+                    });
+                }
+                spaceCount = 0;
                 prevAsciiIsSpace = false;
             }
             else {
@@ -138,94 +142,7 @@ module.exports = function (parser, fileContent, ruleName, invalidList) {
             }
         }
 
-        console.warn(spaceCount);
     }
-
-
-
-        // console.log(ascii, nextAscii);
-  //       var prevAscii = asciiList[i - 1];
-
-  //       if (ascii === ASCII_CODE_SPACE) {
-  //           spaceCount++;
-  //       }
-  //       else {
-  //           if (spaceCount > spaceMaxCount) {
-  //               if (prevAscii === ASCII_CODE_LF
-  //                   || prevAscii === ASCII_CODE_CR
-  //                   || prevAscii === ASCII_CODE_SPACE
-  //               ) {
-  //                   spaceMaxCount = spaceCount;
-  //                   spaceMaxIndex = i;
-  //               }
-  //           }
-  //           spaceCount = 0;
-  //       }
-
-		// // 存在 tab 字符，那么看看它前面是不是换行或者回车
-		// // 如果是，说明是作为缩进来使用的
-		// if (ascii === ASCII_CODE_TAB) {
-		// 	if (prevAscii === ASCII_CODE_LF || prevAscii === ASCII_CODE_CR) {
-		// 		var line = util.getLine(i, fileContent);
-		// 		var lineContent = util.getLineContent(line, fileContent);
-		// 		var colorStr = String.fromCharCode(ascii)
-		// 			+ lineContent.split(/[\.#:{ ]/)[0]; // 这里的 split 是为了把开头的第一个完整单词输出出来
-
-		// 		invalidList.push({
-	 //                line: line,
-	 //                col: i,
-	 //                message: '`'
-	 //                	+ colorStr
-	 //                    + '` '
-	 //                    + msg,
-	 //                colorMessage: '`'
-	 //                    + chalk.magenta(
-	 //                		colorStr
-	 //                	)
-	 //                    + '` '
-	 //                    + chalk.grey(msg)
-	 //            });
-		// 	}
-		// }
-	// }
-
-    // console.warn(spaceMaxIndex);
-
-    // // 最后一个空格的索引减去空格连续出现的最大次数就可以得到第一个空格的索引
-    // var firstSpaceIndex = spaceMaxIndex - spaceMaxCount;
-
-    // // 判断第一个空格的前面是否是回车或者换行
-    // // 如果是，说明是作为缩进来使用的
-    // var beforeFirstSpaceCharAscii = fileContent.charAt(firstSpaceIndex - 1).charCodeAt();
-
-    // // 作为缩进来使用并且空格的次数不等于四次
-    // if (spaceMaxCount !== 4
-    //     &&
-    //     (
-    //         beforeFirstSpaceCharAscii === ASCII_CODE_LF
-    //         || beforeFirstSpaceCharAscii === ASCII_CODE_CR
-    //     )
-    // ) {
-    //     var line = util.getLine(firstSpaceIndex, fileContent);
-    //     var lineContent = util.getLineContent(line, fileContent);
-    //     var colorStr = String.fromCharCode(32)
-    //         + lineContent.split(/[\.#{;]/)[0]; // 这里的 split 是为了把开头的第一个完整单词输出出来
-
-    //     invalidList.push({
-    //         line: line,
-    //         col: firstSpaceIndex,
-    //         message: '`'
-    //             + colorStr
-    //             + '` '
-    //             + msg,
-    //         colorMessage: '`'
-    //             + chalk.magenta(
-    //                 colorStr
-    //             )
-    //             + '` '
-    //             + chalk.grey(msg)
-    //     });
-    // }
 
     return invalidList;
 };
