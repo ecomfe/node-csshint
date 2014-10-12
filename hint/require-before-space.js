@@ -7,7 +7,7 @@
 var chalk = require('chalk');
 var util = require('../lib/util');
 
-var msg = 'between the selector and `{` must contain spaces';
+var msg = 'Must contain spaces before the `{`';
 
 /**
  * 检测字符前面是否有空格
@@ -16,13 +16,13 @@ var msg = 'between the selector and `{` must contain spaces';
  */
 function checkBeforeSpace(c, fileContent) {
     var ret = [];
-    var noBeforeSpacePattern = new RegExp('\\w*[^\\s](' + c + ')', 'gm');
+    var noBeforeSpacePattern = new RegExp('[^\\s]*[^\\s](' + c + ')', 'gm');
     var match = null;
     while (!!(match = noBeforeSpacePattern.exec(fileContent))) {
         ret.push({
             i: match.index,
             v: match[1],
-            colorV: match[0]
+            matchStr: match[0]
         });
     }
     return ret;
@@ -55,18 +55,21 @@ module.exports = function (parser, fileContent, ruleName, ruleVal, invalidList) 
     for (var i = 0, len = ret.length; i < len; i++) {
         for (var j = 0, jLen = ret[i].length; j < jLen; j++) {
             var line = util.getLine(ret[i][j].i, fileContent);
+            var matchStr = ret[i][j].matchStr;
+            var matchV = ret[i][j].v;
             invalidList.push({
                 ruleName: ruleName,
                 line: line,
                 col: ret[i][j].i,
-                errorChar: ret[i][j].v,  // 出错的那个具体的字符
+                errorChar: matchV,  // 出错的那个具体的字符
                 message: '`'
-                    + ret[i][j].colorV
+                    + matchStr
                     + '` '
                     + msg,
                 colorMessage: '`'
-                    + chalk.magenta(
-                        ret[i][j].colorV
+                    + matchStr.replace(
+                        matchV,
+                        chalk.magenta(matchV)
                     )
                     + '` '
                     + chalk.grey(msg)
