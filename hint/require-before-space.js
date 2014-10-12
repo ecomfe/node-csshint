@@ -1,11 +1,12 @@
 /**
- * @file no-bom 的检测逻辑
- *       001: [建议] `CSS` 文件使用无 `BOM` 的 `UTF-8` 编码。
+ * @file block-indent 的检测逻辑
+ *       `{` 对应 003: [强制] `选择器` 与 `{` 之间必须包含空格。
  * @author ielgnaw(wuji0223@gmail.com)
  */
 
 var chalk = require('chalk');
 var util = require('../lib/util');
+
 
 
 /**
@@ -21,25 +22,7 @@ var util = require('../lib/util');
  */
 module.exports = function (parser, fileContent, ruleName, ruleVal, invalidList) {
 
-    if (!ruleVal) {
-        return invalidList;
-    }
-
-    var bufContent = new Buffer(fileContent, 'utf8');
-
-    var hasBOM = bufContent[0] === 0xEF
-        && bufContent[1] === 0xBB
-        && bufContent[2] === 0xBF;
-
-    if (hasBOM) {
-        invalidList.push({
-            ruleName: ruleName,
-            message: ''
-                + 'CSS file should using UTF-8 coding without BOM.',
-            colorMessage: ''
-                + chalk.grey('CSS file should using UTF-8 coding without BOM.')
-        });
-    }
+    console.log(ruleVal);
 
     return invalidList;
 };

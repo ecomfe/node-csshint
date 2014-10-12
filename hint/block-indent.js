@@ -7,7 +7,6 @@
 var chalk = require('chalk');
 var util = require('../lib/util');
 
-
 /**
  * tab 字符的 ascii 码
  *
@@ -64,9 +63,14 @@ function string2Ascii(str) {
  * @param {Object} parser parserlib.css.Parser 实例
  * @param {string} fileContent 当前检测文件内容
  * @param {string} ruleName 当前检测的规则名称
+ * @param {string} ruleVal 当前检测规则对应的配置值
  * @param {Array.<Object>} invalidList 不合法文件集合
  */
-module.exports = function (parser, fileContent, ruleName, invalidList) {
+module.exports = function (parser, fileContent, ruleName, ruleVal, invalidList) {
+
+    if (!ruleVal) {
+        return invalidList;
+    }
 
 	var asciiList = string2Ascii(fileContent);
 	var length = asciiList.length;
@@ -90,6 +94,7 @@ module.exports = function (parser, fileContent, ruleName, invalidList) {
                     + lineContent.substr(0, 20) + ' ...';
 
                 invalidList.push({
+                    ruleName: ruleName,
                     line: line,
                     col: i,
                     message: '`'
@@ -120,6 +125,7 @@ module.exports = function (parser, fileContent, ruleName, invalidList) {
                         + lineContent.substr(0, 20) + ' ...';
 
                     invalidList.push({
+                        ruleName: ruleName,
                         line: line,
                         col: i,
                         message: '`'
