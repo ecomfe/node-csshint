@@ -1,5 +1,5 @@
 {
     "no-bom": true,
-    "require-before-space": ["{", "asdas"]
+    "require-before-space": ["{", "r"]
 }
 

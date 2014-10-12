@@ -1,3 +1,11 @@
-body{
+body {
     color:red;
+}
+
+div{
+    height: 100px;
+}
+
+span{
+    width: 4px;
 }
