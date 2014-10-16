@@ -48,11 +48,11 @@ var msg = 'Use `4` spaces as an indent level. Use `2` spaces or `tab` character 
  * @param {string} str 待转换的字符串
  */
 function string2Ascii(str) {
-	var ret = [];
-	for (var i = 0, len = str.length; i < len; i++) {
-		ret.push(str[i].charCodeAt());
-	}
-	return ret;
+    var ret = [];
+    for (var i = 0, len = str.length; i < len; i++) {
+        ret.push(str[i].charCodeAt());
+    }
+    return ret;
 }
 
 /**
@@ -72,8 +72,8 @@ module.exports = function (parser, fileContent, ruleName, ruleVal, invalidList) 
         return invalidList;
     }
 
-	var asciiList = string2Ascii(fileContent);
-	var length = asciiList.length;
+    var asciiList = string2Ascii(fileContent);
+    var length = asciiList.length;
 
     // 空格连续出现的次数
     var spaceCount = 0;
@@ -81,8 +81,8 @@ module.exports = function (parser, fileContent, ruleName, ruleVal, invalidList) 
     // 前一个字符是否是空格的标识
     var prevAsciiIsSpace = false;
 
-	for (var i = 0; i < length; i++) {
-		var ascii = asciiList[i];
+    for (var i = 0; i < length; i++) {
+        var ascii = asciiList[i];
         var nextAscii = asciiList[i + 1];
 
         // 说明当前这个字符是换行或者回车
@@ -118,7 +118,7 @@ module.exports = function (parser, fileContent, ruleName, ruleVal, invalidList) 
 
         if (ascii === ASCII_CODE_SPACE && prevAsciiIsSpace) {
             if (nextAscii !== ASCII_CODE_SPACE) {
-                if (spaceCount != 4) {
+                if (spaceCount !== 4) {
                     var line = util.getLine(i + 1, fileContent);
                     var lineContent = util.getLineContent(line, fileContent);
                     var colorStr = String.fromCharCode(ascii)

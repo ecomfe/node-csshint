@@ -25,7 +25,7 @@ module.exports = function (parser, fileContent, ruleName, ruleVal, invalidList) 
 
     // 前面已经将换行符统一处理成 `\n` 了
     var lines = fileContent.split(/\n/);
-    for (var i = 0, len = lines.length; i< len; i++) {
+    for (var i = 0, len = lines.length; i < len; i++) {
         if (lines[i].length > ruleVal) {
             invalidList.push({
                 line: i + 1,

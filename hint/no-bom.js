@@ -5,8 +5,6 @@
  */
 
 var chalk = require('chalk');
-var util = require('../lib/util');
-
 
 /**
  * 模块的输出接口
