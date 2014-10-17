@@ -29,7 +29,7 @@ function checkProperty(event) {
     // var reg = new RegExp('(' + propertyKey + '\\s*:\\s*' + propertyVal + '[^;]*)(?!;)$', 'gm');
 
     // 正则前面加上 `\\` 是因为 css hack
-    var reg = new RegExp('(\\' + propertyKey + '\\s*:\\s*' + propertyVal + '\\s*[^;]*)$', 'gm');
+    var reg = new RegExp('(\\' + propertyKey + '\\s*:\\s*' + propertyVal + '\\s*[^;]*)$', 'gmi');
     var match = null;
 
     while (!!(match = reg.exec(lineContent))) {

@@ -16,7 +16,7 @@ var msg = 'Must contain spaces before the `{`';
  */
 function checkBeforeSpace(c, fileContent) {
     var ret = [];
-    var noBeforeSpacePattern = new RegExp('[^\\s]*[^\\s](' + c + ')', 'gm');
+    var noBeforeSpacePattern = new RegExp('[^\\s]*[^\\s](' + c + ')', 'gmi');
     var match = null;
     while (!!(match = noBeforeSpacePattern.exec(fileContent))) {
         ret.push({

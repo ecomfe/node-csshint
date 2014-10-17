@@ -58,7 +58,7 @@ function checkProperty(event) {
                     + msg,
                 colorMessage: '`'
                     + lineContent.replace(
-                        /!important/g,
+                        /!important/gi,
                         chalk.magenta('!important')
                     )
                     + '` '
