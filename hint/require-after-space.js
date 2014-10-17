@@ -35,7 +35,7 @@ function showMsg(c, type) {
  */
 function checkBeforeSpace(c, fileContent) {
     var ret = [];
-    var beforeSpacePattern = new RegExp('[^\\s]*\\s+(' + c + ')', 'gm');
+    var beforeSpacePattern = new RegExp('[^\\s]*\\s+(' + c + ')', 'gmi');
     var match = null;
     while (!!(match = beforeSpacePattern.exec(fileContent))) {
         ret.push({
@@ -68,10 +68,10 @@ function checkAfterSpace(c, fileContent) {
     // var afterSpacePattern = new RegExp('[^\\s].*(' + c + ')[^\\s]*\\b', 'gm');
     var afterSpacePattern;
     if (c === ':') {
-        afterSpacePattern = new RegExp('[^\\s].*(' + c + ')(:?!(' + excepts + '))[^\\s]*\\b', 'gm');
+        afterSpacePattern = new RegExp('[^\\s].*(' + c + ')(:?!(' + excepts + '))[^\\s]*\\b', 'gmi');
     }
     else {
-        afterSpacePattern = new RegExp('[^\\s].*(' + c + ')[^\\s]*\\b', 'gm');
+        afterSpacePattern = new RegExp('[^\\s].*(' + c + ')[^\\s]*\\b', 'gmi');
     }
     var match = null;
     while (!!(match = afterSpacePattern.exec(fileContent))) {

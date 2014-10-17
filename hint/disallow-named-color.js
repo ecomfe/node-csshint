@@ -50,39 +50,8 @@ function checkProperty(event) {
                         + chalk.grey(msg)
                 });
             }
-            // console.log(colors.hasOwnProperty(text));
-            // console.log(part, text);
         }
     }
-
-    // for (var i = 0; i < len; i++) {
-    //     var part = parts[i];
-    //     if (
-    //         (part.units || part.type === 'percentage')
-    //         && part.value === 0
-    //         && part.type !== 'time'
-    //     ) {
-    //         var line = part.line;
-    //         var lineContent = util.getLineContent(line, fileContent);
-    //         var col = part.col;
-
-    //         invalidList.push({
-    //             ruleName: ruleName,
-    //             line: line,
-    //             col: col,
-    //             errorChar: ';',
-    //             message: '`'
-    //                 + lineContent
-    //                 + '` '
-    //                 + msg,
-    //             colorMessage: '`'
-    //                 + util.changeColorByIndex(lineContent, col, part.text)
-    //                 + '` '
-    //                 + chalk.grey(msg)
-    //         });
-    //     }
-    // }
-
 }
 
 /**
