@@ -1,0 +1,9 @@
+body {
+    color: rgb(255, 255, 255);
+    color: rgb(20%, 20%, 20%);
+    color: rgba(255, 255, 255, 1);
+    color: hsla(120, 65%, 75%, 1);
+    color: #fff;
+    border: 0px solid hsl(120, 65%, 75%);
+    /*color: rgb(11%, 11%, 11%) rgb(55%, 55%, 55%);*/
+}
