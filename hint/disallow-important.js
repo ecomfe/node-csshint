@@ -51,7 +51,6 @@ function checkProperty(event) {
             invalidList.push({
                 ruleName: ruleName,
                 line: line,
-                errorChar: '!important',
                 message: '`'
                     + lineContent
                     + '` '

@@ -1,3 +1,11 @@
-.aaa .ddd::-webkit-scrollbar-thumb {
+/*.aaa .ddd::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0,0.6);
+}
+*/
+
+span {
+    font-family: Arial,sans-serif,cas;
+    color :red;
+    color:yellow;
+    color: green;
 }

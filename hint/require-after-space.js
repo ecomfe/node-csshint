@@ -8,83 +8,47 @@
 var chalk = require('chalk');
 var util = require('../lib/util');
 
-var msg1 = 'Don\'t contain spaces before the `:` and must contain spaces after the `:`';
-var msg2 = 'Must contain spaces after the `,`';
+/**
+ * property 事件回调函数
+ * 这个函数的上下文是 addListener 时 bind 的数据对象
+ *
+ * @param {Object} event 事件对象
+ */
+function checkProperty(event) {
+    var me = this;
+    var fileContent = me.fileContent;
+    var ruleName = me.ruleName;
+    var invalidList = me.invalidList;
 
-function showMsg(c, type) {
-    if (type === 1) {
-        return ''
-            + 'Don\'t contain spaces before the `'
-            + c
-            + '` and must contain spaces after the `'
-            + c
-            +'`';
-    }
-    else {
-        return ''
-            + 'Must contain spaces after the `'
-            + c
-            + '`';
+    var parts = event.value.parts;
+    var len = parts.length;
+
+    for (var i = 0; i < len; i++) {
+        var part = parts[i];
+        if (part.type === 'operator') {
+            var nextPart = parts[i + 1];
+            var col = part.col;
+            if ((nextPart.col - col) <= 1) {
+                var line = part.line;
+                var lineContent = util.getLineContent(line, fileContent);
+                invalidList.push({
+                    ruleName: ruleName,
+                    line: line,
+                    col: col,
+                    errorChar: ',',
+                    message: '`'
+                        + lineContent
+                        + '` '
+                        + 'Must contain spaces after the `,`',
+                    colorMessage: '`'
+                        + util.changeColorByIndex(lineContent, col - 1, part.text)
+                        + '` '
+                        + chalk.grey('Must contain spaces after the `,`')
+                });
+            }
+        }
     }
 }
-
-/**
- * 检测字符前面是否有空格
- *
- * @param {string} c 待检测的字符
- */
-function checkBeforeSpace(c, fileContent) {
-    var ret = [];
-    var beforeSpacePattern = new RegExp('[^\\s]*\\s+(' + c + ')', 'gmi');
-    var match = null;
-    while (!!(match = beforeSpacePattern.exec(fileContent))) {
-        ret.push({
-            i: match.index,
-            v: match[1],
-            matchStr: match[0]
-        });
-    }
-    return ret;
-}
-
-/**
- * `:`后面要排除的
- * 伪类，伪元素，`:`，以及 url 协议后面的 `//`
- *
- * @type {string}
- */
-var excepts = ''
-    + 'active|focus|hover|link|visited|first-child|lang|'
-    + 'first-letter|first-line|before|after|'
-    + '\\/\\/';
-
-/**
- * 检测字符后面是否有空格
- *
- * @param {string} c 待检测的字符
- */
-function checkAfterSpace(c, fileContent) {
-    var ret = [];
-    // var afterSpacePattern = new RegExp('[^\\s].*(' + c + ')[^\\s]*\\b', 'gm');
-    var afterSpacePattern;
-    if (c === ':') {
-        afterSpacePattern = new RegExp('[^\\s].*(' + c + ')(:?!(' + excepts + '))[^\\s]*\\b', 'gmi');
-    }
-    else {
-        afterSpacePattern = new RegExp('[^\\s].*(' + c + ')[^\\s]*\\b', 'gmi');
-    }
-    var match = null;
-    while (!!(match = afterSpacePattern.exec(fileContent))) {
-        var matchStr = match[0];
-        ret.push({
-            i: match.index,
-            v: match[1],
-            matchStr: match[0]
-        });
-    }
-    return ret;
-}
-
 
 /**
  * 模块的输出接口
@@ -99,77 +63,33 @@ function checkAfterSpace(c, fileContent) {
  */
 module.exports = function (parser, fileContent, ruleName, ruleVal, invalidList) {
 
-    var ret = [];
+    if (!ruleVal) {
+        return invalidList;
+    }
 
-    var beforeSpaceRet = [];
-    var afterSpaceRet = [];
+    // ruleVal 可能是字符串，所以这里判断下，放入到 realRuleVal 数组中
+    var realRuleVal = [];
 
-    // require-before-space 对应的配置是数组
-    if (Array.isArray(ruleVal)) {
-        for (var i = 0, len = ruleVal.length; i < len; i++) {
-            beforeSpaceRet.push(checkBeforeSpace(ruleVal[i], fileContent));
-            afterSpaceRet.push(checkAfterSpace(ruleVal[i], fileContent));
-        }
+    if (!Array.isArray(ruleVal)) {
+        realRuleVal.push(ruleVal);
     }
     else {
-        beforeSpaceRet.push(checkBeforeSpace(ruleVal, fileContent));
-        afterSpaceRet.push(checkAfterSpace(ruleVal, fileContent));
+        realRuleVal = realRuleVal.concat(ruleVal);
     }
 
-    for (var i = 0, len = beforeSpaceRet.length; i < len; i++) {
-        for (var j = 0, jLen = beforeSpaceRet[i].length; j < jLen; j++) {
-            var line = util.getLine(beforeSpaceRet[i][j].i, fileContent);
-            var matchStr = beforeSpaceRet[i][j].matchStr;
-            var matchV = beforeSpaceRet[i][j].v;
-            invalidList.push({
+    // 暂时先只处理 `,`
+    if (realRuleVal.indexOf(',') !== -1) {
+        parser.addListener(
+            'property',
+            checkProperty.bind({
+                parser: parser,
+                fileContent: fileContent,
                 ruleName: ruleName,
-                line: line,
-                col: beforeSpaceRet[i][j].i,
-                errorChar: matchV,  // 出错的那个具体的字符
-                message: '`'
-                    + matchStr
-                    + '` '
-                    + showMsg(matchV, 1),
-                colorMessage: '`'
-                    + chalk.magenta(matchStr)
-                    // + matchStr.replace(
-                    //     matchV,
-                    //     chalk.magenta(matchV)
-                    // )
-                    + '` '
-                    + chalk.grey(showMsg(matchV, 1))
-            });
-        }
+                ruleVal: realRuleVal,
+                invalidList: invalidList
+            })
+        );
     }
 
-    for (var i = 0, len = afterSpaceRet.length; i < len; i++) {
-        for (var j = 0, jLen = afterSpaceRet[i].length; j < jLen; j++) {
-            var line = util.getLine(afterSpaceRet[i][j].i, fileContent);
-            var matchStr = afterSpaceRet[i][j].matchStr;
-            var matchV = afterSpaceRet[i][j].v;
-            invalidList.push({
-                ruleName: ruleName,
-                line: line,
-                col: afterSpaceRet[i][j].i,
-                errorChar: matchV,  // 出错的那个具体的字符
-                message: '`'
-                    + matchStr
-                    + '` '
-                    + showMsg(matchV, 2),
-                colorMessage: '`'
-                    + chalk.magenta(matchStr)
-                    // + matchStr.replace(
-                    //     matchV,
-                    //     chalk.magenta(matchV)
-                    // )
-                    + '` '
-                    + chalk.grey(showMsg(matchV, 2))
-            });
-        }
-    }
-
-    // console.warn(beforeSpaceRet);
-    // console.log();
-    // console.log(afterSpaceRet);
     return invalidList;
 };

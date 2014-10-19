@@ -39,7 +39,6 @@ function checkProperty(event) {
                 ruleName: ruleName,
                 line: line,
                 col: col,
-                errorChar: ';',
                 message: '`'
                     + lineContent
                     + '` '
