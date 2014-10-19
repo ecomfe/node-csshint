@@ -1,0 +1,5 @@
+span {
+    background:#fff url("http://cwsir.sinaapp.com/banner.jpg") no-repeat center 0;
+    background:#000 url('http://baidu.com/1.jpg') no-repeat url("http://asdasd.com/sda.png") 0;
+    background:#aaa url(http://qq.com/2.jpg) no-repeat center 0;
+}

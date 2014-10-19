@@ -8,7 +8,7 @@
 var chalk = require('chalk');
 var util = require('../lib/util');
 
-var msg = 'asdasas';
+var msg = 'Color value can be abbreviated, must use the abbreviation form';
 
 var properties = {};
 var propertiesToCheck = {};
