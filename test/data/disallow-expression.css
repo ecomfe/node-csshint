@@ -1,0 +1,9 @@
+input {
+    width: expression(onmouseover=this.style.backgroundColor="#F5F5F5";
+onmouseout=this.style.backgroundColor="#FFFFFF")
+}
+
+
+input{
+    width:expression(this.offsetWidth > 750 ? '12px' : '20px');
+}
