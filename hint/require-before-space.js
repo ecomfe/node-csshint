@@ -16,13 +16,17 @@ var msg = 'Must contain spaces before the `{`';
  */
 function checkBeforeSpace(c, fileContent) {
     var ret = [];
-    var noBeforeSpacePattern = new RegExp('[^\\s]*[^\\s](' + c + ')', 'gmi');
+    // var noBeforeSpacePattern = new RegExp('([^\\s]*[^\\s])(' + c + ')', 'gmi');
+    var noBeforeSpacePattern = new RegExp('(.*[^\\s])(' + c + ')', 'gmi');
     var match = null;
     while (!!(match = noBeforeSpacePattern.exec(fileContent))) {
+        var matchStr = match[0];
+        var matchChar = match[2];
+        var index = matchStr.length - matchChar.length;
         ret.push({
-            i: match.index,
-            v: match[1],
-            matchStr: match[0]
+            i: index,
+            v: matchChar,
+            matchStr: matchStr
         });
     }
     return ret;

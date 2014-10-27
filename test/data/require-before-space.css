@@ -1,11 +1,18 @@
+span{
+    width: 4px;
+}
+
+
+
 body {
     color:red;
 }
 
-div{
+  span div{
     height: 100px;
 }
 
-span{
-    width: 4px;
+
+p a{
+    text-decoration: none;
 }
