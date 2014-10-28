@@ -118,7 +118,9 @@ function endRule(event) {
                     + 'The properties `'
                     + mapping[prop].join(', ')
                     + '`'
-                    + ' can be replaced by '
+                    + ' in the selector `'
+                    + event.selectors.toString()
+                    + '` can be replaced by '
                     + prop
                     + '.';
                 invalidList.push({
@@ -131,7 +133,9 @@ function endRule(event) {
                         + 'The properties `'
                         + chalk.magenta(mapping[prop].join(', '))
                         + '`'
-                        + ' can be replaced by `'
+                        + ' in the selector `'
+                        + chalk.magenta(event.selectors.toString())
+                        + '` can be replaced by '
                         + chalk.magenta(prop)
                         + '`')
                 });

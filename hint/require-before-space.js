@@ -22,7 +22,7 @@ function checkBeforeSpace(c, fileContent) {
     while (!!(match = noBeforeSpacePattern.exec(fileContent))) {
         var matchStr = match[0];
         var matchChar = match[2];
-        var index = matchStr.length - matchChar.length;
+        var index = matchStr.length - matchChar.length + 1;
         ret.push({
             i: index,
             v: matchChar,

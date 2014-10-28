@@ -40,7 +40,7 @@ function checkProperty(event) {
                 invalidList.push({
                     ruleName: ruleName,
                     line: line,
-                    col: part.col,
+                    col: part.col + 4,  // 4 是指 url( 的长度，如果有引号，那么还应该 + 1
                     message: '`'
                         + lineContent
                         + '` '

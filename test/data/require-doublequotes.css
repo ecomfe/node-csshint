@@ -9,7 +9,7 @@ html[lang|=zh] q:before {
 }
 
 html[lang|='zh'] q:before {
-    font-family: 'Microsoft YaHei', sans-serif;
+    font-family:    'Microsoft YaHei', sans-serif;
     content: '“';
     background:#fff url("http://cwsir.sinaapp.com/banner.jpg") no-repeat center 0;
 }

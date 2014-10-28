@@ -33,16 +33,18 @@ function checkProperty(event) {
     var match = null;
 
     while (!!(match = reg.exec(lineContent))) {
+        var matchStr = match[0];
+        var index = match.index;
         invalidList.push({
             ruleName: ruleName,
             line: line,
-            col: match.index,
+            col: index + matchStr.length + 1,
             message: '`'
                 + lineContent
                 + '` '
                 + msg,
             colorMessage: '`'
-                + util.changeColorByIndex(lineContent, match.index, match[1])
+                + util.changeColorByIndex(lineContent, index, matchStr)
                 + '` '
                 + chalk.grey(msg)
         });

@@ -90,13 +90,12 @@ module.exports = function (parser, fileContent, ruleName, ruleVal, invalidList) 
             if (nextAscii === ASCII_CODE_TAB) {
                 var line = util.getLine(i + 1, fileContent);
                 var lineContent = util.getLineContent(line, fileContent);
-                var colorStr = String.fromCharCode(nextAscii)
-                    + lineContent.substr(0, 20) + ' ...';
-
+                // var colorStr = String.fromCharCode(nextAscii)
+                    // + lineContent.substr(0, 20) + ' ...';
+                var colorStr = String.fromCharCode(nextAscii) + lineContent;
                 invalidList.push({
                     ruleName: ruleName,
                     line: line,
-                    col: i,
                     message: '`'
                         + colorStr
                         + '` '
@@ -119,15 +118,16 @@ module.exports = function (parser, fileContent, ruleName, ruleVal, invalidList) 
         if (ascii === ASCII_CODE_SPACE && prevAsciiIsSpace) {
             if (nextAscii !== ASCII_CODE_SPACE) {
                 if (spaceCount !== 4) {
+                    console.log(i);
                     var line = util.getLine(i + 1, fileContent);
                     var lineContent = util.getLineContent(line, fileContent);
-                    var colorStr = String.fromCharCode(ascii)
-                        + lineContent.substr(0, 20) + ' ...';
+                    // var colorStr = String.fromCharCode(ascii)
+                        // + lineContent.substr(0, 20) + ' ...';
+                    var colorStr = String.fromCharCode(ascii) + lineContent;
 
                     invalidList.push({
                         ruleName: ruleName,
                         line: line,
-                        col: i,
                         message: '`'
                             + colorStr
                             + '` '

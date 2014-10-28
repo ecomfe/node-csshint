@@ -10,7 +10,7 @@ var util = require('../lib/util');
 var msg = 'Path in the `url()` must without the quotes';
 
 /**
- * 匹配 css 中图片的正则
+ * 匹配 css 中 url 的正则
  */
 var pattern = /\burl\s*\((["']?)([^\)]+)\1\)/g;
 

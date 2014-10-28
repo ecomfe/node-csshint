@@ -27,7 +27,6 @@ function checkProperty(event) {
     var parts = event.value.parts;
     var len = parts.length;
 
-    // console.log(event, 1111);
     for (var i = 0; i < len; i++) {
         var part = parts[i];
         if (part.type === 'string') {
@@ -107,13 +106,13 @@ function loopPartModifiers(part, ruleName, fileContent, invalidList) {
             var col = modifier.col;
             // console.log(modifier);
             var match = null;
-            var pattern = /^\[\w*(~|\|)?\=((["']?)\w*\3)\]$/g;
+            var pattern = /^(\[\w*(~|\|)?\=)((["']?)\w*\4)\]$/g;
             while (!!(match = pattern.exec(text))) {
-                if (match[3] !== '"') {
+                if (match[4] !== '"') {
                     invalidList.push({
                         ruleName: ruleName,
                         line: line,
-                        col: col,
+                        col: col + match[1].length,
                         errorChar: 'attr-selector',
                         message: '`'
                             + lineContent
