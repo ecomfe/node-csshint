@@ -118,7 +118,6 @@ module.exports = function (parser, fileContent, ruleName, ruleVal, invalidList) 
         if (ascii === ASCII_CODE_SPACE && prevAsciiIsSpace) {
             if (nextAscii !== ASCII_CODE_SPACE) {
                 if (spaceCount !== 4) {
-                    console.log(i);
                     var line = util.getLine(i + 1, fileContent);
                     var lineContent = util.getLineContent(line, fileContent);
                     // var colorStr = String.fromCharCode(ascii)
