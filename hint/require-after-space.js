@@ -8,48 +8,13 @@
 var chalk = require('chalk');
 var util = require('../lib/util');
 
-/**
- * property 事件回调函数
- * 这个函数的上下文是 addListener 时 bind 的数据对象
- *
- * @param {Object} event 事件对象
- */
-function checkProperty11(event) {
-    var me = this;
-    var fileContent = me.fileContent;
-    var ruleName = me.ruleName;
-    var invalidList = me.invalidList;
 
-    var parts = event.value.parts;
-    var len = parts.length;
+var COLON = ':';
 
-    for (var i = 0; i < len; i++) {
-        var part = parts[i];
-        if (part.type === 'operator') {
-            var nextPart = parts[i + 1];
-            var col = part.col;
-            if ((nextPart.col - col) <= 1) {
-                var line = part.line;
-                var lineContent = util.getLineContent(line, fileContent);
-                invalidList.push({
-                    ruleName: ruleName,
-                    line: line,
-                    col: col,
-                    errorChar: ',',
-                    message: '`'
-                        + lineContent
-                        + '` '
-                        + 'Must contain spaces after the `,`',
-                    colorMessage: '`'
-                        + util.changeColorByIndex(lineContent, col - 1, part.text)
-                        + '` '
-                        + chalk.grey('Must contain spaces after the `,`')
-                });
-            }
-        }
-    }
-}
+var COMMA = ',';
 
+var lineCacheComma;
+var lineCacheColon;
 
 /**
  * property 事件回调函数
@@ -65,38 +30,102 @@ function checkProperty(event) {
     var invalidList = me.invalidList;
 
     var parts = event.value.parts;
+    if (ruleVal.indexOf(COLON) > -1) {
+        dealColon(parts, ruleName, ruleVal, fileContent, invalidList);
+    }
+
+    if (ruleVal.indexOf(COMMA) > -1) {
+        dealComma(parts, ruleName, ruleVal, fileContent, invalidList);
+    }
+
+}
+
+/**
+ * 逗号的处理
+ *
+ * @param {Object} part selector.parts 中的每一项
+ * @param {string} ruleName 当前检测的规则名称
+ * @param {string|Array} ruleVal 当前检测规则对应的配置值
+ * @param {string} fileContent 当前检测文件内容
+ * @param {Array.<Object>} invalidList 不合法文件集合
+ */
+function dealComma(parts, ruleName, ruleVal, fileContent, invalidList) {
     var len = parts.length;
-    var match = null;
     for (var i = 0; i < len; i++) {
         var part = parts[i];
-        var lineContent = util.getLineContent(part.line, fileContent);
-        var items = lineContent.split(';');
-        for (var j = 0, jLen = items.length; j < jLen; j++) {
-            var s = items[j];
-            if (s.indexOf(':') > -1 && !/.*[^\s]:\s+/.test(s)) {
-                invalidList.push({
-                    ruleName: ruleName,
-                    line: part.line,
-                    errorChar: ':',
-                    message: '`'
-                        + lineContent
-                        + '` '
-                        + 'Disallow contain spaces between the `attr-name` and `:`, '
-                        + 'Must contain spaces between `:` and `attr-value`',
-                    colorMessage: '`'
-                        + lineContent.replace(s, chalk.magenta(s))
-                        + '` '
-                        + chalk.grey(''
-                            + 'Disallow contain spaces between the `attr-name` and `:`, '
-                            + 'Must contain spaces between `:` and `attr-value`'
-                        )
-                });
+        var line = part.line;
+        if (lineCacheComma !== line) {
+            lineCacheComma = line;
+            var lineContent = util.getLineContent(part.line, fileContent);
+            var items = lineContent.split(';');
+            for (var j = 0, jLen = items.length; j < jLen; j++) {
+                var s = items[j];
+                if (s.indexOf(',') > -1 && /.*,(?!\s)/.test(s)) {
+                    invalidList.push({
+                        ruleName: ruleName,
+                        line: part.line,
+                        errorChar: ',',
+                        message: '`'
+                            + lineContent
+                            + '` '
+                            + 'Must contain spaces after `,` in `attr-value`',
+                        colorMessage: '`'
+                            + lineContent.replace(s, chalk.magenta(s))
+                            + '` '
+                            + chalk.grey(''
+                                + 'Must contain spaces after `,` in `attr-value`'
+                            )
+                    });
+                }
             }
         }
     }
 }
 
 
+/**
+ * 冒号的处理
+ *
+ * @param {Object} part selector.parts 中的每一项
+ * @param {string} ruleName 当前检测的规则名称
+ * @param {string|Array} ruleVal 当前检测规则对应的配置值
+ * @param {string} fileContent 当前检测文件内容
+ * @param {Array.<Object>} invalidList 不合法文件集合
+ */
+function dealColon(parts, ruleName, ruleVal, fileContent, invalidList) {
+    var len = parts.length;
+    for (var i = 0; i < len; i++) {
+        var part = parts[i];
+        var line = part.line;
+        if (lineCacheColon !== line) {
+            lineCacheColon = line;
+            var lineContent = util.getLineContent(part.line, fileContent);
+            var items = lineContent.split(';');
+            for (var j = 0, jLen = items.length; j < jLen; j++) {
+                var s = items[j];
+                if (s.indexOf(':') > -1 && !/.*[^\s]:\s+/.test(s)) {
+                    invalidList.push({
+                        ruleName: ruleName,
+                        line: part.line,
+                        errorChar: ':',
+                        message: '`'
+                            + lineContent
+                            + '` '
+                            + 'Disallow contain spaces between the `attr-name` and `:`, '
+                            + 'Must contain spaces between `:` and `attr-value`',
+                        colorMessage: '`'
+                            + lineContent.replace(s, chalk.magenta(s))
+                            + '` '
+                            + chalk.grey(''
+                                + 'Disallow contain spaces between the `attr-name` and `:`, '
+                                + 'Must contain spaces between `:` and `attr-value`'
+                            )
+                    });
+                }
+            }
+        }
+    }
+}
 
 /**
  * 模块的输出接口
@@ -106,7 +135,7 @@ function checkProperty(event) {
  * @param {Object} parser parserlib.css.Parser 实例
  * @param {string} fileContent 当前检测文件内容
  * @param {string} ruleName 当前检测的规则名称
- * @param {string} ruleVal 当前检测规则对应的配置值
+ * @param {string|Array} ruleVal 当前检测规则对应的配置值
  * @param {Array.<Object>} invalidList 不合法文件集合
  */
 module.exports = function (parser, fileContent, ruleName, ruleVal, invalidList) {
@@ -135,10 +164,6 @@ module.exports = function (parser, fileContent, ruleName, ruleVal, invalidList) 
             invalidList: invalidList
         })
     );
-
-
-
-    console.log(realRuleVal);
 
     // 暂时先只处理 `,`
     // if (realRuleVal.indexOf(',') !== -1) {

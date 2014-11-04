@@ -3,14 +3,14 @@
 }
 */
 
-/*span {
+span {
     font-family: Arial,sans-serif,cas;
     color :red;
     color:yellow;
     color: green;
-}*/
+}
 
 
 body,A{
 color : #CcccCd;font-size:0px;
-border-color:rgb(200, 200,200);}
+border-color:rgb(200,200,200); color:rgb(100, 100,100);}
