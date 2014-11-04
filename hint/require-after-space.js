@@ -14,7 +14,7 @@ var util = require('../lib/util');
  *
  * @param {Object} event 事件对象
  */
-function checkProperty(event) {
+function checkProperty11(event) {
     var me = this;
     var fileContent = me.fileContent;
     var ruleName = me.ruleName;
@@ -50,6 +50,54 @@ function checkProperty(event) {
     }
 }
 
+
+/**
+ * property 事件回调函数
+ * 这个函数的上下文是 addListener 时 bind 的数据对象
+ *
+ * @param {Object} event 事件对象
+ */
+function checkProperty(event) {
+    var me = this;
+    var fileContent = me.fileContent;
+    var ruleName = me.ruleName;
+    var ruleVal = me.ruleVal;
+    var invalidList = me.invalidList;
+
+    var parts = event.value.parts;
+    var len = parts.length;
+    var match = null;
+    for (var i = 0; i < len; i++) {
+        var part = parts[i];
+        var lineContent = util.getLineContent(part.line, fileContent);
+        var items = lineContent.split(';');
+        for (var j = 0, jLen = items.length; j < jLen; j++) {
+            var s = items[j];
+            if (s.indexOf(':') > -1 && !/.*[^\s]:\s+/.test(s)) {
+                invalidList.push({
+                    ruleName: ruleName,
+                    line: part.line,
+                    errorChar: ':',
+                    message: '`'
+                        + lineContent
+                        + '` '
+                        + 'Disallow contain spaces between the `attr-name` and `:`, '
+                        + 'Must contain spaces between `:` and `attr-value`',
+                    colorMessage: '`'
+                        + lineContent.replace(s, chalk.magenta(s))
+                        + '` '
+                        + chalk.grey(''
+                            + 'Disallow contain spaces between the `attr-name` and `:`, '
+                            + 'Must contain spaces between `:` and `attr-value`'
+                        )
+                });
+            }
+        }
+    }
+}
+
+
+
 /**
  * 模块的输出接口
  * hint 目录下的多个文件在 addListener 时，相同的 eventType 会 add 多次
@@ -77,19 +125,34 @@ module.exports = function (parser, fileContent, ruleName, ruleVal, invalidList) 
         realRuleVal = realRuleVal.concat(ruleVal);
     }
 
+    parser.addListener(
+        'property',
+        checkProperty.bind({
+            parser: parser,
+            fileContent: fileContent,
+            ruleName: ruleName,
+            ruleVal: realRuleVal,
+            invalidList: invalidList
+        })
+    );
+
+
+
+    console.log(realRuleVal);
+
     // 暂时先只处理 `,`
-    if (realRuleVal.indexOf(',') !== -1) {
-        parser.addListener(
-            'property',
-            checkProperty.bind({
-                parser: parser,
-                fileContent: fileContent,
-                ruleName: ruleName,
-                ruleVal: realRuleVal,
-                invalidList: invalidList
-            })
-        );
-    }
+    // if (realRuleVal.indexOf(',') !== -1) {
+    //     parser.addListener(
+    //         'property',
+    //         checkProperty.bind({
+    //             parser: parser,
+    //             fileContent: fileContent,
+    //             ruleName: ruleName,
+    //             ruleVal: realRuleVal,
+    //             invalidList: invalidList
+    //         })
+    //     );
+    // }
 
     return invalidList;
 };

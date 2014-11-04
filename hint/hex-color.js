@@ -8,8 +8,8 @@ var chalk = require('chalk');
 var util = require('../lib/util');
 
 var msg = ''
-    + 'Color value must use the sixteen hexadecimal mark forms such as `#rgb`.'
-    + ' Don\'t use RGBA、HSL or HSLA expression';
+    + 'Color value must use the sixteen hexadecimal mark forms such as `#RGB`.'
+    + ' Don\'t use RGB、RGBA、HSL or HSLA expression';
 
 var pattern = /^(\brgb\b|\brgba\b|\bhsl\b|\bhsla\b)/gi;
 
