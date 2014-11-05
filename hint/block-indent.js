@@ -6,6 +6,8 @@
 
 var chalk = require('chalk');
 var util = require('../lib/util');
+var prefixes = require('../lib/prefixes');
+var prefixList = prefixes.getPrefixList();
 
 /**
  * tab 字符的 ascii 码
@@ -90,8 +92,11 @@ module.exports = function (parser, fileContent, ruleName, ruleVal, invalidList) 
             if (nextAscii === ASCII_CODE_TAB) {
                 var line = util.getLine(i + 1, fileContent);
                 var lineContent = util.getLineContent(line, fileContent);
-                // var colorStr = String.fromCharCode(nextAscii)
-                    // + lineContent.substr(0, 20) + ' ...';
+                /\s*(.*):.*/g.test(lineContent);
+                var r = RegExp.$1;
+                if (prefixList.indexOf(r) > -1) {
+                    return;
+                }
                 var colorStr = String.fromCharCode(nextAscii) + lineContent;
                 invalidList.push({
                     ruleName: ruleName,
@@ -120,10 +125,13 @@ module.exports = function (parser, fileContent, ruleName, ruleVal, invalidList) 
                 if (spaceCount !== 4) {
                     var line = util.getLine(i + 1, fileContent);
                     var lineContent = util.getLineContent(line, fileContent);
-                    // var colorStr = String.fromCharCode(ascii)
-                        // + lineContent.substr(0, 20) + ' ...';
-                    var colorStr = String.fromCharCode(ascii) + lineContent;
+                    /\s*(.*):.*/g.test(lineContent);
+                    var r = RegExp.$1;
+                    if (prefixList.indexOf(r) > -1) {
+                        return;
+                    }
 
+                    var colorStr = String.fromCharCode(ascii) + lineContent;
                     invalidList.push({
                         ruleName: ruleName,
                         line: line,
