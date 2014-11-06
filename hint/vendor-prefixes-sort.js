@@ -100,8 +100,6 @@ function endRule(event) {
             });
         }
     }
-
-    console.log();
 }
 
 

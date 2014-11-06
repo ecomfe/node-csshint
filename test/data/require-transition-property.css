@@ -1,0 +1,5 @@
+.box {
+    transition: all 1s;
+    transition: width 2s;
+    transition: color 1s, border-color 1s;
+}
