@@ -1,16 +1,16 @@
 /**
  * @file adjoining-classes 的检测逻辑
- *       Don't use adjoining classes.
+ *       Don't use adjoining classes (eg: .foo.bar)
  * @author ielgnaw(wuji0223@gmail.com)
  */
 
 var chalk = require('chalk');
 var util = require('../lib/util');
 
-var msg = 'Don\'t use adjoining classes.';
+var msg = 'Don\'t use adjoining classes';
 
 /**
- * property 事件回调函数
+ * startrule 事件回调函数
  * 这个函数的上下文是 addListener 时 bind 的数据对象
  *
  * @param {Object} event 事件对象
@@ -56,7 +56,6 @@ function loopPartModifiers(part, ruleName, fileContent, invalidList) {
             classCount++;
         }
         if (classCount > 1) {
-            console.log(modifier);
             var col = modifier.col;
             var line = modifier.line;
             var lineContent = util.getLineContent(line, fileContent);
@@ -76,7 +75,6 @@ function loopPartModifiers(part, ruleName, fileContent, invalidList) {
         }
     }
 }
-
 
 /**
  * 模块的输出接口
