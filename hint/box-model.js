@@ -158,22 +158,8 @@ function endRule(event) {
  */
 module.exports = function (parser, fileContent, ruleName, ruleVal, invalidList) {
 
-    if (!ruleVal || isNaN(ruleVal)) {
-        return invalidList;
-    }
-
     if (!ruleVal) {
         return invalidList;
-    }
-
-    // ruleVal 可能是字符串，所以这里判断下，放入到 realRuleVal 数组中
-    var realRuleVal = [];
-
-    if (!Array.isArray(ruleVal)) {
-        realRuleVal.push(ruleVal);
-    }
-    else {
-        realRuleVal = realRuleVal.concat(ruleVal);
     }
 
     parser.addListener(
