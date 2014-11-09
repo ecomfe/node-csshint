@@ -1,0 +1,34 @@
+/*@media handheld and (min-width:360px), screen and (min-width:480px) {
+    body {font-size:large;}
+}
+
+@media screen and (min-width:1024px) and (max-width:1280px) {
+    body {font-size:medium;}
+}
+
+@media screen and (min-width:800px),print and (min-width:7in) {
+    body {font-size:small;}
+}
+
+*/
+
+
+/*div,
+a:hover {
+    color: #ccc;
+}
+
+
+span,
+label {
+    color: #f00;
+}
+*/
+p {
+    width: 10px;height: 10px;
+}
+
+
+p, i {
+    width: 100px;height: 100px;
+}
