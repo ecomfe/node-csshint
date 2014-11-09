@@ -1,4 +1,4 @@
-/*@media handheld and (min-width:360px), screen and (min-width:480px) {
+@media handheld and (min-width:360px), screen and (min-width:480px) {
     body {font-size:large;}
 }
 
@@ -10,10 +10,9 @@
     body {font-size:small;}
 }
 
-*/
 
 
-/*div,
+div,
 a:hover {
     color: #ccc;
 }
@@ -23,7 +22,7 @@ span,
 label {
     color: #f00;
 }
-*/
+
 p {
     width: 10px;height: 10px;
 }
