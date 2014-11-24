@@ -46,5 +46,3 @@ describe('check', function () {
         );
     });
 });
-
-
