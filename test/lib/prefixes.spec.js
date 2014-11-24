@@ -1,3 +1,8 @@
+/**
+ * lib/prefixes.js的测试用例
+ * @author ielgnaw(wuji0223@gmail.com)
+ */
+
 var assert = require('assert');
 
 var prefixes = require('../../lib/prefixes');
