@@ -13,6 +13,18 @@
     "edp-core": "^1.0.28",
     "parserlib": "~0.2.2"
   },
+  "devDependencies": {
+    "coveralls": "^2.11.2",
+    "istanbul": "^0.3.2",
+    "jasmine-node": "^1.14.5",
+    "fecs": "*"
+  },
+  "scripts": {
+    "lint": "fecs lib cli test/**/*.spec.js --type=js",
+    "coverage": "istanbul cover jasmine-node --captureExceptions test/**/*.spec.js",
+    "test": "npm run lint && npm run coverage",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
+  },
   "main": "./lib/checker.js",
   "bin": {
     "csshint": "./bin/csshint-cli"
