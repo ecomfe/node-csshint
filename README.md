@@ -1,6 +1,6 @@
 CSSHint
 ===
-
+[![csshint](https://travis-ci.org/ielgnaw/node-csshint.svg?branch=master)](https://travis-ci.org/ielgnaw/node-csshint)
 [![csshint](https://d25lcipzij17d.cloudfront.net/badge.png?title=npm&type=3d&v=0.0.4)](https://www.npmjs.org/package/csshint)
 [![依赖模块状态](https://david-dm.org/ielgnaw/node-csshint.png)](https://david-dm.org/ielgnaw/node-csshint)
 
