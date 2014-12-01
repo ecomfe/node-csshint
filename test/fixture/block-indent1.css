@@ -1,0 +1,22 @@
+@keyframes errorbg {
+    0%,
+25% {
+        background: #f5cfc4;
+    opacity: .18;
+    }
+    100% {
+        background: #f5cfc4;
+        opacity: .18;
+    }
+}
+
+body ,b,a {
+    color: #fff;
+}
+
+ @media handheld and (min-width:360px), screen and (min-width:480px) {
+    body {
+        color: #fff;
+    }
+
+}

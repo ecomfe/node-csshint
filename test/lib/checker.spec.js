@@ -18,7 +18,7 @@ describe('checkString', function () {
 
     it('should return right length', function () {
         var invalidListLen = checker.checkString(fileContent).length;
-        assert.strictEqual(13, invalidListLen);
+        assert.strictEqual(8, invalidListLen);
     });
 });
 
@@ -41,7 +41,7 @@ describe('check', function () {
             f,
             errors,
             function () {
-                assert.strictEqual(14, errors[0].messages.length);
+                assert.strictEqual(9, errors[0].messages.length);
             }
         );
     });

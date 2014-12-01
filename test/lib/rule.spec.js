@@ -81,7 +81,7 @@ describe('block-indent', function () {
         invalidList = rule[ruleName](parser, fileContent, ruleName, ruleConfig[ruleName], invalidList);
         parser.parse(fileContent);
         assert.strictEqual(
-            '`\t\theight: 10;` Use `4` spaces as an indent level. Use `2` spaces or `tab` character is not allowed',
+            '`\theight: 10;` Use `4` spaces as an indent level. Use `2` spaces or `tab` character is not allowed',
             invalidList[0].message
         );
     });
