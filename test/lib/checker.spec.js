@@ -1,5 +1,5 @@
 /**
- * lib/checker.js的测试用例
+ * @file lib/checker.js的测试用例
  * @author ielgnaw(wuji0223@gmail.com)
  */
 
