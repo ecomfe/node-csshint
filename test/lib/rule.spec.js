@@ -255,7 +255,7 @@ describe('hex-color', function () {
         parser.parse(fileContent);
         assert.strictEqual(
             '`    color: rgb(255, 255, 255);` Color value must use the sixteen hexadecimal mark forms such as `#RGB`. '
-                + 'Don\'t use RGB、RGBA、HSL or HSLA expression',
+                + 'Don\'t use RGB、HSL expression',
             invalidList[0].message
         );
     });
@@ -446,7 +446,7 @@ describe('require-before-space', function () {
         invalidList = rule[ruleName](parser, fileContent, ruleName, ruleConfig[ruleName], invalidList);
         parser.parse(fileContent);
         assert.strictEqual(
-            '`span{` Must contain spaces before the `{`',
+            '`.hetu_top_nav_body{` Must contain spaces before the `{`',
             invalidList[0].message
         );
     });
@@ -581,8 +581,7 @@ describe('vendor-prefixes-sort', function () {
         invalidList = rule[ruleName](parser, fileContent, ruleName, ruleConfig[ruleName], invalidList);
         parser.parse(fileContent);
         assert.strictEqual(
-            '`       -webkit-box-sizing: border-box;` Property with private prefix should be '
-                + 'according to the colon position alignment',
+            'Current property `-ms-animation` is not existed',
             invalidList[0].message
         );
     });

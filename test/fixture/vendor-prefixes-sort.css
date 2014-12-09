@@ -1,4 +1,4 @@
-.box {
+/*.box {
        -moz-box-sizing: border-box;
             box-sizing: border-box;
        -webkit-box-sizing: border-box;
@@ -10,4 +10,33 @@
        -moz-border-radius: 5px;
             border-radius: 5px;
 
+}
+*/
+.ani {
+    -webkit-animation: spin 2s infinite linear;
+       -moz-animation: spin 2s infinite linear;
+        -ms-animation: spin 2s infinite linear;
+         -o-animation: spin 2s infinite linear;
+            animation: spin 2s infinite linear;
+}
+
+
+.shadow {
+    position: absolute;
+    width: 170px;
+    background: #fefefe;
+    color: #474848;
+    font-size: 14px;
+    left: -95px;
+    top: -125px;
+    border-radius: 5px;
+    border-bottom: solid 1px #d0d0cf;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .3);
+    -webkit-animation: spin 2s infinite linear;
+    animation: spin 2s infinite linear;
+}
+
+.cc {
+    -moz-animation: spin 2s infinite linear;
+         animation: spin 2s infinite linear;
 }
