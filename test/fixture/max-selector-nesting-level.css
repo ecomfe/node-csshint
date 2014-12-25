@@ -2,12 +2,13 @@ body div span {
     color: red;
 }
 
-body > div > span {
+body > div > span > a,
+.aa .bb .cc .dd {
     color: green;
 }
 
 
-.page .header .login #username input {
+.page .header .login {
     height: 100px;
 }
 

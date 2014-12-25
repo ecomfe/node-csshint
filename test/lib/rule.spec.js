@@ -331,7 +331,7 @@ describe('max-selector-nesting-level', function () {
         invalidList = rule[ruleName](parser, fileContent, ruleName, ruleConfig[ruleName], invalidList);
         parser.parse(fileContent);
         assert.strictEqual(
-            '`body div span {` A nested hierarchy selector should be no more than 3 levels',
+            '`body > div > span > a,` A nested hierarchy selector should be no more than 3 levels',
             invalidList[0].message
         );
     });
@@ -542,7 +542,8 @@ describe('shorthand', function () {
         invalidList = rule[ruleName](parser, fileContent, ruleName, ruleConfig[ruleName], invalidList);
         parser.parse(fileContent);
         assert.strictEqual(
-            '`    color: #ffffff;` Color value can be abbreviated, must use the abbreviation form',
+            'The properties `font-family, font-size, line-height` in the selector '
+                + '`#review-head` can be replaced by font.',
             invalidList[0].message
         );
     });
