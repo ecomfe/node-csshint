@@ -1,12 +1,8 @@
-
-div span {
-    margin-left: 10px;
-    margin-top: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-
-    font-family: arial, sans-serif;
-    font-size: 12px;
-    line-height: 1.5;
-    color: #ffffff;
+#review-head {
+    color: #a37e31;
+    line-height: 60px;
+    font-size: 1.5em;
+    font-family: "Microsoft YaHei";
+    margin-top: 50px;
+    margin-left: 85px;
 }
