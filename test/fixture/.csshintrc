@@ -2,6 +2,6 @@
     "no-bom": true,
     "require-before-space": ["{"],
     "require-after-space": [":", ","],
-    "max-length": 119
+    "max-length": 120
 }
 

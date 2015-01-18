@@ -31,9 +31,8 @@
     top: -125px;
     border-radius: 5px;
     border-bottom: solid 1px #d0d0cf;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, .3);
-    -webkit-animation: spin 2s infinite linear;
-    animation: spin 2s infinite linear;
+    -webkit-box-shadow: 0 0 4px #bebebe;
+            box-shadow: 0 0 4px #bebebe;
 }
 
 .cc {
