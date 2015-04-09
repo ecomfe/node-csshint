@@ -1,11 +1,185 @@
-/* goog.provide('baidu.pingo.commoncss'); */
-/**
- * @author zhangzhihong02
- *
- * @fileoverview 提供pingo的公共css
- */
-
-.data-source .ztree .authorized_ico_docu {
-    background: 2px 2px no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3MjMxRUZFMkMwQzYxMUU0QjFBMUQyQTZGNzkxQkVBNyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3MjMxRUZFM0MwQzYxMUU0QjFBMUQyQTZGNzkxQkVBNyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjcyMzFFRkUwQzBDNjExRTRCMUExRDJBNkY3OTFCRUE3IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjcyMzFFRkUxQzBDNjExRTRCMUExRDJBNkY3OTFCRUE3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+QgYZFQAAANFJREFUeNqM0M8KAVEUx/E7oyjZsbcbXsMbeAVlwQILD4CdWIiyIH+2Nla8g5UHsLOwEgkhoXxHR92ZZuRXn2a65565Z65h9U6KpFFDEmvUMVYeMWVzGR3sYWGEvF+D/eUuhphptYrUHTEY6c5zgzmyCGv1mJzqaFjJGO4cpeHpHqmpvNNAxnXip2Ego+xkzb62KuJIyGWE9ZG+7wFEcUBQZg9pDSVc9Vt4YYsHLkjJfxRxQ9tuNJV/FphgiYKsTfWRfuWMCPqm+i/2vhZybwEGAPPZL5BA/Y9KAAAAAElFTkSuQmCC);
-    width: 20px;
+/* 页头 *******************************/
+.head {
+    width: 100%;
+    height: 60px;
+    background: #29cfff;
+    position: absolute;
+    top: 0;
+    z-index: 999;
+}
+/* 左上角logo *******************************/
+.logo {
+    float: left;
+    width: 250px;
+    height: 60px;
+    line-height: 50px;
+    font-size: 26px;
+    font-weight: 900;
+    color: #0a5670;
+}
+.logo a {
+    -webkit-text-shadow: 0 0 25px rgba(255, 255, 255, 1);
+       -moz-text-shadow: 0 0 25px rgba(255, 255, 255, 1);
+            text-shadow: 0 0 25px rgba(255, 255, 255, 1);
+}
+.logo a:hover {
+    color: #fff;
+    border: 1px ;
+}
+/* 右上角用户信息 *******************************/
+.user-info {
+    float: right;
+    height: 60px;
+}
+.user {
+    height: 60px;
+    line-height: 60px;
+    width: 100px;
+    margin: 0 5px;
+    float: left;
+    text-align: center;
+}
+.user a {
+    height: 60px;
+    line-height: 60px;
+    width: 100px;
+    margin: 0;
+    float: left;
+}
+.user .user-tool {
+    width: 100px;
+    float: left;
+}
+.user .user-tool a {
+    width: 100px;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    -webkit-border-radius: 0 0 5px 5px;
+       -moz-border-radius: 0 0 5px 5px;
+            border-radius: 0 0 5px 5px;
+    font-size: 14px;
+    background: #29cfff;
+}
+.hi-image {
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;
+    float: left;
+    margin: 15px;
+    -webkit-transition: .2s ease-out;
+       -moz-transition: .2s ease-out;
+            transition: .2s ease-out;
+}
+.hi-image:hover {
+    -webkit-transform: rotate(360deg) scale(1.2);
+        -ms-transform: rotate(360deg) scale(1.2);
+            transform: rotate(360deg) scale(1.2);
+}
+.back-to-um {
+    height: 30px;
+    width: 100px;
+    line-height: 30px;
+    background: url(../img/umzhuye.png) no-repeat right;
+    color: #fff;
+    text-align: center;
+    margin-top: 15px;
+}
+/* 顶部导航 *******************************/
+#top-menu {
+    line-height: 24px;
+    list-style-type: none;
+    float: left;
+}
+#top-menu a {
+    display: block;
+    width: 80px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-weight: 900;
+    color: #fff;
+}
+.crumbs {
+    display: block;
+    width: 60px;
+    height: 60px;
+    line-height: 80px;
+    text-align: left;
+    margin: 0;
+    font-weight: 500;
+    font-size: 14px;
+}
+#top-menu a:link {
+    color: #666;
+    text-decoration: none;
+}
+#top-menu a:visited {
+    color: #666;
+    text-decoration: none;
+}
+#top-menu a:hover {
+    color: #FFF;
+    text-decoration: none;
+    font-weight: 900;
+}
+#top-menu li {
+    float: left;
+    width: 160px;
+    height: 60px;
+    line-height: 60px;
+}
+#top-menu li a:hover {
+    background: #12abd7;
+}
+#top-menu li ul {
+    line-height: 27px;
+    list-style-type: none;
+    text-align: left;
+    left: -999em;
+    width: 180px;
+    position: absolute;
+    top: 60px;
+}
+#top-menu li ul li {
+    float: left;
+    width: 180px;
+    height: 40px;
+    background: #12abd7;
+    border-bottom: 1px solid #19add5;
+}
+#top-menu li ul a {
+    display: block;
+    width: 156px;
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    padding-left: 24px;
+    font-size: 16px;
+    color: #000;
+}
+#top-menu li ul a:link {
+    color: #666;
+    text-decoration: none;
+}
+#top-menu li ul a:visited {
+    color: #666;
+    text-decoration: none;
+}
+#top-menu li ul a:hover {
+    text-decoration: none;
+    font-weight: 600;
+    background: #0890b8;
+}
+#top-menu li:hover ul {
+    left: auto;
+}
+/* leftmenu *******************************/
+.left-menu {
+    width: 5%;
+    min-width: 120px;
+    float: left;
+    display: none;
 }
