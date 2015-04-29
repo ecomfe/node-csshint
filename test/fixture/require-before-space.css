@@ -7,5 +7,7 @@
     height: 336px;
     background: url(../../images/vs/banner.jpg) no-repeat center 0;
 }
-.hetu_top_nav_body{display: none;}
+.hetu_top_nav_body{
+    display: none;
+}
 

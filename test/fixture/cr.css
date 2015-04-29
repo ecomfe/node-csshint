@@ -1,185 +1,201 @@
-/* 页头 *******************************/
-.head {
-    width: 100%;
-    height: 60px;
-    background: #29cfff;
+/** sprite: common; sprite-image: url('decorator/common-${md5}.png'); */
+@font-face {
+    font-family: "icomoon";
+    src: url(fonts/icomoon.eot?wexquh);
+    src: url(fonts/icomoon.eot?#iefixwexquh) format('embedded-opentype'),
+         url(fonts/icomoon.woff?wexquh) format('woff'),
+         url(fonts/icomoon.ttf?wexquh) format('truetype'),
+         url(fonts/icomoon.svg?wexquh#icomoon) format('svg');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.icon {
+    font-family: "icomoon";
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.clearfix:after {
+    display: block;
+    visibility: hidden;
+    clear: both;
+
+    height: 0;
+
+    content: ".";
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+* html .clearfix {
+    height: 1%;
+}
+
+/* Hides from IE-mac \*/
+.clearfix {
+    display: block;
+}
+
+.clear {
+    font-size: 0;
+
+    clear: both;
+
+    height: 0;
+}
+
+.ellipsis {
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.l {
+    float: left;
+}
+
+.r {
+    float: right;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mr10 {
+    margin-right: 10px;
+}
+
+.mr20 {
+    margin-right: 20px;
+}
+
+.muted {
+    color: #999;
+}
+
+.big {
+    font-size: 1.1666667em;
+}
+
+.large {
+    font-size: 1.3333333em;
+}
+
+.huge {
+    font-size: 1.5em;
+}
+
+a.not-a-link {
+    cursor: default;
+}
+
+a.not-a-link:hover {
+    text-decoration: none;
+}
+
+
+a.disabled {
+    cursor: default;
+
+    color: #999;
+}
+
+a.disabled:hover {
+    text-decoration: none;
+}
+
+input.gray {
+    color: #A9A9A9;
+}
+
+label.radio,
+label.checkbox {
+    display: inline-block;
+    line-height: 15px;
+
+    position: relative;
+
+    cursor: pointer;
+    text-indent: 4px;
+}
+
+label.radio input[type="radio"],
+label.checkbox input[type="checkbox"] {
+    height: 14px;
+
+    vertical-align: top;
+}
+
+label.radio input[type="radio"]:not(:only-child),
+label.checkbox input[type="checkbox"]:not(:only-child) {
+    opacity: 0;
+}
+
+label.radio input[type="radio"]:not(:only-child) + i,
+label.checkbox input[type="checkbox"]:not(:only-child) + i {
     position: absolute;
     top: 0;
-    z-index: 999;
-}
-/* 左上角logo *******************************/
-.logo {
-    float: left;
-    width: 250px;
-    height: 60px;
-    line-height: 50px;
-    font-size: 26px;
-    font-weight: 900;
-    color: #0a5670;
-}
-.logo a {
-    -webkit-text-shadow: 0 0 25px rgba(255, 255, 255, 1);
-       -moz-text-shadow: 0 0 25px rgba(255, 255, 255, 1);
-            text-shadow: 0 0 25px rgba(255, 255, 255, 1);
-}
-.logo a:hover {
-    color: #fff;
-    border: 1px ;
-}
-/* 右上角用户信息 *******************************/
-.user-info {
-    float: right;
-    height: 60px;
-}
-.user {
-    height: 60px;
-    line-height: 60px;
-    width: 100px;
-    margin: 0 5px;
-    float: left;
-    text-align: center;
-}
-.user a {
-    height: 60px;
-    line-height: 60px;
-    width: 100px;
-    margin: 0;
-    float: left;
-}
-.user .user-tool {
-    width: 100px;
-    float: left;
-}
-.user .user-tool a {
-    width: 100px;
-    float: left;
-    height: 30px;
-    line-height: 30px;
-    -webkit-border-radius: 0 0 5px 5px;
-       -moz-border-radius: 0 0 5px 5px;
-            border-radius: 0 0 5px 5px;
-    font-size: 14px;
-    background: #29cfff;
-}
-.hi-image {
-    border-radius: 30px;
-    width: 30px;
-    height: 30px;
-    float: left;
-    margin: 15px;
-    -webkit-transition: .2s ease-out;
-       -moz-transition: .2s ease-out;
-            transition: .2s ease-out;
-}
-.hi-image:hover {
-    -webkit-transform: rotate(360deg) scale(1.2);
-        -ms-transform: rotate(360deg) scale(1.2);
-            transform: rotate(360deg) scale(1.2);
-}
-.back-to-um {
-    height: 30px;
-    width: 100px;
-    line-height: 30px;
-    background: url(../img/umzhuye.png) no-repeat right;
-    color: #fff;
-    text-align: center;
-    margin-top: 15px;
-}
-/* 顶部导航 *******************************/
-#top-menu {
-    line-height: 24px;
-    list-style-type: none;
-    float: left;
-}
-#top-menu a {
+    left: 0;
+
     display: block;
-    width: 80px;
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    font-weight: 900;
-    color: #fff;
+
+    width: 13px;
+    height: 13px;
+
+    content: " ";
+
+    opacity: 1;
+    border: 1px solid #CFCFCF;
+    background-repeat: no-repeat;
 }
-.crumbs {
-    display: block;
-    width: 60px;
-    height: 60px;
-    line-height: 80px;
-    text-align: left;
-    margin: 0;
-    font-weight: 500;
-    font-size: 14px;
+
+label.radio input[type="radio"]:not(:only-child):checked + i,
+label.checkbox input[type="checkbox"]:not(:only-child):checked + i {
+    background-image: url(decorator/input_checked.png); /** sprite-ref: common; sprite-margin-bottom: 20px; */
 }
-#top-menu a:link {
-    color: #666;
-    text-decoration: none;
+
+/* Fix a chrome's bug: check status change won't repaint sibling elements */
+/* http://stackoverflow.com/questions/8320530/webkit-bug-with-hover-and-multiple-adjacent-sibling-selectors */
+:checked ~ i {
+    display: inline;
 }
-#top-menu a:visited {
-    color: #666;
-    text-decoration: none;
-}
-#top-menu a:hover {
-    color: #FFF;
-    text-decoration: none;
-    font-weight: 900;
-}
-#top-menu li {
-    float: left;
-    width: 160px;
-    height: 60px;
-    line-height: 60px;
-}
-#top-menu li a:hover {
-    background: #12abd7;
-}
-#top-menu li ul {
-    line-height: 27px;
-    list-style-type: none;
-    text-align: left;
-    left: -999em;
-    width: 180px;
-    position: absolute;
-    top: 60px;
-}
-#top-menu li ul li {
-    float: left;
-    width: 180px;
-    height: 40px;
-    background: #12abd7;
-    border-bottom: 1px solid #19add5;
-}
-#top-menu li ul a {
-    display: block;
-    width: 156px;
-    height: 40px;
-    line-height: 40px;
-    text-align: left;
-    padding-left: 24px;
-    font-size: 16px;
-    color: #000;
-}
-#top-menu li ul a:link {
-    color: #666;
-    text-decoration: none;
-}
-#top-menu li ul a:visited {
-    color: #666;
-    text-decoration: none;
-}
-#top-menu li ul a:hover {
-    text-decoration: none;
-    font-weight: 600;
-    background: #0890b8;
-}
-#top-menu li:hover ul {
-    left: auto;
-}
-/* leftmenu *******************************/
-.left-menu {
-    width: 5%;
-    min-width: 120px;
-    float: left;
+
+/* 20311210 防止离线宝和商桥误开通显示 */
+.lxb-container,
+#BDBridgeWrap {
     display: none;
+}
+
+/* something wrong with jQuery ui tooltip accessibility */
+.ui-helper-hidden-accessible {
+    display: none;
+}
+
+.ui-helper-clearfix:before,
+.ui-helper-clearfix:after {
+    content: "";
+    display: table;
+    border-collapse: collapse;
+}
+.ui-helper-clearfix:after {
+    clear: both;
+}
+.ui-helper-clearfix {
+    min-height: 0; /* support: IE7 */
 }
