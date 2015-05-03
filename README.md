@@ -1,8 +1,9 @@
 CSSHint
 ===
 [![csshint](https://travis-ci.org/ielgnaw/node-csshint.svg?branch=master)](https://travis-ci.org/ielgnaw/node-csshint)
-[![csshint](https://d25lcipzij17d.cloudfront.net/badge.png?title=npm&type=3d&v=0.0.4)](https://www.npmjs.org/package/csshint)
-[![依赖模块状态](https://david-dm.org/ielgnaw/node-csshint.png)](https://david-dm.org/ielgnaw/node-csshint)
+[![npm version](https://badge.fury.io/js/csshint.svg)](http://badge.fury.io/js/csshint)
+[![Dependency Status](https://david-dm.org/ielgnaw/node-csshint.png)](https://david-dm.org/ielgnaw/node-csshint)
+[![devDependency Status](https://david-dm.org/ielgnaw/node-csshint/dev-status.png)](https://david-dm.org/ielgnaw/node-csshint#info=devDependencies)
 
 
 CSSHint 是一个基于 NodeJS 的代码规范审查工具，目前的规则是基于 ecomfe 的[CSS 编码规范](https://github.com/ecomfe/spec/blob/master/css-style-guide.md)。
@@ -72,4 +73,15 @@ TODO
 2. 类似`jsHint`的文件内注释方式。
 
 
-   
+CHANGELOG
+------
+
+2015.05.03 提供简单的行内注释。
+
+例如在某文件里设置如下代码
+
+    /* csshint-disable always-semicolon, require-newline,require-after-space */
+
+这段代码可以让当前文件不检测`always-semicolon`, `require-newline`, `require-after-space`这三个规则。
+
+后续版本会支持`/* csshint-enable ruleName */`, `/* csshint ruleName1:false, ruleName2:true */`等更灵活的配置。
