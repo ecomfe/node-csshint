@@ -76,6 +76,12 @@ TODO
 CHANGELOG
 ------
 
+2015.05.04 行内注释的规则匹配，支持任意的`[^a-z-]`作为分隔符，例如
+
+    /* csshint-disable always-semicolon, require-newline require-after-space | block-indent */
+
+这段代码可以让当前文件不检测`always-semicolon`, `require-newline`, `require-after-space`以及`block-indent`这四个规则。这四个规则之间的分隔符分别是`,`, ` `, `|`
+
 2015.05.03 提供简单的行内注释。
 
 例如在某文件里设置如下代码
