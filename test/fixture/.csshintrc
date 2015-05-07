@@ -3,6 +3,7 @@
     "no-bom": true,
     "require-before-space": ["{"],
     "require-after-space": [":", ","],
-    "max-length": 120
+    "max-length": 120,
+    "disallow-important": true
 }
 

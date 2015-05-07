@@ -1,0 +1,37 @@
+body{
+    height: 10;
+  width: 2px;
+   aa:12px;
+    width: 12px;
+}
+.CWSIR_entry_icon{display:inline-block;width:33px;height:33px;position:relative;background:url("http://cwsir.sinaapp.com/CWSirExtensions/images/icon.png") no-repeat -120px 0;z-index:10;}
+
+ @media handheld and (min-width:360px),screen and (min-width:480px) {
+body {
+        font-size:large;
+    }
+}
+
+
+@keyframes errorbg {
+    0%,
+25% {
+        background: #f5cfc4;
+    opacity: .18;
+    }
+    100% {
+        background: #f5cfc4;
+        opacity: .18;
+    }
+}
+
+body ,b,a {
+    color: #fff;
+}
+
+ @media handheld and (min-width:360px), screen and (min-width:480px) {
+    body {
+    color: #fff;
+    }
+
+}
