@@ -6,3 +6,4 @@ Thumbs.db
 *.swp
 .jshintrc
 *.bak
+bak/
