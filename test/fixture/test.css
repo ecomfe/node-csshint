@@ -3,4 +3,7 @@ span {
     background: #000 url('http://baidu.com/1.jpg') no-repeat url("http://asdasd.com/sda.png") 0;
     background: #aaa url(http://qq.com/2ee.jpg) no-repeat center 0;
     background: #aaa url(qq.com/2.jpg) no-repeat center 0;
+    background-image: -webkit-image-set(url(http://mat1.gtimg.com/www/images/qq2012/qqlogo_1x.png) 1x,url(http://mat1.gtimg.com/www/images/qq2012/qqlogo_2x.png) 2x);
+    background-repeat: no-repeat;
+
 }
