@@ -4,6 +4,7 @@
     "require-before-space": ["{"],
     "require-after-space": [":", ","],
     "max-length": 120,
-    "disallow-important": true
+    "disallow-important": true,
+    "require-around-space": [ "+", "~", ">"]
 }
 
