@@ -5,6 +5,7 @@
     "require-after-space": [":", ","],
     "max-length": 120,
     "disallow-important": true,
-    "require-around-space": [ "+", "~", ">"]
+    "require-around-space": [ "+", "~", ">"],
+    "max-selector-nesting-level": 3
 }
 

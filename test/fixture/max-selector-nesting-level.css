@@ -8,7 +8,7 @@ body > div > span > a,
 }
 
 
-.page .header .login {
+.page .header .login ~ .dsa {
     height: 100px;
 }
 
