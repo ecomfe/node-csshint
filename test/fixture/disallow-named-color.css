@@ -1,5 +1,6 @@
 body {
-    color: red;
+    color:  red ;
     color: #f00;
     width: 100px;
+    border: 1px solid black;
 }
