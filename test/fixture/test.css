@@ -1,3 +1,28 @@
-.CWSIR_topic_showWB .CWSIR_topic_handle {
-background-color: rgb(230, 230, 230);
+/*.cc {
+    -moz-animation: spin 2s infinite linear;
+         animation: spin 2s infinite linear;
+}*/
+
+.aa {
+    -webkit-animation: spin 2s infinite linear;
+       -moz-animation: spin 2s infinite linear;
+        -ms-animation: spin 2s infinite linear;
+         -o-animation: spin 2s infinite linear;
+            animation: spin 2s infinite linear;
+}
+
+@keyframes errorbg {
+    0%,
+25% {
+        background: #f5cfc4;
+    opacity: .18;
+    }
+    100% {
+        -webkit-animation: spin 2s infinite linear;
+           -moz-animation: spin 2s infinite linear;
+            -ms-animation: spin 2s infinite linear;
+             -o-animation: spin 2s infinite linear;
+                animation: spin 2s infinite linear;
+
+    }
 }
