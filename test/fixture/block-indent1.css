@@ -2,7 +2,7 @@
     0%,
 25% {
         background: #f5cfc4;
-    opacity: .18;
+     _opacity: .18;
     }
     100% {
         background: #f5cfc4;
@@ -15,8 +15,7 @@ body ,b,a {
 }
 
  @media handheld and (min-width:360px), screen and (min-width:480px) {
-    body {
-        color: #fff;
+    body {_color: #fff;
     }
 
 }

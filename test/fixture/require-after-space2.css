@@ -1,0 +1,21 @@
+/*.aaa .ddd::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0,0.6);
+}
+*/
+
+span {
+    font-family: Arial,sans-serif,cas;
+    color :red;
+    color:yellow;
+    color: green;
+}
+
+/*
+body,A {
+color : #CcccCd;font-size:0px;
+border-color:rgb(200,200,200); color:rgb(100, 100,100);}
+*/
+
+/*div {
+    background-image: url(data:image/gif;base64,R0lGODlhCAAHAIABAGZmZv///yH5BAEAAAEALAAAAAAIAAcAAAINjAOnkIr8mGxGOnhPAQA7);
+}*/

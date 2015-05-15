@@ -37,7 +37,7 @@ a.test:hover {
 
 
 
-/*.post .cc, .page .dd, .comment .ee .gg{
+.post .cc, .page cc.dd, cc.comment cc.ee .gg{
     line-height: 1.5;
 }
 
@@ -51,11 +51,11 @@ a.aa {
 
 .pagesss .cc, .page .dd{
     line-height: 1.5;
-}*/
+}
 
-/*.aaa,  .bbb, .ccc, .ddd{
+.aaa,  hh.bbb > ll.oo, .ccc, .ddd{
     color: red;
-}*/
+}
 
 /*.CWSIR_page_tab_radious .CWSIR_page_t_itm, .CWSIR_page_tab_radious .CWSIR_page_t_opt, .CWSIR_page_tab_radious .CWSIR_page_W_vline, .aaa .bbb .ccc {
  float: left;

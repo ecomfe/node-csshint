@@ -1,13 +1,8 @@
-/* 红黑榜 */
-@import "../common/tag.css";
-@import "../common/vs.css";
-.vs-banner {
-    text-align: center;
-    overflow: hidden;
-    height: 336px;
-    background: url(../../images/vs/banner.jpg) no-repeat center 0;
-}
+
 .hetu_top_nav_body{
     display: none;
 }
 
+asdasd  {
+    color: red;
+}
