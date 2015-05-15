@@ -35,8 +35,7 @@
     outline-style: none;
 }
 
-.CWSIR_topic_Search input[type =
-"text"], input[type = "password"], textarea {
+.CWSIR_topic_Search input[type ="text"], input[type = "password"], textarea {
     outline-style: none;
     -webkit-appearance: none;
 }
