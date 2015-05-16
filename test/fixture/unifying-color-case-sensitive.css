@@ -1,4 +1,9 @@
 body {
-    color: #FFF;
     color: #fff;
+    color: #FFF;
+    color: #000abC;
+    color: #CCC;
+    border: 1px solid rgb(255, 255, 255);
+    background: url("images/icons.png") #acacac no-repeat;
 }
+
