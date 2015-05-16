@@ -5,4 +5,5 @@ Thumbs.db
 .DS_Store
 *.swp
 .jshintrc
-test/
+*.bak
+bak/
