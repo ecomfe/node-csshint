@@ -1,5 +1,5 @@
 {
-    "max-error": 100,
+    "max-error": 1000,
     "no-bom": true,
     "require-before-space": ["{"],
     "require-after-space": [":", ","],
