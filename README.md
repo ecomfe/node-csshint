@@ -5,6 +5,12 @@ CSSHint
 [![Dependency Status](https://david-dm.org/ielgnaw/node-csshint.png)](https://david-dm.org/ielgnaw/node-csshint)
 [![devDependency Status](https://david-dm.org/ielgnaw/node-csshint/dev-status.png)](https://david-dm.org/ielgnaw/node-csshint#info=devDependencies)
 
+挂在全局 global 的属性
+global.CSSHINT_HEXCOLOR_CASE_FLAG: 记录项目级别的颜色值的大小写信息，为0是小写，为1是大写
+
+global.CSSHINT_INVALID_ALL_COUNT: 为 max-error 服务的，记录整个的错误个数
+global.CSSHINT_FONTFAMILY_CASE_FLAG: 记录项目级别的 font-family 大小写信息，key 为小写格式，value 为真实的值， {'arial': 'Arial'}
+
 
 CSSHint 是一个基于 NodeJS 的代码规范审查工具，目前的规则是基于 ecomfe 的[CSS 编码规范](https://github.com/ecomfe/spec/blob/master/css-style-guide.md)。
 
