@@ -1,4 +1,4 @@
-/*.box {
+.box {
        -moz-box-sizing: border-box;
             box-sizing: border-box;
        -webkit-box-sizing: border-box;
@@ -11,13 +11,14 @@
             border-radius: 5px;
 
 }
-*/
+
 .ani {
     -webkit-animation: spin 2s infinite linear;
        -moz-animation: spin 2s infinite linear;
         -ms-animation: spin 2s infinite linear;
          -o-animation: spin 2s infinite linear;
-         animation: spin 2s infinite linear;
+            animation: spin 2s infinite linear;
+    color: #fff;
 }
 
 
@@ -38,4 +39,5 @@
 .cc {
     -moz-animation: spin 2s infinite linear;
          animation: spin 2s infinite linear;
+    border-radius: 5px;
 }
