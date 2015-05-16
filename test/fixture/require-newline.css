@@ -1,4 +1,6 @@
-@media handheld and (min-width:360px), screen and (min-width:480px) {
+
+@media handheld and (min-width:360px),
+screen and (min-width:480px),screen and (max-width:980px) {
     body {font-size:large;}
 }
 
@@ -10,6 +12,9 @@
     body {font-size:small;}
 }
 
+span, label {
+    color: #f00;
+}
 
 
 div,
@@ -24,10 +29,11 @@ label {
 }
 
 p {
-    width: 10px;height: 10px;
+    width: 10px;height: 30px;
 }
 
 
-p, i {
+p,
+i,.cc {
     width: 100px;height: 100px;
 }

@@ -6,6 +6,7 @@
     "max-length": 120,
     "disallow-important": true,
     "require-around-space": [ "+", "~", ">"],
-    "max-selector-nesting-level": 3
+    "max-selector-nesting-level": 3,
+    "require-newline": ["selector", "property", "media-query-condition"]
 }
 
