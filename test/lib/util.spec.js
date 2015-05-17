@@ -5,7 +5,6 @@
 
 var fs = require('fs');
 var path = require('path');
-var assert = require('assert');
 
 var util = require('../../lib/util');
 
@@ -18,7 +17,7 @@ describe('times', function () {
                 count++;
             }
         );
-        assert.strictEqual(4, count);
+        expect(4).toEqual(count);
     });
 });
 
@@ -28,14 +27,14 @@ describe('formatMsg', function () {
             'This is a message',
             5
         );
-        assert.strictEqual('     This is a message', message);
+        expect('     This is a message').toEqual(message);
     });
 });
 
 
 describe('line, lineContent, location', function () {
     var candidateIndex = 10;
-    var candidateLineNumber = 3;
+    var candidateLineNumber = 2;
 
     var fileContent = fs.readFileSync(
         path.join(__dirname, '../fixture/test.css'),
@@ -44,27 +43,31 @@ describe('line, lineContent, location', function () {
 
     it('should return right linenumber', function () {
         var lineNumber = util.getLine(candidateIndex, fileContent);
-        assert.strictEqual(candidateLineNumber, lineNumber);
+        expect(candidateLineNumber).toEqual(lineNumber);
     });
 
     it('should return right linecontent', function () {
         var lineContent = util.getLineContent(candidateLineNumber, fileContent);
-        assert.strictEqual('    color: red;', lineContent);
+        expect(
+            '    background: url(http://cwsir.sinaapp.com/CWSirExtensions/images/sprite_ico.png) no-repeat;'
+        ).toEqual(lineContent);
     });
 
     it('should return right linecontent by index', function () {
         var lineContent = util.getLineContentByIndex(candidateIndex, fileContent);
-        assert.strictEqual('    color: red;', lineContent);
+        expect(
+            '    background: url(http://cwsir.sinaapp.com/CWSirExtensions/images/sprite_ico.png) no-repeat;'
+        ).toEqual(lineContent);
     });
 
     it('should return right location', function () {
-        assert.deepEqual({line: 2, column: 0}, util.getLocation(candidateIndex, fileContent));
+        expect({line: 1, column: 3}).toEqual(util.getLocation(candidateIndex, fileContent));
     });
 });
 
 describe('trim', function () {
     it('should return tirm string', function () {
         var str = '   aaaa   ';
-        assert.strictEqual('aaaa', util.trim(str));
+        expect('aaaa').toEqual(util.trim(str));
     });
 });
