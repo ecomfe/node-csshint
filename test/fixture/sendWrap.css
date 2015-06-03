@@ -1,3 +1,4 @@
+/* csshint-disable require-before-spacedd */
 #cwsir_sendweibo_qr a:hover{
 	color:#FFF;
 }
@@ -110,6 +111,7 @@ margin-left: 5px;
 text-decoration:none;
 font-family: 'Microsoft Yahei', 微软雅黑;
 }
+
 .cwsir_sendweibo_makeqr_button:hover{
 text-decoration:none;
 color:#ececec;
@@ -353,11 +355,11 @@ width:
     }
     #cwsir_sendweibo_sendbtn:hover{
         background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a0bf39), color-stop(100%,#7ea422));
-        background: -webkit-linear-gradient(top,  #a0bf39 0%,#7ea422 100%);     
+        background: -webkit-linear-gradient(top,  #a0bf39 0%,#7ea422 100%);
     }
     #cwsir_sendweibo_sendbtn:active{
         background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a0bf39), color-stop(100%,#7ea422));
-        background: -webkit-linear-gradient(top,  #a0bf39 0%,#7ea422 100%);     
+        background: -webkit-linear-gradient(top,  #a0bf39 0%,#7ea422 100%);
         box-shadow:none;
     }
     /*#cwsir_sendweibo_sendbtn:hover{
@@ -366,3 +368,4 @@ width:
     border-color:#bcd467
     }*/
     #cwsir_sendweibo_trigger{left: 600px; top: 30px; width: 34px; height: 15px; background-image: url(chrome-extension://dnackofefjpolkafgappmpjipfipfaeh/images/dragger.png); text-decoration: none; text-align: center; color: white; float: left; cursor: pointer; position: relative; display: none; background-position: 0px 0px; background-repeat: no-repeat no-repeat;}
+/* csshint-enable require-before-spacedd */

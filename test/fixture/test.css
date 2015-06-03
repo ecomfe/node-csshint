@@ -1,3 +1,11 @@
-body {
-    background: url(http://cwsir.sinaapp.com/CWSirExtensions/images/sprite_ico.png) no-repeat;
+/* csshint-disable require-before-spacedd */
+#div{
+    margin: 0;
+    color: #fff;
 }
+/* csshint-enable require-before-spacedd */
+
+span{
+    padding: 0px;
+}
+/* csshint-enable require-before-spacedd */
