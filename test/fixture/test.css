@@ -6,3 +6,8 @@
             animation: spin 2s infinite linear;
     color: #fff;
 }
+
+.cc {
+    -webkit-filter: blur(11px);
+            filter: blur(11px);
+}
