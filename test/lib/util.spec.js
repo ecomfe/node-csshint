@@ -49,14 +49,14 @@ describe('line, lineContent, location', function () {
     it('should return right linecontent', function () {
         var lineContent = util.getLineContent(candidateLineNumber, fileContent);
         expect(
-            '    background: url(http://cwsir.sinaapp.com/CWSirExtensions/images/sprite_ico.png) no-repeat;'
+            '    -webkit-animation: spin 2s infinite linear;'
         ).toEqual(lineContent);
     });
 
     it('should return right linecontent by index', function () {
         var lineContent = util.getLineContentByIndex(candidateIndex, fileContent);
         expect(
-            '    background: url(http://cwsir.sinaapp.com/CWSirExtensions/images/sprite_ico.png) no-repeat;'
+            '    -webkit-animation: spin 2s infinite linear;'
         ).toEqual(lineContent);
     });
 

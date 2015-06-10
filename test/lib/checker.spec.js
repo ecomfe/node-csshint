@@ -19,7 +19,7 @@ describe('checkString', function () {
     it('should return right length', function (done) {
         var p = checker.checkString(fileContent, filePath);
         p.then(function (invalidList) {
-            expect(1).toEqual(invalidList[0].messages.length);
+            expect(2).toEqual(invalidList[0].messages.length);
             done();
         });
     });
@@ -44,7 +44,7 @@ describe('check', function () {
             f,
             errors,
             function () {
-                expect(1).toEqual(errors[0].messages.length);
+                expect(2).toEqual(errors[0].messages.length);
                 done();
             }
         );

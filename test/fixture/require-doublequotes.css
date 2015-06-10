@@ -8,16 +8,16 @@
     content: '“';
 }*/
 
-/*html[lang|='zh'] q:before {
+html[lang|='zh'] q:before {
     font-family:    'Microsoft YaHei', sans-serif;
     content: '';
     background: #fff url("http://cwsir.sinaapp.com/banner.jpg") no-repeat center 0;
-}*/
+}
 
-/*input[type] {
+input[type=text] {
     width: 100px;
     content: "asdasd";
-}*/
+}
 
 .Table th[data-sort]:hover {
     cursor: pointer;
