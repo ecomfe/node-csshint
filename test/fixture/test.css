@@ -1,3 +1,8 @@
-body {
-    background: url(http://cwsir.sinaapp.com/CWSirExtensions/images/sprite_ico.png) no-repeat;
+.ani {
+    -webkit-animation: spin 2s infinite linear;
+       -moz-animation: spin 2s infinite linear;
+        -ms-animation: spin 2s infinite linear;
+         -o-animation: spin 2s infinite linear;
+            animation: spin 2s infinite linear;
+    color: #fff;
 }
