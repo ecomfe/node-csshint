@@ -1,4 +1,4 @@
-.ani {
+/*.ani {
     -webkit-animation: spin 2s infinite linear;
        -moz-animation: spin 2s infinite linear;
         -ms-animation: spin 2s infinite linear;
@@ -10,4 +10,16 @@
 .cc {
     -webkit-filter: blur(11px);
             filter: blur(11px);
+}
+*/
+
+
+.wm-location-show-middle span {
+    display: inline-block;
+    margin-left: 4px;
+    width: 11px;
+    height: 11px;
+    background:url(//m.baidu.com/static/search/appAla/weizhan/icon_how.png) no-repeat;
+    background-size: 11px 11px;
+    vertical-align: -1px;
 }

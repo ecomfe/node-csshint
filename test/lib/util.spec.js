@@ -61,7 +61,7 @@ describe('line, lineContent, location', function () {
     });
 
     it('should return right location', function () {
-        expect({line: 1, column: 3}).toEqual(util.getLocation(candidateIndex, fileContent));
+        expect({line: 1, column: 1}).toEqual(util.getLocation(candidateIndex, fileContent));
     });
 });
 
