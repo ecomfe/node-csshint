@@ -2,6 +2,10 @@
   "name": "csshint",
   "description": "Csshint your css code",
   "version": "0.1.4",
+  "keywords": [
+    "csslint",
+    "csshint"
+  ],
   "maintainers": [
     {
       "name": "ielgnaw",

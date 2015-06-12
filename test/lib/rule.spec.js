@@ -78,7 +78,7 @@ describe('block-indent', function () {
 
     it('should return right message length', function (done) {
         postcss([plugin]).process(fileContent).then(function (result) {
-            expect(4).toEqual(result.messages.length);
+            expect(3).toEqual(result.messages.length);
             done();
         });
     });
