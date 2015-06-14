@@ -67,7 +67,7 @@ TODO
 ------
 
 1. 完全覆盖 [csslint](https://github.com/CSSLint/csslint) 里的规则。
-2. 支持`/* csshint-enable ruleName */`, `/* csshint ruleName1:false, ruleName2:true */`等更加灵活的行内注释配置。
+2. 支持`/* csshint-enable ruleName */` 这样的配置，这就意味着要让 `/* csshint-disable ruleName1 */` 和 `/* csshint-enable ruleName1 */` 之间的内容满足行内注释的规则配置。
 
 
 CHANGELOG
