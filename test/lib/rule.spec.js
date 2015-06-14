@@ -70,7 +70,7 @@ describe('block-indent', function () {
     it('should return right message', function (done) {
         postcss([plugin]).process(fileContent).then(function (result) {
             expect(
-                'Use `4` spaces as an indent level. Use `2` spaces or `tab` character is not allowed'
+                'Use `4 spaces` as an indent level.'
             ).toEqual(result.messages[0].message);
             done();
         });
