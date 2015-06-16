@@ -1,5 +1,40 @@
-/* csshint-disable no-bom */ /* csshint block-indent: ["    ", 0], max-length: 3 */
+/* csshint-disable no-bom */ /* csshint block-indent: ["        ", 0] */
 
- body {
-        margin: 0;
+ /**body {
+        _margin: 0;
+}*/
+
+@keyframes errorbg {
+    0%,
+25%,
+100% {
+      background: #f5cfc4;
+    }
 }
+
+
+/*@media screen and (min-width:1024px) and (max-width:1280px) {
+    body {
+    font-size: medium;
+    }
+}
+*/
+
+ /*@media screen and (orientation:portrait) {
+         @media screen and (min-device-width: 360px) {
+                 body {
+                         margin-top: 5px;
+                }
+        }
+}
+*/
+/*@media handheld and (min-device-width: 10px) {
+        body {
+                *color: #f00;
+        }
+}*/
+
+/*a {
+    color: #fff;
+}
+*/
