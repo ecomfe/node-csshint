@@ -70,7 +70,7 @@ describe('block-indent', function () {
     it('should return right message', function (done) {
         postcss([plugin]).process(fileContent).then(function (result) {
             expect(
-                'Bad indentation (`` instead `   `)'
+                'Bad indentation, Expected `   ` but saw ``'
             ).toEqual(result.messages[0].message);
             done();
         });
