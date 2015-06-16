@@ -70,7 +70,7 @@ describe('block-indent', function () {
     it('should return right message', function (done) {
         postcss([plugin]).process(fileContent).then(function (result) {
             expect(
-                'Bad indentation (indentation will be 4 spaces), the indentation start position is 0'
+                'Bad indentation (`` instead `   `)'
             ).toEqual(result.messages[0].message);
             done();
         });
