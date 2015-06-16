@@ -70,39 +70,4 @@ TODO
 2. 支持`/* csshint-enable ruleName */` 这样的配置，这就意味着要让 `/* csshint-disable ruleName1 */` 和 `/* csshint-enable ruleName1 */` 之间的内容满足行内注释的规则配置。
 
 
-CHANGELOG
-------
-
-#### 2015.06.15 
-
-1. `block-indent` 规则的配置修改为 `["    ", 4]` 或者 `["\t", 4]`，其中数组的第零项指的是缩进的字符串，第一项指的的缩进的开始位置，这个开始位置和前面的缩进的字符串的长度是没有关系的，可以理解成目标位置和当前行的第零列的位置的差值。例如：`["    ", 0]` 这样的配置表示缩进为 4 个空格，缩进的起始位置第 0 列即开头位置。而 `["\t", 6]` 这样的配置则表示随进为一个 `\t`，缩进的起始位置为第 6 列。
-2. 行内注释更加丰富，现在支持行内注释动态设置规则的配置。例如：
-	
-		/* csshint block-indent: ["    ", 4], max-length: 3 */
-	
-	这一行注释把默认的配置 `block-indent: ["    ", 0]`，`max-length: 120` 给覆盖掉（仅对当前文件有效），那么在当前文件中，所执行的规则就是按照这个行内注释里的配置来进行检测。
-
-#### 2015.05.16 
-
-新的版本，介绍如上。另外，行内注释增加了忽略全部规则，如果在`/* csshint-disable */`中不配置任何规则，那么就会忽略全部规则，例如
-
-	/* csshint-disable */
-
-#### 2015.05.04 
-
-行内注释的规则匹配，支持任意的`[^a-z-]`作为分隔符，例如
-
-    /* csshint-disable always-semicolon, require-newline require-after-space | block-indent */
-
-这段代码可以让当前文件不检测`always-semicolon`, `require-newline`, `require-after-space`以及`block-indent`这四个规则。这四个规则之间的分隔符分别是`,`, ` `, `|`
-
-#### 2015.05.03 
-
-提供简单的行内注释。
-
-例如在某文件里设置如下代码
-
-    /* csshint-disable always-semicolon, require-newline,require-after-space */
-
-这段代码可以让当前文件不检测`always-semicolon`, `require-newline`, `require-after-space`这三个规则。
-
+### [CHANGELOG](https://github.com/ielgnaw/node-csshint/blob/master/CHANGELOG.md)
