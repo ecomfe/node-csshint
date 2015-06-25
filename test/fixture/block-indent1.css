@@ -19,3 +19,23 @@ body ,b,a {
     }
 
 }
+
+@media screen and (orientation:portrait) {
+    @media screen and (min-device-width: 360px) {
+        #footerLogo {
+            *margin-top: 5px;
+        }
+    }
+    @media screen and (min-device-width: 500px) {
+        #footerLogo {
+            margin-top: 15px;
+        }
+    }
+}
+@media screen and (orientation:landscape) {
+    #container {
+        width: 320px;
+        margin: 0 auto;
+    }
+}
+

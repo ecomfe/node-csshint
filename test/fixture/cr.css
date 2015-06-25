@@ -1,19 +1,37 @@
-@media screen and (orientation:portrait) {
-    @media screen and (min-device-width: 360px) {
-        #footerLogo {
-            *margin-top: 5px;
-        }
-    }
-    @media screen and (min-device-width: 500px) {
-        #footerLogo {
-            margin-top: 15px;
-        }
-    }
-}
-@media screen and (orientation:landscape) {
-    #container {
-        width: 320px;
-        margin: 0 auto;
-    }
+/*.modal-content {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #999;
+    border: 1px solid rgba(0, 0, 0, .2);
+    outline: 0;
+    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+            box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+    -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+}*/
+
+/*.radius {
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+
+    -webkit-animation: spin 2s infinite linear;
+            animation: spin 2s infinite linear;
+}*/
+
+.modal-content {
+    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+            box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
 }
 
+@media (min-width: 768px) {
+    .modal-content {
+        -webkit-box-shadow: 0 5px 15px rgba(100, 0, 0, .5);
+                box-shadow: 0 5px 15px rgba(100, 0, 0, .5);
+    }
+    @media (min-width: 168px) {
+        .modal-content {
+            -webkit-box-shadow: 0 8px 19px rgba(0, 200, 0, .5);
+                    box-shadow: 0 8px 19px rgba(0, 200, 0, .5);
+        }
+    }
+}
