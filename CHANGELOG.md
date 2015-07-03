@@ -1,6 +1,28 @@
 CHANGELOG
 ===
 
+#### 2015.07.03
+
+1. 在 2015.06.25 的那次修复中，`vendor-prefixes-sort` 的粒度还是不够，之前没有考虑到 `@keyframes` 的情况，导致如下代码会误报：
+
+        @-webkit-keyframes link_float {
+            from {
+                opacity: 0;
+                -webkit-transform: scale(0);
+                        transform: scale(0);
+            }
+        }
+        @-moz-keyframes link_float {
+            from {
+                -moz-transform: scale(0);
+                     transform: scale(0);
+                opacity: 0;
+            }
+        }
+
+
+    新版本修复了这个问题。
+
 #### 2015.06.25
 
 1. 修复了一个 `vendor-prefixes-sort` 规则的 bug，在 `vendor-prefixes-sort` 的判断中，是以类的粒度来判断属性的，但是如果是如下情况，那么之前的版本会误报：
