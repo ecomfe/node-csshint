@@ -18,6 +18,7 @@ describe('checkString', function () {
 
         var filePath = 'path/to/file.css';
         var fileContent = '\np {\nheight: 0px\n}\n';
+        // var fileContent = '\nbody{}';
 
         var p = checker.checkString(fileContent, filePath);
         p.then(function (invalidList) {
@@ -48,6 +49,9 @@ describe('check', function () {
         path.join(__dirname, '../fixture/test.css'),
         'utf8'
     ).replace(/\r\n?/g, '\n');
+
+    // var filePath = 'path/to/file.css';
+    // var fileContent = '\nbody{}';
 
     var f = {
         path: filePath,
