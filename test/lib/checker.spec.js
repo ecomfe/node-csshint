@@ -86,7 +86,7 @@ describe('checkString', function () {
         p.then(function () {
 
         }, function (invalidList) {
-            console.warn(arguments, 12312);
+            // console.warn(arguments, 12312);
             done();
         });
     });
