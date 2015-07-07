@@ -1,7 +1,7 @@
 {
   "name": "csshint",
-  "description": "Csshint your css code",
-  "version": "0.1.8-beta.6",
+  "description": "lint your css code",
+  "version": "0.1.8-beta.7",
   "keywords": [
     "csslint",
     "csshint"
@@ -36,6 +36,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:ielgnaw/node-csshint"
+    "url": "git@github.com:ecomfe/node-csshint"
   }
 }
