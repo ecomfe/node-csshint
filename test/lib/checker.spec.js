@@ -78,7 +78,7 @@ describe('checkString', function () {
         });
     });
 
-    it('should catch error', function (done) {
+    it('should catch error with line', function (done) {
         var filePath = 'path/to/file.css';
         var fileContent = '\np {\nheight: 0px\n\n';
 
@@ -86,7 +86,8 @@ describe('checkString', function () {
         p.then(function () {
 
         }, function (invalidList) {
-            // console.warn(arguments, 12312);
+            var messages = invalidList[0].messages;
+            expect(2).toEqual(messages[0].line);
             done();
         });
     });

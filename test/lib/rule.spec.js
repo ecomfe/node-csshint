@@ -19,6 +19,8 @@ fs.readdirSync(ruleDir).forEach(
     }
 );
 
+global.CSSHINT_INVALID_ALL_COUNT = 0;
+
 var ruleConfig = require('../../lib/config');
 ruleConfig['max-error'] = 1000;
 
@@ -55,7 +57,7 @@ describe('always-semicolon', function () {
 
 describe('block-indent', function () {
     var fileContent = fs.readFileSync(
-        path.join(__dirname, '../fixture/block-indent.css'),
+        path.join(__dirname, '../fixture/block-indent1.css'),
         'utf8'
     ).replace(/\r\n?/g, '\n');
 
@@ -70,7 +72,7 @@ describe('block-indent', function () {
     it('should return right message', function (done) {
         postcss([plugin]).process(fileContent).then(function (result) {
             expect(
-                'Bad indentation, Expected `   ` but saw ` `'
+                'Bad indentation, Expected `        ` but saw `     `'
             ).toEqual(result.messages[0].message);
             done();
         });
@@ -759,11 +761,26 @@ describe('unifying-color-case-sensitive', function () {
             ).toEqual(result.messages[0].message);
             done();
         });
+
+        global.CSSHINT_HEXCOLOR_CASE_FLAG = 1;
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(''
+                + 'The color value of the small English character. If no lower case also need to ensure that '
+                + 'the same project to keep the same case, Current project case is UpperCase.'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
     });
 
     it('should return right message length', function (done) {
         postcss([plugin]).process(fileContent).then(function (result) {
-            expect(3).toEqual(result.messages.length);
+            expect(4).toEqual(result.messages.length);
+            done();
+        });
+
+        global.CSSHINT_HEXCOLOR_CASE_FLAG = 1;
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(4).toEqual(result.messages.length);
             done();
         });
     });
@@ -866,3 +883,58 @@ describe('zero-unit', function () {
     });
 });
 
+describe('property-not-existed', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/property-not-existed.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
+
+    var ruleName = 'property-not-existed';
+
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                'Current property `-o-border-radius` is not existed'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(1).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
+
+// describe('max-error', function () {
+//     var fileContent = fs.readFileSync(
+//         path.join(__dirname, '../fixture/always-semicolon.css'),
+//         'utf8'
+//     ).replace(/\r\n?/g, '\n');
+
+//     var ruleName = 'always-semicolon';
+//     var maxError = ruleConfig['max-error'] || 100;
+//     var plugin = rule[ruleName]({
+//         ruleVal: ruleConfig[ruleName],
+//         fileContent: fileContent,
+//         maxError: maxError
+//     });
+
+//     it('should return right message', function (done) {
+//         postcss([plugin]).process(fileContent).then(function (result) {
+//             console.warn(result);
+//             // expect(
+//                 // 'Attribute definition must end with a semicolon'
+//             // ).toEqual(result.messages[0].message);
+//             done();
+//         });
+//     });
+// });

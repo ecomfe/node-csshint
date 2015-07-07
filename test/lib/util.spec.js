@@ -51,6 +51,11 @@ describe('line, lineContent, location', function () {
         expect(
             '    -webkit-animation: spin 2s infinite linear;'
         ).toEqual(lineContent);
+
+        var lineContent1 = util.getLineContent(candidateLineNumber, fileContent, true);
+        expect(
+            '-webkit-animation: spin 2s infinite linear;'
+        ).toEqual(lineContent1);
     });
 
     it('should return right linecontent by index', function () {
@@ -69,5 +74,53 @@ describe('trim', function () {
     it('should return tirm string', function () {
         var str = '   aaaa   ';
         expect('aaaa').toEqual(util.trim(str));
+
+        expect('').toEqual(util.trim());
+    });
+});
+
+describe('array unique', function () {
+    it('should return right result', function () {
+        var arr = [1, 2, 3, 4, '5', '5', 3];
+        expect([1, 2, 3, 4, '5']).toEqual(util.arrUnique(arr));
+    });
+});
+
+describe('changeColorByStartAndEndIndex', function () {
+    it('should return right result', function () {
+        expect('').toEqual(util.changeColorByStartAndEndIndex('', 1, 3));
+    });
+});
+
+describe('getCandidates', function () {
+    it('should return right result', function () {
+        var patterns = [
+            '**/always-semicolon.css',
+            '!**/{output,node_modules,asset,dist,release,doc,dep,report}/**'
+        ];
+
+        var candidates = util.getCandidates([], patterns);
+        expect(1).toEqual(candidates.length);
+        expect('test/fixture/always-semicolon.css').toEqual(candidates[0]);
+
+        var patterns1 = [
+            'always-semicolon.css'
+        ];
+        var candidates1 = util.getCandidates(['test/fixture'], patterns1);
+        expect(1).toEqual(candidates1.length);
+        expect('test/fixture/always-semicolon.css').toEqual(candidates1[0]);
+
+        var candidates2 = util.getCandidates(['test/fixture/always-semicolon.css']);
+        expect(1).toEqual(candidates2.length);
+        expect('test/fixture/always-semicolon.css').toEqual(candidates2[0]);
+
+        var notExistCandidates = util.getCandidates(['test/fixture1'], patterns1);
+        expect(0).toEqual(notExistCandidates.length);
+    });
+});
+
+describe('getIgnorePatterns', function () {
+    it('should return right result', function () {
+        expect([]).toEqual(util.getIgnorePatterns('test/fixture/aaaa.css'));
     });
 });
