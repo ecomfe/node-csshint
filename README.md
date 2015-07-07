@@ -1,9 +1,9 @@
 CSSHint
 ===
-[![csshint](https://travis-ci.org/ielgnaw/node-csshint.svg?branch=master)](https://travis-ci.org/ielgnaw/node-csshint)
+[![csshint](https://travis-ci.org/ecomfe/node-csshint.svg?branch=master)](https://travis-ci.org/ecomfe/node-csshint)
 [![npm version](https://badge.fury.io/js/csshint.svg)](http://badge.fury.io/js/csshint)
-[![Dependency Status](https://david-dm.org/ielgnaw/node-csshint.png)](https://david-dm.org/ielgnaw/node-csshint)
-[![devDependency Status](https://david-dm.org/ielgnaw/node-csshint/dev-status.png)](https://david-dm.org/ielgnaw/node-csshint#info=devDependencies)
+[![Dependency Status](https://david-dm.org/ecomfe/node-csshint.png)](https://david-dm.org/ecomfe/node-csshint)
+[![devDependency Status](https://david-dm.org/ecomfe/node-csshint/dev-status.png)](https://david-dm.org/ecomfe/node-csshint#info=devDependencies)
 
 CSSHint 是一个基于 NodeJS 的代码规范审查工具，目前的规则是基于 ecomfe 的 [CSS 编码规范](https://github.com/ecomfe/spec/blob/master/css-style-guide.md)。
 
@@ -13,7 +13,7 @@ CSSHint 是一个基于 NodeJS 的代码规范审查工具，目前的规则是�
 - `global.CSSHINT_HEXCOLOR_CASE_FLAG`: 记录项目级别的颜色值的大小写信息，0: 小写， 1: 大写，为`unifying-color-case-sensitive`规则服务。
 - `global.CSSHINT_FONTFAMILY_CASE_FLAG`: 记录项目级别的`font-family`大小写信息，为`unifying-font-family-case-sensitive`规则服务。
 
-[配置参考](https://github.com/ielgnaw/node-csshint/blob/master/lib/config.js)
+[配置参考](https://github.com/ecomfe/node-csshint/blob/master/lib/config.js)
 
 
 Install & Update
@@ -70,4 +70,4 @@ TODO
 2. 支持`/* csshint-enable ruleName */` 这样的配置，这就意味着要让 `/* csshint-disable ruleName1 */` 和 `/* csshint-enable ruleName1 */` 之间的内容满足行内注释的规则配置。
 
 
-### [CHANGELOG](https://github.com/ielgnaw/node-csshint/blob/master/CHANGELOG.md)
+### [CHANGELOG](https://github.com/ecomfe/node-csshint/blob/master/CHANGELOG.md)
