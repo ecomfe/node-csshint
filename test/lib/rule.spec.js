@@ -914,27 +914,126 @@ describe('property-not-existed', function () {
     });
 });
 
-// describe('max-error', function () {
-//     var fileContent = fs.readFileSync(
-//         path.join(__dirname, '../fixture/always-semicolon.css'),
-//         'utf8'
-//     ).replace(/\r\n?/g, '\n');
+describe('adjoining-classes', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/adjoining-classes.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
 
-//     var ruleName = 'always-semicolon';
-//     var maxError = ruleConfig['max-error'] || 100;
-//     var plugin = rule[ruleName]({
-//         ruleVal: ruleConfig[ruleName],
-//         fileContent: fileContent,
-//         maxError: maxError
-//     });
+    var ruleName = 'adjoining-classes';
 
-//     it('should return right message', function (done) {
-//         postcss([plugin]).process(fileContent).then(function (result) {
-//             console.warn(result);
-//             // expect(
-//                 // 'Attribute definition must end with a semicolon'
-//             // ).toEqual(result.messages[0].message);
-//             done();
-//         });
-//     });
-// });
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                'Don\'t use adjoining classes'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(2).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
+
+describe('box-model', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/box-model.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
+
+    var ruleName = 'box-model';
+
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                'Using height with `border-top` can sometimes make elements larger than you expect'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(1).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
+
+describe('display-property-grouping', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/display-property-grouping.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
+
+    var ruleName = 'display-property-grouping';
+
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                '`height` can\'t be used with display: `inline`'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(3).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
+
+describe('duplicate-properties', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/duplicate-properties.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
+
+    var ruleName = 'duplicate-properties';
+
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                'Duplicate properties must appear one after the other'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(2).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
