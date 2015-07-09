@@ -1037,3 +1037,98 @@ describe('duplicate-properties', function () {
         });
     });
 });
+
+describe('empty-rules', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/empty-rules.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
+
+    var ruleName = 'empty-rules';
+
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                'Rules without any properties specified should be removed'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(4).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
+
+describe('box-sizing', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/box-sizing.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
+
+    var ruleName = 'box-sizing';
+
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                'The box-sizing properties isn\'t supported in IE6 and IE7'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(1).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
+
+describe('gradients', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/gradients.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
+
+    var ruleName = 'gradients';
+
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                'Missing vendor-prefixed CSS gradients for '
+                    + 'Firefox 3.6+: -moz-linear-gradient, Opera 11.1+: -o-linear-gradient'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(2).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
+
