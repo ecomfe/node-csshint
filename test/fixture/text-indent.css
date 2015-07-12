@@ -1,0 +1,15 @@
+/* missing direction */
+.mybox {
+    text-indent: -999px;
+}
+
+/* missing direction */
+.mybox {
+    text-indent: -999em;
+}
+
+/* direction is rtl */
+.mybox {
+    direction: rtl;
+    text-indent: -999em;
+}

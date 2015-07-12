@@ -1132,3 +1132,35 @@ describe('gradients', function () {
     });
 });
 
+describe('text-indent', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/text-indent.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
+
+    var ruleName = 'text-indent';
+
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                'Negative text-indent doesn\'t work well with RTL.'
+                    + 'If you use text-indent for image replacement explicitly set direction for that item to ltr'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(3).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
+
