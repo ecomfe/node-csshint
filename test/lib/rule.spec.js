@@ -1222,7 +1222,6 @@ describe('underscore-property-hack', function () {
     });
 });
 
-
 describe('bulletproof-font-face', function () {
     var fileContent = fs.readFileSync(
         path.join(__dirname, '../fixture/bulletproof-font-face.css'),
@@ -1242,6 +1241,37 @@ describe('bulletproof-font-face', function () {
             expect(
                 '`    src: url(\'harlowsi-webfont.eot?\') format(\'eot\'),` @font-face declaration doesn\'t '
                     + 'follow the fontspring bulletproof syntax'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(1).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
+
+describe('font-face', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/font-face.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
+
+    var ruleName = 'font-face';
+
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                '@font-face declarations must not be greater than 5, current file @font-face declarations is 5'
             ).toEqual(result.messages[0].message);
             done();
         });
