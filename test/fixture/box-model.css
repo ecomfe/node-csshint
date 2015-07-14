@@ -16,3 +16,9 @@
     border-top: none;
     height: 100px;
 }
+
+/* width and border */
+.mybox {
+    border: 1px solid black;
+    width: 100px;
+}

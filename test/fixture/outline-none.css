@@ -1,0 +1,14 @@
+/* no :focus */
+a {
+    outline: none;
+}
+
+/* no :focus */
+a {
+    outline: 0;
+}
+
+/* :focus but missing a replacement treatment */
+a:focus {
+    outline: 0;
+}

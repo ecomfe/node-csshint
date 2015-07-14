@@ -19,3 +19,9 @@
     background-color: hsl(100, 50%, 100%);
     background-color: green;
 }
+
+/* fallback color before newer format */
+.mybox {
+    color: red;
+    color: rgba(255, 0, 0, 0.5);
+}

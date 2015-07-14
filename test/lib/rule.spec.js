@@ -970,7 +970,7 @@ describe('box-model', function () {
 
     it('should return right message length', function (done) {
         postcss([plugin]).process(fileContent).then(function (result) {
-            expect(1).toEqual(result.messages.length);
+            expect(2).toEqual(result.messages.length);
             done();
         });
     });
@@ -1164,6 +1164,38 @@ describe('text-indent', function () {
     });
 });
 
+describe('fallback-colors', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/fallback-colors.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
+
+    var ruleName = 'fallback-colors';
+
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                'Fallback color (hex or RGB) should precede RGBA colorFor older browsers '
+                + 'that don\'t support RGBA, HSL, or HSLA, provide a fallback color'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(3).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
+
 describe('star-property-hack', function () {
     var fileContent = fs.readFileSync(
         path.join(__dirname, '../fixture/star-property-hack.css'),
@@ -1271,7 +1303,7 @@ describe('font-face', function () {
     it('should return right message', function (done) {
         postcss([plugin]).process(fileContent).then(function (result) {
             expect(
-                '@font-face declarations must not be greater than 5, current file @font-face declarations is 5'
+                '@font-face declarations must not be greater than 5, current file @font-face declarations is 6'
             ).toEqual(result.messages[0].message);
             done();
         });
@@ -1404,6 +1436,224 @@ describe('unqualified-attributes', function () {
     it('should return right message length', function (done) {
         postcss([plugin]).process(fileContent).then(function (result) {
             expect(3).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
+
+describe('duplicate-background-images', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/duplicate-background-images.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
+
+    var ruleName = 'duplicate-background-images';
+
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                'Background image `sprite.png` was used multiple times, first declared at line 3, col 5. '
+                + 'Every background-image should be unique. Use a common class for e.g. sprites'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(1).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
+
+describe('floats', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/floats.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
+
+    var ruleName = 'floats';
+
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                '`float` must not be greater than 10, current file `float` is 12'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(1).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
+
+describe('font-sizes', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/font-sizes.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
+
+    var ruleName = 'font-sizes';
+
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                '`font-size` must not be greater than 10, current file `font-size` is 12'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(1).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
+
+describe('ids', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/ids.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
+
+    var ruleName = 'ids';
+
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                'Selectors should not contain IDs'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(4).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
+
+describe('outline-none', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/outline-none.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
+
+    var ruleName = 'outline-none';
+
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                'Outlines should only be modified using :focus'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(3).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
+
+describe('qualified-headings', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/qualified-headings.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
+
+    var ruleName = 'qualified-headings';
+
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                'Headings should not be qualified (namespaced)'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(2).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
+
+describe('unique-headings', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/unique-headings.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
+
+    var ruleName = 'unique-headings';
+
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                'Headings should be defined only once'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(2).toEqual(result.messages.length);
             done();
         });
     });
