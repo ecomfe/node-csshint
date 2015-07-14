@@ -1,6 +1,10 @@
 CHANGELOG
 ===
 
+#### 2015.07.14
+
+1. 覆盖了 CSSLint 的[规则](https://github.com/CSSLint/csslint/wiki/Rules)
+
 #### 2015.07.03
 
 1. 在 2015.06.25 的那次修复中，`vendor-prefixes-sort` 的粒度还是不够，之前没有考虑到 `@keyframes` 的情况，导致如下代码会误报：

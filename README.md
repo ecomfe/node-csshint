@@ -2,6 +2,7 @@ CSSHint
 ===
 [![csshint](https://travis-ci.org/ecomfe/node-csshint.svg?branch=master)](https://travis-ci.org/ecomfe/node-csshint)
 [![npm version](https://badge.fury.io/js/csshint.svg)](http://badge.fury.io/js/csshint)
+[![Coverage Status](https://img.shields.io/coveralls/ecomfe/node-csshint.svg?style=flat)](https://coveralls.io/r/ecomfe/node-csshint)
 [![Dependency Status](https://david-dm.org/ecomfe/node-csshint.png)](https://david-dm.org/ecomfe/node-csshint)
 [![devDependency Status](https://david-dm.org/ecomfe/node-csshint/dev-status.png)](https://david-dm.org/ecomfe/node-csshint#info=devDependencies)
 
@@ -66,8 +67,8 @@ Usage
 TODO
 ------
 
-1. 完全覆盖 [csslint](https://github.com/CSSLint/csslint) 里的规则。
-2. 支持`/* csshint-enable ruleName */` 这样的配置，这就意味着要让 `/* csshint-disable ruleName1 */` 和 `/* csshint-enable ruleName1 */` 之间的内容满足行内注释的规则配置。
+- [x] 完全覆盖 [csslint](https://github.com/CSSLint/csslint) 里的[规则](https://github.com/CSSLint/csslint/wiki/Rules)。
+- [ ] list syntax is required (any unordered or ordered list supported)
 
 
 ### [CHANGELOG](https://github.com/ecomfe/node-csshint/blob/master/CHANGELOG.md)
