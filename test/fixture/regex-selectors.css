@@ -1,0 +1,20 @@
+#mybox[class~="xxx"] .ccc[asd~="yyy"],
+#ll[class~="gg"] .bb[nn~="ii"] {
+    color: red;
+}
+
+.mybox[class^=xxx] {
+    color: red;
+}
+
+.mybox[class|=xxx] {
+    color: red;
+}
+
+.mybox[class$=xxx] {
+    color: red;
+}
+
+.mybox[class*=xxx] {
+    color: red;
+}

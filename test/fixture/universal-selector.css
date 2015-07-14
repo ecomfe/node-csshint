@@ -1,0 +1,16 @@
+* {
+    color: red;
+}
+
+.selected * {
+    color: red;
+}
+
+.aaa .bbb > *,
+#ccc * {
+    color: red;
+}
+
+#asdsadasd * {
+    color: red;
+}

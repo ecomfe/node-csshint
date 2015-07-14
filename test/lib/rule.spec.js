@@ -1284,3 +1284,127 @@ describe('font-face', function () {
         });
     });
 });
+
+describe('import', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/import.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
+
+    var ruleName = 'import';
+
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                'Don\'t use @import, use <link> instead'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(2).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
+
+describe('regex-selectors', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/regex-selectors.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
+
+    var ruleName = 'regex-selectors';
+
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                'Selectors that look like regular expressions are slow and should be avoided'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(8).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
+
+describe('universal-selector', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/universal-selector.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
+
+    var ruleName = 'universal-selector';
+
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                'Don\'t use universal selector because it\'s slow'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(5).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
+
+describe('unqualified-attributes', function () {
+    var fileContent = fs.readFileSync(
+        path.join(__dirname, '../fixture/unqualified-attributes.css'),
+        'utf8'
+    ).replace(/\r\n?/g, '\n');
+
+    var ruleName = 'unqualified-attributes';
+
+    var plugin = rule[ruleName]({
+        ruleVal: ruleConfig[ruleName],
+        fileContent: fileContent,
+        maxError: ruleConfig['max-error'] || 100
+    });
+
+    it('should return right message', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(
+                'Unqualified attribute selectors are known to be slow'
+            ).toEqual(result.messages[0].message);
+            done();
+        });
+    });
+
+    it('should return right message length', function (done) {
+        postcss([plugin]).process(fileContent).then(function (result) {
+            expect(3).toEqual(result.messages.length);
+            done();
+        });
+    });
+});
