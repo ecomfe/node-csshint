@@ -6,7 +6,7 @@ CSSHint
 [![Dependency Status](https://david-dm.org/ecomfe/node-csshint.png)](https://david-dm.org/ecomfe/node-csshint)
 [![devDependency Status](https://david-dm.org/ecomfe/node-csshint/dev-status.png)](https://david-dm.org/ecomfe/node-csshint#info=devDependencies)
 
-CSSHint 是一个基于 NodeJS 的代码规范审查工具，目前的规则是基于 ecomfe 的 [CSS 编码规范](https://github.com/ecomfe/spec/blob/master/css-style-guide.md)。
+CSSHint 是一个基于 NodeJS 的代码规范审查工具，目前的规则是基于 ecomfe 的 [CSS 编码规范](https://github.com/ecomfe/spec/blob/master/css-style-guide.md)，同时也覆盖了 [CSSLint](https://github.com/CSSLint/csslint) 的[规则](https://github.com/CSSLint/csslint/wiki/Rules)。
 
 经过了一段时间的重构，终于来到这个版本。在这个版本中，`css`解析器切换成 [postcss](https://github.com/postcss/postcss)。此外，这个版本里，改变了实现方式，性能较以前的版本有比较大的提升。同时，在全局`global`对象上挂载了如下三个属性：
 
