@@ -68,7 +68,7 @@ TODO
 ------
 
 - [x] 完全覆盖 [csslint](https://github.com/CSSLint/csslint) 里的[规则](https://github.com/CSSLint/csslint/wiki/Rules)。
-- [ ] list syntax is required (any unordered or ordered list supported)
+- [ ] 支持`/* csshint-enable ruleName */` 这样的配置，这就意味着要让 `/* csshint-disable ruleName1 */` 和 `/* csshint-enable ruleName1 */` 之间的内容满足行内注释的规则配置。
 
 
 ### [CHANGELOG](https://github.com/ecomfe/node-csshint/blob/master/CHANGELOG.md)
