@@ -1,4 +1,4 @@
-/* csshint-disable no-bom */ /* csshint block-indent: ["        ", 0] */
+/* csshint-disable min-font-size, no-bom */ /* csshint block-indent: ["        ", 0] */
 
 @keyframes errorbg {
         0%,
@@ -10,6 +10,10 @@
 
  *body {
          _margin: 0;
+}
+
+aa {
+    font-size: 0;
 }
 
 
