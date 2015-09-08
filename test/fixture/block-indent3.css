@@ -1,0 +1,173 @@
+@media all and (min-width: 200px) and (max-width: 500px) {
+    body {
+        background-color: #F5F6F8;
+    }
+    .main {
+        width: 100%;
+    }
+    .main .top {
+        width: 95%;
+        font-size: .9rem;
+        color: #fff;
+        background-color: #00CCD3;
+        line-height: 32px;
+        height: 32px;
+        padding-left: 5%;
+        position: relative;
+    }
+    /* .main .topic-category-wrap,
+    .main .main-article {
+        display: none;
+    } */
+    .main .topic-category-wrap {
+        display: block;
+    }
+    .main .main-article {
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 100%;
+        display: none;
+    }
+    .main .main-article .main-content {
+        width: 100%;
+    }
+    .main-article .main-content .article {
+        position: relative;
+        width: 78%;
+        height: 10rem;
+        background-color: #fff;
+        border: 1px solid #DCDCDC;
+        margin: 0 auto;
+        margin-top: .5rem;
+        padding: 6%;
+    }
+    .main-content .article .article-title {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2;
+        font-size: .9rem;
+        color: #333;
+    }
+    .main-content .article .article-content {
+        margin-top: .5rem;
+        width: 100%;
+        height: 7rem;
+        font-size: .7rem;
+        color: #333;
+        word-break: break-word;
+
+    }
+    .main-content .article .article-expert {
+        position: absolute;
+        left: 0;
+        width: 94%;
+        height: 1rem;
+        border-top: 1px solid #DCDCDC;
+        padding-left: 6%;
+
+    }
+    .top img {
+        width: 4%;
+        margin-left: 30%;
+    }
+    .top .share {
+        color: #fff;
+    }
+
+    .top .bdsharebuttonbox {
+        display: none;
+        position: absolute;
+        left: 70%;
+        color: #fff;
+    }
+
+    .tab {
+        width: 100%;
+        font-size: .7rem;
+        overflow: hidden;
+        border-bottom: 1px solid #00CCD3;
+        color: #333;
+    }
+
+    .tab .tab-inner {
+        position: relative;
+        display: -webkit-box;
+        display: box;
+        -webkit-box-pack: start;
+        box-pack: start;
+        -webkit-box-orient: horizontal;
+        box-orient: horizontal;
+        line-height: 44px;
+    }
+    .tab .tab-inner .selected {
+        position: relative;
+        border-bottom: 2px solid #00CCD3;
+    }
+    .tab .tab-inner a {
+        display: block;
+        -webkit-box-flex: 1;
+        box-flex: 1;
+        text-align: center;
+        color: #333;
+        margin-left: 10px;
+    }
+    .main .category,
+    .main .topic {
+        width: 100%;
+        padding-top: 5%;
+    }
+    .main .category .category-topic-inner,
+    .main .topic .category-topic-inner {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+
+    }
+    .main .category .category-topic-content,
+    .main .topic .category-topic-content {
+        text-align: center;
+        color: #333;
+        border: 1px solid #b0b1b1;
+        border-shadow: 3px;
+        font-size: .7rem;
+        height: 1rem;
+        text-align: center;
+        line-height: 1rem;
+        margin-left: 8px;
+        margin-bottom: 8px;
+        width: 28%;
+    }
+    .main .category .category-topic-no-content,
+    .main .topic .category-topic--no-content {
+        border: 0;
+    }
+
+
+    .box {
+        display: -webkit-box;
+        webkit-box-orient: vertical;
+        border: 1px solid red;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .footer {
+        width: 94%;
+        height: 1rem;
+        padding-left: 6%;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-size: .7rem;
+        font-weight: 700;
+        color: #a0a0a0;
+        display: none;
+    }
+
+}

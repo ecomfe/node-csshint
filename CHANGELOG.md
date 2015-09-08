@@ -1,6 +1,10 @@
 CHANGELOG
 ===
 
+#### 2015.09.08
+
+1. 修复了一个 `block-indent` 规则的 bug，在 `block-indent` 规则的检测中，如下 css 属性值（即属性值后有多个无用的分号）会误报 `background-position-x: 170px;;` 
+
 #### 2015.07.14
 
 1. 覆盖了 CSSLint 的[规则](https://github.com/CSSLint/csslint/wiki/Rules)
