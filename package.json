@@ -19,6 +19,9 @@
     "postcss": "^5.0.4",
     "q": "^1.4.1"
   },
+  "engines": {
+    "node": ">=0.10"
+  },
   "devDependencies": {
     "coveralls": "^2.11.2",
     "istanbul": "^0.3.2",
