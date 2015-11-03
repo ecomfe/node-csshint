@@ -1,6 +1,11 @@
 CHANGELOG
 ===
 
+#### 2015.11.03
+
+1. 修复了一个 `block-indent` 规则的 bug，在 `block-indent` 规则的检测中，为了防止同一行多次报错设置了 `lineCache` 来记录报错的行号，但是在本规则初始化没有还原 `lineCache`，会导致在多次调用的情况下，同一行的 `block-indent` 规则只会报出一次，之后便不再报出来了。这次修复了这个问题。
+2. 去掉了代码中无用的注释以及一些调试代码~。
+
 #### 2015.09.08
 
 1. 修复了一个 `block-indent` 规则的 bug，在 `block-indent` 规则的检测中，如下 css 属性值（即属性值后有多个无用的分号）会误报 `background-position-x: 170px;;` 
