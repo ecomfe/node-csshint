@@ -29,7 +29,8 @@ describe('checkString', function () {
 
         var p = checker.checkString(fileContent, filePath);
         p.then(function (invalidList) {
-            expect(0).toEqual(invalidList.length);
+            expect(1).toEqual(invalidList.length);
+            expect('zero-unit').toNotEqual(invalidList[0].messages[0].ruleName);
             done();
         });
     });
@@ -58,7 +59,7 @@ describe('checkString', function () {
 
         var p = checker.checkString(fileContent, filePath);
         p.then(function (invalidList) {
-            expect(2).toEqual(invalidList[0].messages.length);
+            expect(3).toEqual(invalidList[0].messages.length);
             done();
         });
     });
