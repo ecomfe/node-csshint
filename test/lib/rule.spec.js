@@ -814,7 +814,7 @@ describe('unifying-font-family-case-sensitive', function () {
 
     it('should return right message length', function (done) {
         postcss([plugin]).process(fileContent).then(function (result) {
-            expect(2).toEqual(result.messages.length);
+            expect(1).toEqual(result.messages.length);
             done();
         });
     });
