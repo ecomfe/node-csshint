@@ -84,6 +84,18 @@ describe('block-indent', function () {
             done();
         });
     });
+
+    it('test: space after right brace', function (done) {
+        var fileContent1 = fs.readFileSync(
+            path.join(__dirname, '../fixture/block-indent7.css'),
+            'utf8'
+        ).replace(/\r\n?/g, '\n');
+
+        postcss([plugin]).process(fileContent1).then(function (result) {
+            expect(0).toEqual(result.messages.length);
+            done();
+        });
+    });
 });
 
 describe('disallow-expression', function () {
