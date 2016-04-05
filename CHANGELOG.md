@@ -1,6 +1,18 @@
 CHANGELOG
 ===
 
+#### 2016.04.06
+
+1. 在 `disallow-overqualified-elements` 规则的检测中，类似 10.5% 这样的选择器（主要会出现在 keyframes 中）会误报
+
+        @keyframes 'test' {
+            10.5% {
+                opacity: 0;
+            }
+        }
+
+    新版本修复了这个问题。
+
 #### 2016.03.28
 
 1. 在 `block-indent` 规则的检测中，如果遇到如下情况**（注意 `div` 的 `}` 符号之后存在空格）**，会出现误报：

@@ -220,6 +220,18 @@ describe('disallow-overqualified-elements', function () {
             done();
         });
     });
+
+    it('test: percent or float', function (done) {
+        var fileContent1 = fs.readFileSync(
+            path.join(__dirname, '../fixture/disallow-overqualified-elements1.css'),
+            'utf8'
+        ).replace(/\r\n?/g, '\n');
+
+        postcss([plugin]).process(fileContent1).then(function (result) {
+            expect(0).toEqual(result.messages.length);
+            done();
+        });
+    });
 });
 
 describe('disallow-quotes-in-url', function () {
