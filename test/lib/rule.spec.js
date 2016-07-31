@@ -6,8 +6,10 @@
 var fs = require('fs');
 var path = require('path');
 var postcss = require('postcss');
+var checker = require('../../lib/checker');
 
 var ruleDir = path.join(__dirname, '../../lib/rule');
+
 
 var rule = {};
 fs.readdirSync(ruleDir).forEach(
@@ -72,7 +74,7 @@ describe('block-indent', function () {
     it('should return right message', function (done) {
         postcss([plugin]).process(fileContent).then(function (result) {
             expect(
-                'Bad indentation, Expected `        ` but saw `     `'
+                'Bad indentation, Expected `8` but saw `5`'
             ).toEqual(result.messages[0].message);
             done();
         });
@@ -95,6 +97,22 @@ describe('block-indent', function () {
             expect(0).toEqual(result.messages.length);
             done();
         });
+    });
+
+    it('test: inline-comments set block-indent', function (done) {
+        var fileContent1 = fs.readFileSync(
+            path.join(__dirname, '../fixture/block-indent8.css'),
+            'utf8'
+        ).replace(/\r\n?/g, '\n');
+
+        var thenFunc = function (invalidList) {
+            expect(2).toEqual(invalidList[0].messages.length);
+            done();
+        };
+
+        checker.checkString(
+            fileContent1, path.join(__dirname, '../fixture/block-indent8.css'), ruleConfig
+        ).then(thenFunc, thenFunc);
     });
 });
 

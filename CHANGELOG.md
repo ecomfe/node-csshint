@@ -1,6 +1,19 @@
 CHANGELOG
 ===
 
+#### 2016.07.31
+
+1. 在 `block-indent` 规则的检测中，在自定义 block-indent 规则的时候，计算选择器里面属性的开头缩进位置时，之前会把选择器换行符之后的 `\s` 全部去掉，会导致选择器里面的属性的缩进开头位置始终从头开始，例如下面的代码中正确的结果应该是检测成功的，但由于前面的问题会导致误报：
+
+        /* csshint-disable no-bom */ /* csshint block-indent: ["    ", 4] */
+
+            body {
+                margin: 0;
+                padding: 0;    
+            }
+
+    新版本修复了这个问题。
+
 #### 2016.04.06
 
 1. 在 `disallow-overqualified-elements` 规则的检测中，类似 10.5% 这样的选择器（主要会出现在 keyframes 中）会误报
