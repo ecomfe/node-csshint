@@ -1,3 +1,7 @@
+.cc .foo.bar {
+    color: #f00;
+}
+
 .foo.bar {
-    color: red;
+    color: #f00;
 }

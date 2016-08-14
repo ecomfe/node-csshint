@@ -1,0 +1,27 @@
+/* missing fallback color */
+.mybox {
+    color: rgba(100, 200, 100, 0.5);
+}
+
+/* missing fallback color */
+.mybox {
+    background-color: green;
+    background-color: hsla(100, 50%, 100%, 0.5);
+}
+
+/* missing fallback color */
+.mybox {
+    background: hsla(100, 50%, 100%, 0.5) url(foo.png);
+}
+
+/* fallback color should be before */
+.mybox {
+    background-color: hsl(100, 50%, 100%);
+    background-color: green;
+}
+
+/* fallback color before newer format */
+.mybox {
+    color: red;
+    color: rgba(255, 0, 0, 0.5);
+}

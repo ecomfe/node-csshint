@@ -7,3 +7,4 @@ Thumbs.db
 .jshintrc
 *.bak
 bak/
+test/

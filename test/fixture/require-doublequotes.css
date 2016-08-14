@@ -18,3 +18,7 @@ input[type=text] {
     width: 100px;
     content: "asdasd";
 }
+
+.Table th[data-sort]:hover {
+    cursor: pointer;
+}

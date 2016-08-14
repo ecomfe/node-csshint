@@ -1,0 +1,10 @@
+/* qualified heading */
+.box h3 {
+    font-weight: normal;
+}
+
+/* qualified heading */
+.item:hover ,
+.aaa    h3 {
+    font-weight: bold;
+}

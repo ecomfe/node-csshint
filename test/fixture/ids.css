@@ -1,0 +1,16 @@
+#mybox {
+    display: block;
+}
+
+.mybox #go {
+    color: red;
+}
+
+.mybox #go a{
+    color: red;
+}
+
+.aaa,
+    .cc #go a b {
+    color: red;
+}

@@ -1,0 +1,17 @@
+/* inline with height */
+.mybox {
+    display: inline;
+    height: 25px;
+}
+
+/* inline-block with float */
+.mybox {
+    display: inline-block;
+    float: left;
+}
+
+/* table-cell and margin */
+.mybox {
+    display: table-cell;
+    margin: 10px;
+}

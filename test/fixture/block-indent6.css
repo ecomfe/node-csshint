@@ -1,0 +1,9 @@
+
+.branch-box {
+    border-radius: 10px;
+    background: #f5f5f5 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAAb0lEQVR42p2RMQ7AIAhFWXsG1h7Gtffo6urqyJGpwyetomnwJ38BH/wgfZSaS7PABbVOqkqm3Fzx6IQTatlDb5PJi21YBy1iuNgjJIgzFXqyCcXj1Z1DXNGTiw01aP252DCCgH7Fk41h8KaAGMDxADnaOPucd/m3AAAAAElFTkSuQmCC) no-repeat 7px 6px;;
+    background-position-x: 170px;
+    background-position-y: 5px;
+    padding-left: 10px;
+    padding-right: 40px;
+}

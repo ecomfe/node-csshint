@@ -1,7 +1,11 @@
 {
   "name": "csshint",
-  "description": "Csshint your css code",
-  "version": "0.0.18",
+  "description": "lint your css code",
+  "version": "0.2.8",
+  "keywords": [
+    "csslint",
+    "csshint"
+  ],
   "maintainers": [
     {
       "name": "ielgnaw",
@@ -10,18 +14,22 @@
   ],
   "dependencies": {
     "chalk": "^0.5.1",
-    "edp-core": "^1.0.28",
-    "postcss": "^4.1.9",
-    "q": "^1.3.0"
+    "edp-core": "^1.0.32",
+    "es6-promise": "^3.0.2",
+    "postcss": "^5.0.10",
+    "q": "^1.4.1"
+  },
+  "engines": {
+    "node": ">=0.10"
   },
   "devDependencies": {
     "coveralls": "^2.11.2",
+    "fecs": "*",
     "istanbul": "^0.3.2",
-    "jasmine-node": "^1.14.5",
-    "fecs": "*"
+    "jasmine-node": "^1.14.5"
   },
   "scripts": {
-    "lint": "fecs lib cli test/**/*.spec.js --type=js",
+    "lint": "fecs lib test/**/*.spec.js --type=js",
     "coverage": "istanbul cover jasmine-node --captureExceptions test/**/*.spec.js",
     "test": "npm run lint && npm run coverage",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
@@ -32,6 +40,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:ielgnaw/node-csshint"
+    "url": "git@github.com:ecomfe/node-csshint"
   }
 }

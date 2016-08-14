@@ -1,0 +1,45 @@
+/* csshint-disable min-font-size, no-bom */ /* csshint block-indent: ["        ", 0] */
+
+@keyframes errorbg {
+        0%,
+        25%,
+        100% {
+                background: #f5cfc4;
+        }
+}
+
+ *body {
+         _margin: 0;
+}
+
+aa {
+    font-size: 0;
+}
+
+
+
+ @media screen and (min-width:1024px) and (max-width:1280px) {
+         body {
+                 font-size: medium;
+    }
+}
+
+
+ @media screen and (orientation:portrait) {
+         @media screen and (min-device-width: 360px) {
+                  *body {
+                         margin-top: 5px;
+                }
+        }
+}
+
+ @media handheld and (min-device-width: 10px) {
+         body {
+                 *color: #f00;
+        }
+}
+
+ a {
+        color: #fff;
+}
+

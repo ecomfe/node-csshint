@@ -1,11 +1,24 @@
-/* csshint-disable require-before-spacedd */
-#div{
-    margin: 0;
+/*.ani {
+    -webkit-animation: spin 2s infinite linear;
+       -moz-animation: spin 2s infinite linear;
+        -ms-animation: spin 2s infinite linear;
+         -o-animation: spin 2s infinite linear;
+            animation: spin 2s infinite linear;
     color: #fff;
 }
-/* csshint-enable require-before-spacedd */
-
-span{
-    padding: 0px;
+.cc {
+    -webkit-filter: blur(11px);
+            filter: blur(11px);
 }
-/* csshint-enable require-before-spacedd */
+*/
+
+
+.wm-location-show-middle span {
+    display: inline-block;
+    margin-left: 4px;
+    width: 11px;
+    height: 11px;
+    background:url(//m.baidu.com/static/search/appAla/weizhan/icon_how.png) no-repeat;
+    background-size: 11px 11px;
+    vertical-align: -1px;
+}
