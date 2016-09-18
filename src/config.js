@@ -24,7 +24,7 @@ const JSON_YAML_REG = /.+\.(json|yml)$/i;
  * @return {Object} merge 后的配置对象
  */
 export function loadConfig(filePath, refresh) {
-    if (refresh && STORAGE) {
+    if (!refresh && STORAGE) {
         return STORAGE;
     }
 
@@ -44,6 +44,7 @@ export function loadConfig(filePath, refresh) {
             }
 
             let match = filePath.match(JSON_YAML_REG);
+
             if (match) {
                 let suffix = match[1];
                 if (suffix === 'json') {

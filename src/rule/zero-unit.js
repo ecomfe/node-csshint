@@ -1,7 +1,6 @@
 /**
  * @file zero-unit 的检测逻辑
  *       028: [强制] 长度为 `0` 时须省略单位。 (也只有长度单位可省)
- *       https://github.com/ecomfe/spec/blob/master/css-style-guide.md#强制-长度为-0-时须省略单位-也只有长度单位可省
  * @author ielgnaw(wuji0223@gmail.com)
  */
 
@@ -68,7 +67,6 @@ let lineCache = 0;
  */
 export const check = postcss.plugin(RULENAME, opts =>
     (css, result) => {
-        console.log('opts: ', opts);
         if (!opts.ruleVal) {
             return;
         }

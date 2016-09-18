@@ -1,0 +1,6 @@
+# @file csshint 配置 http:#gitlab.baidu.com/fe/spec/blob/master/css.md
+# @author ielgnaw(wuji0223@gmail.com)
+
+
+# 028: [强制] 长度为 `0` 时须省略单位。 (也只有长度单位可省)
+zero-unit: true

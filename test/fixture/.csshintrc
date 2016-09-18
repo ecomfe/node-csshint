@@ -9,4 +9,3 @@
     "max-selector-nesting-level": 3,
     "require-newline": ["selector", "property", "media-query-condition"]
 }
-

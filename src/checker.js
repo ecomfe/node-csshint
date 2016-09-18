@@ -283,5 +283,9 @@ export function check(file, errors, done) {
         done();
     };
 
-    return checkString(file.content, file.path).then(callback).catch(callback);
+    return checkString(
+        file.content,
+        file.path,
+        Object.assign({}, loadConfig(file.path, true))
+    ).then(callback).catch(callback);
 }
