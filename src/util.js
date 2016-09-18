@@ -4,8 +4,12 @@
  */
 
 import chalk from 'chalk';
+import postcss from 'postcss';
 import {statSync, existsSync, readFileSync} from 'fs';
 import {glob, log, util as edpUtil, path as edpPath} from 'edp-core';
+
+import colors from './colors';
+console.log('colors: ', colors);
 
 'use strict';
 
@@ -210,3 +214,190 @@ export function changeColorByIndex(source, startIndex, colorStr) {
     }
     return ret;
 }
+
+/**
+ * 获取 css 属性值的信息
+ *
+ * @param {string} text css 属性值
+ *
+ * @return {Array} 信息对象
+ */
+/* eslint-disable fecs-max-statements */
+export function getPropertyValue(text) {
+    /* jshint maxstatements: 71, maxcomplexity: 43 */
+
+    const parts = [];
+    const arr = postcss.list.space(String(text));
+
+    for (let i = 0, len = arr.length; i < len; i++) {
+        const part = {};
+        part.text = arr[i];
+
+        let temp;
+
+        // dimension
+        if (/^([+\-]?[\d\.]+)([a-z]+)$/i.test(arr[i])) {
+            part.value = +RegExp.$1;
+            part.units = RegExp.$2;
+
+            switch (part.units.toLowerCase()) {
+                case 'em':
+                case 'rem':
+                case 'ex':
+                case 'px':
+                case 'cm':
+                case 'mm':
+                case 'in':
+                case 'pt':
+                case 'pc':
+                case 'ch':
+                case 'vh':
+                case 'vw':
+                case 'vmax':
+                case 'vmin':
+                    part.type = 'length';
+                    break;
+
+                case 'deg':
+                case 'rad':
+                case 'grad':
+                    part.type = 'angle';
+                    break;
+
+                case 'ms':
+                case 's':
+                    part.type = 'time';
+                    break;
+
+                case 'hz':
+                case 'khz':
+                    part.type = 'frequency';
+                    break;
+
+                case 'dpi':
+                case 'dpcm':
+                    part.type = 'resolution';
+                    break;
+
+                default:
+                    part.type = 'dimension';
+            }
+        }
+        // percentage
+        else if (/^([+\-]?[\d\.]+)%$/i.test(arr[i])) {
+            part.type = 'percentage';
+            part.value = +RegExp.$1;
+        }
+        // integer
+        else if (/^([+\-]?\d+)$/i.test(arr[i])) {
+            part.type = 'integer';
+            part.value = +RegExp.$1;
+        }
+        // number
+        else if (/^([+\-]?[\d\.]+)$/i.test(arr[i])) {
+            part.type = 'number';
+            part.value = +RegExp.$1;
+        }
+        // hexcolor
+        else if (/^#([a-f0-9]{3,6})/i.test(arr[i])) {
+            part.type = 'color';
+            temp = RegExp.$1;
+            if (temp.length === 3) {
+                part.red = parseInt(temp.charAt(0) + temp.charAt(0), 16);
+                part.green = parseInt(temp.charAt(1) + temp.charAt(1), 16);
+                part.blue = parseInt(temp.charAt(2) + temp.charAt(2), 16);
+            }
+            else {
+                part.red = parseInt(temp.substring(0, 2), 16);
+                part.green = parseInt(temp.substring(2, 4), 16);
+                part.blue = parseInt(temp.substring(4, 6), 16);
+            }
+        }
+        // rgb() color with absolute numbers
+        else if (/^rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/i.test(arr[i])) {
+            part.type = 'color';
+            part.red = +RegExp.$1;
+            part.green = +RegExp.$2;
+            part.blue = +RegExp.$3;
+        }
+        // rgb() color with percentages
+        else if (/^rgb\(\s*(\d+)%\s*,\s*(\d+)%\s*,\s*(\d+)%\s*\)/i.test(arr[i])) {
+            part.type = 'color';
+            part.red = +RegExp.$1 * 255 / 100;
+            part.green = +RegExp.$2 * 255 / 100;
+            part.blue = +RegExp.$3 * 255 / 100;
+        }
+        // rgba() color with absolute numbers
+        else if (/^rgba\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*([\d\.]+)\s*\)/i.test(arr[i])) {
+            part.type = 'color';
+            part.red = +RegExp.$1;
+            part.green = +RegExp.$2;
+            part.blue = +RegExp.$3;
+            part.alpha = +RegExp.$4;
+        }
+        // rgba() color with percentages
+        else if (/^rgba\(\s*(\d+)%\s*,\s*(\d+)%\s*,\s*(\d+)%\s*,\s*([\d\.]+)\s*\)/i.test(arr[i])) {
+            part.type = 'color';
+            part.red = +RegExp.$1 * 255 / 100;
+            part.green = +RegExp.$2 * 255 / 100;
+            part.blue = +RegExp.$3 * 255 / 100;
+            part.alpha = +RegExp.$4;
+        }
+        // hsl()
+        else if (/^hsl\(\s*(\d+)\s*,\s*(\d+)%\s*,\s*(\d+)%\s*\)/i.test(arr[i])) {
+            part.type = 'color';
+            part.hue = +RegExp.$1;
+            part.saturation = +RegExp.$2 / 100;
+            part.lightness = +RegExp.$3 / 100;
+        }
+        // hsla() color with percentages
+        else if (/^hsla\(\s*(\d+)\s*,\s*(\d+)%\s*,\s*(\d+)%\s*,\s*([\d\.]+)\s*\)/i.test(arr[i])) {
+            part.type = 'color';
+            part.hue  = +RegExp.$1;
+            part.saturation = +RegExp.$2 / 100;
+            part.lightness = +RegExp.$3 / 100;
+            part.alpha = +RegExp.$4;
+        }
+        // URI
+        else if (/^url\(["']?([^\)"']+)["']?\)/i.test(arr[i])) {
+            part.type = 'uri';
+            part.uri = RegExp.$1;
+        }
+        else if (/^([^\(]+)\(/i.test(arr[i])) {
+            part.type = 'function';
+            part.name = RegExp.$1;
+            part.value = arr[i];
+        }
+        // string
+        else if (/^["'][^"']*["']/.test(arr[i])) {
+            // eval('"Microsoft Yahei",') has error
+            temp = arr[i].replace(/,$/g, '');
+            part.type = 'string';
+            /* jshint evil: true */
+            /* eslint-disable fecs-no-eval, no-eval */
+            part.value = eval(temp);
+            /* eslint-enable fecs-no-eval, no-eval */
+        }
+        // named color
+        else if (colors[arr[i].toLowerCase()]) {
+            part.type = 'color';
+            temp = colors[arr[i].toLowerCase()].substring(1);
+            part.red  = parseInt(temp.substring(0, 2), 16);
+            part.green = parseInt(temp.substring(2, 4), 16);
+            part.blue = parseInt(temp.substring(4, 6), 16);
+        }
+        else if (/^[\,\/]$/.test(arr[i])) {
+            part.type = 'operator';
+            part.value = arr[i];
+        }
+        else if (/^[a-z\-_\u0080-\uFFFF][a-z0-9\-_\u0080-\uFFFF]*$/i.test(arr[i])) {
+            part.type = 'identifier';
+            part.value = arr[i];
+        }
+
+        parts.push(part);
+    }
+
+    return parts;
+}
+/* eslint-enable fecs-max-statements */
