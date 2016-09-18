@@ -22,6 +22,7 @@ const ruleDir = join(__dirname, './rule');
 /**
  * 检测的默认配置
  *
+ * @const
  * @type {Object}
  */
 const DEFAULT_CONFIG = Object.assign({}, loadConfig('.', true));
@@ -44,6 +45,7 @@ global.CSSHINT_FONTFAMILY_CASE_FLAG = {};
 /**
  * 匹配行内 csshint key: value, ... 的正则
  *
+ * @const
  * @type {RegExp}
  */
 const INLINE_PATTERN = /\/\*+\s*\bcsshint[^-disable]\b\s*(.*)\s*\*\//gmi;
