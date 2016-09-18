@@ -69,7 +69,6 @@ const report = errors => {
  */
 export function parse(args) {
     args = args.slice(2);
-    console.log(123);
 
     // 不带参数时，默认检测当前目录下所有的 css 文件
     if (args.length === 0) {

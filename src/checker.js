@@ -24,7 +24,7 @@ const ruleDir = join(__dirname, './rule');
  *
  * @type {Object}
  */
-const DEFAULT_CONFIG = loadConfig('.', true);
+const DEFAULT_CONFIG = Object.assign({}, loadConfig('.', true));
 
 /**
  * 为 max-error 服务的，记录整个的错误个数
@@ -284,4 +284,4 @@ export function check(file, errors, done) {
     };
 
     return checkString(file.content, file.path).then(callback).catch(callback);
-};
+}
