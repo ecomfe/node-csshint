@@ -6,6 +6,7 @@
 import chai from 'chai';
 import path from 'path';
 import postcss from 'postcss';
+import objectAssign from 'object-assign';
 import {readdirSync, readFileSync} from 'fs';
 
 'use strict';
@@ -13,7 +14,7 @@ import {readdirSync, readFileSync} from 'fs';
 const checker = require(path.join(__dirname, '../../lib', 'checker'));
 const config = require(path.join(__dirname, '../../lib', 'config'));
 
-const ruleConfig = Object.assign({}, config.loadConfig('.', true));
+const ruleConfig = objectAssign({}, config.loadConfig('.', true));
 ruleConfig['max-error'] = 1000;
 
 const ruleDir = path.join(__dirname, '../../lib/rule');

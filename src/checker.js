@@ -7,10 +7,12 @@ import {join} from 'path';
 import {existsSync} from 'fs';
 import chalk from 'chalk';
 import postcss from 'postcss';
+import objectAssign from 'object-assign';
 
 import {isIgnored, trim, getLineContent, changeColorByIndex} from './util';
 import {util as edpUtil} from 'edp-core';
 import {loadConfig} from './config';
+
 
 'use strict';
 
@@ -25,7 +27,7 @@ const ruleDir = join(__dirname, './rule');
  * @const
  * @type {Object}
  */
-const DEFAULT_CONFIG = Object.assign({}, loadConfig('.', true));
+const DEFAULT_CONFIG = objectAssign({}, loadConfig('.', true));
 
 /**
  * 为 max-error 服务的，记录整个的错误个数
@@ -293,6 +295,6 @@ export function check(file, errors, done) {
     return checkString(
         file.content,
         file.path,
-        Object.assign({}, loadConfig(file.path, true))
+        objectAssign({}, loadConfig(file.path, true))
     ).then(callback).catch(callback);
 }

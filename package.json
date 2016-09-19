@@ -17,6 +17,7 @@
     "edp-core": "^1.0.32",
     "js-yaml": "^3.6.1",
     "manis": "^0.3.0",
+    "object-assign": "^4.1.0",
     "postcss": "^5.2.0"
   },
   "engines": {
