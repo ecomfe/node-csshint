@@ -1,7 +1,7 @@
 /**
- * @file box-sizing 的检测逻辑
- *       The box-sizing properties isn't supported in IE6 and IE7
- *       https://github.com/CSSLint/csslint/wiki/Disallow-box-sizing
+ * @file duplicate-properties 的检测逻辑
+ *       Duplicate properties must appear one after the other
+ *       https://github.com/CSSLint/csslint/wiki/Disallow-duplicate-properties
  * @author ielgnaw(wuji0223@gmail.com)
  */
 
@@ -13,16 +13,15 @@ import {getLineContent} from '../util';
 /**
  * 当前文件所代表的规则名称
  *
+ * @const
  * @type {string}
  */
-const RULENAME = 'box-sizing';
+const RULENAME = 'duplicate-properties';
 
-/**
- * 错误的信息
- *
- * @type {string}
- */
-const MSG = 'The box-sizing properties isn\'t supported in IE6 and IE7';
+const MSG = 'Duplicate properties must appear one after the other';
+
+let properties = {};
+let lastProperty = '';
 
 /**
  * 具体的检测逻辑
@@ -39,33 +38,35 @@ export const check = postcss.plugin(RULENAME, opts =>
         }
 
         css.walkRules(rule => {
+            properties = {};
+
             rule.walkDecls(decl => {
                 if (global.CSSHINT_INVALID_ALL_COUNT >= opts.maxError) {
                     return;
                 }
 
-                const prop = decl.prop;
-                if (prop === 'box-sizing') {
+                const {prop, value} = decl;
+                if (properties[prop] && (lastProperty !== prop || properties[prop] === value)) {
                     const source = decl.source;
                     const line = source.start.line;
                     const lineContent = getLineContent(line, source.input.css);
                     const col = source.start.column;
                     result.warn(RULENAME, {
-                        node: rule,
+                        node: decl,
                         ruleName: RULENAME,
                         line: line,
                         col: col,
                         message: MSG,
                         colorMessage: '`'
-                            + lineContent.replace(
-                                prop,
-                                chalk.magenta(prop)
-                            )
+                            + chalk.magenta(lineContent)
                             + '` '
                             + chalk.grey(MSG)
                     });
                     global.CSSHINT_INVALID_ALL_COUNT++;
                 }
+
+                properties[prop] = value;
+                lastProperty = prop;
             });
         });
     }

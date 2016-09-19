@@ -5,10 +5,10 @@
  * @author ielgnaw(wuji0223@gmail.com)
  */
 
- import chalk from 'chalk';
- import postcss from 'postcss';
+import chalk from 'chalk';
+import postcss from 'postcss';
 
- import {getPropertyValue} from '../util';
+import {getPropertyValue} from '../util';
 
  'use strict';
 
