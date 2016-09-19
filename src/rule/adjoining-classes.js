@@ -35,6 +35,14 @@ const PATTERN_COMBINATORS = /[\s>+~,[]+/;
  */
 const MSG = 'Don\'t use adjoining classes';
 
+/**
+ * 具体的检测逻辑
+ *
+ * @param {Object} opts 参数
+ * @param {*} opts.ruleVal 当前规则具体配置的值
+ * @param {string} opts.fileContent 文件内容
+ * @param {string} opts.filePath 文件路径
+ */
 export const check = postcss.plugin(RULENAME, opts =>
     (css, result) => {
         if (!opts.ruleVal) {
