@@ -36,7 +36,6 @@ const PATTERN_COMBINATORS = /[\s>+~,[]+/;
 const MSG = 'Don\'t use adjoining classes';
 
 export const check = postcss.plugin(RULENAME, opts =>
-
     (css, result) => {
         if (!opts.ruleVal) {
             return;

@@ -9,7 +9,6 @@ import {statSync, existsSync, readFileSync} from 'fs';
 import {glob, log, util as edpUtil, path as edpPath} from 'edp-core';
 
 import colors from './colors';
-console.log('colors: ', colors);
 
 'use strict';
 
@@ -213,6 +212,29 @@ export function changeColorByIndex(source, startIndex, colorStr) {
             + source.slice(endIndex, source.length); // colorStr 后面的部分
     }
     return ret;
+}
+
+/**
+ * 根据开始和结束的索引来高亮字符串的字串
+ *
+ * @param {string} source 源字符串
+ * @param {number} startIndex 开始的索引
+ * @param {number} endIndex 结束的索引
+ *
+ * @return {string} 改变颜色后的字符串
+ */
+export function changeColorByStartAndEndIndex(source, startIndex, endIndex) {
+    if (!source) {
+        return '';
+    }
+
+    startIndex -= 1;
+    endIndex -= 1;
+
+    return ''
+        + source.slice(0, startIndex) // colorStr 前面的部分
+        + chalk.magenta(source.slice(startIndex, endIndex)) // colorStr 的部分
+        + source.slice(endIndex, source.length); // colorStr 后面的部分
 }
 
 /**
