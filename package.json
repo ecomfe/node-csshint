@@ -1,7 +1,7 @@
 {
   "name": "csshint",
   "description": "lint your css code",
-  "version": "0.2.8",
+  "version": "0.3.0",
   "keywords": [
     "csslint",
     "csshint"
@@ -18,7 +18,8 @@
     "js-yaml": "^3.6.1",
     "manis": "^0.3.0",
     "object-assign": "^4.1.0",
-    "postcss": "^5.2.0"
+    "postcss": "^5.2.0",
+    "strip-json-comments": "^2.0.1"
   },
   "engines": {
     "node": ">=0.10"
