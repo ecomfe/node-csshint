@@ -32,12 +32,11 @@ const PATTERN_COMBINATORS = /[^\s>+~=]+/g; // 排除 ~=, +=, >=
  *
  * @return {string} 错误信息
  */
-const getMsg = combinator => {
-    return ''
+const getMsg = combinator =>
+    ''
         + 'Around the `'
         + combinator
         + '` selector will keep a space';
-};
 
 const arrayProto = Array.prototype;
 
@@ -116,15 +115,14 @@ export const check = postcss.plugin(RULENAME, opts =>
             });
 
             invalidList.forEach(invalidRule => {
-                const invalidChar = invalidRule.invalidChar;
+                const {invalidChar, rule} = invalidRule;
                 const msg = getMsg(invalidRule.invalidChar);
-                const rule = invalidRule.rule;
                 const source = rule.source;
                 const line = source.start.line;
                 const lineContent = getLineContent(line, source.input.css);
                 const col = lineContent.indexOf(invalidChar);
                 result.warn(RULENAME, {
-                    node: invalidRule.rule,
+                    node: rule,
                     ruleName: RULENAME,
                     errorChar: invalidChar,
                     line: line,

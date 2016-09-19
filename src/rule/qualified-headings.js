@@ -54,20 +54,19 @@ export const check = postcss.plugin(RULENAME, opts =>
                 return;
             }
 
-            const selector = rule.selector;
+            const {selector, source} = rule;
             const selectorGroup = selector.split(',');
-            const source = rule.source;
             let line = source.start.line;
             const col = source.start.column;
             let lineContent = getLineContent(line, source.input.css);
 
             for (let i = 0, len = selectorGroup.length; i < len; i++) {
-                var selectorInGroup = selectorGroup[i] || '';
-                var segments = selectorInGroup.split(PATTERN_COMBINATORS);
+                const selectorInGroup = selectorGroup[i] || '';
+                const segments = selectorInGroup.split(PATTERN_COMBINATORS);
 
                 // 跳过第一个，第一个是 h[1-6] 是合法的
-                for (var j = 1, segmentLen = segments.length; j < segmentLen; j++) {
-                    var segment = segments[j];
+                for (let j = 1, segmentLen = segments.length; j < segmentLen; j++) {
+                    const segment = segments[j];
                     if (/h[1-6]/.test(segment)) {
                         if (selectorInGroup.slice(0, 1) === '\n') {
                             line = line + 1;

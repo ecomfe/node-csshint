@@ -24,7 +24,7 @@ const RULENAME = 'duplicate-background-images';
  * @const
  * @type {string}
  */
-const msg = 'Every background-image should be unique. Use a common class for e.g. sprites';
+const MSG = 'Every background-image should be unique. Use a common class for e.g. sprites';
 
 /**
  * 匹配 css 中 url 的正则
@@ -72,7 +72,7 @@ export const check = postcss.plugin(RULENAME, opts =>
                             + ', col '
                             + stack[match[2]].source.start.column
                             + '. '
-                            + msg;
+                            + MSG;
 
                         const colorStr = 'Background image `'
                             + chalk.magenta(match[2])
@@ -81,7 +81,7 @@ export const check = postcss.plugin(RULENAME, opts =>
                             + ', col '
                             + stack[match[2]].source.start.column
                             + '. '
-                            + chalk.grey(msg);
+                            + chalk.grey(MSG);
 
                         const source = decl.source;
                         const line = source.start.line;

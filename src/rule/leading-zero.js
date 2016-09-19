@@ -24,7 +24,7 @@ const RULENAME = 'leading-zero';
  * @const
  * @type {string}
  */
-const msg = 'When value is between 0 - 1 decimal, omitting the integer part of the `0`';
+const MSG = 'When value is between 0 - 1 decimal, omitting the integer part of the `0`';
 
 /**
  * 具体的检测逻辑
@@ -57,11 +57,11 @@ export const check = postcss.plugin(RULENAME, opts =>
                                 ruleName: RULENAME,
                                 line: line,
                                 col: lineContent.indexOf(part) + 1,
-                                message: msg,
+                                message: MSG,
                                 colorMessage: '`'
                                     + changeColorByIndex(lineContent, lineContent.indexOf(part), part)
                                     + '` '
-                                    + chalk.grey(msg)
+                                    + chalk.grey(MSG)
                             });
                             global.CSSHINT_INVALID_ALL_COUNT++;
                         }

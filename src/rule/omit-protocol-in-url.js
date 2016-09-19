@@ -27,6 +27,9 @@ const PATTERN_URL = /\burl\s*\((["']?)([^\)]+)\1\)/g;
 
 /**
  * 匹配 url() 中 path 的协议
+ *
+ * @const
+ * @type {RegExp}
  */
 const PATTERN_PROTOCOL = /^((https?|s?ftp|irc[6s]?|git|afp|telnet|smb):\/\/){1}/gi;
 

@@ -13,6 +13,7 @@ import {getLineContent} from '../util';
 /**
  * 当前文件所代表的规则名称
  *
+ * @const
  * @type {string}
  */
 const RULENAME = 'box-sizing';
@@ -20,6 +21,7 @@ const RULENAME = 'box-sizing';
 /**
  * 错误的信息
  *
+ * @const
  * @type {string}
  */
 const MSG = 'The box-sizing properties isn\'t supported in IE6 and IE7';

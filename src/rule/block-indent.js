@@ -38,14 +38,13 @@ let lineCache = 0;
  *
  * @return {string} 错误信息
  */
-const getMsg = (curIndentStr, neededIndentStr) => {
-    return ''
+const getMsg = (curIndentStr, neededIndentStr) =>
+    ''
         + 'Bad indentation, Expected `'
         + (neededIndentStr.length)
         + '` but saw `'
         + (curIndentStr.length)
         + '`';
-};
 
 /**
  * 判断是否是合法的带前缀的 css 属性名称
@@ -183,13 +182,14 @@ const atRuleListIterator = (atRuleList, result, rule, indentStr, startPos) => {
 
     // 对 atRule 处理
     atRuleList.forEach((ar, index) => {
-        let arBefore = ar.raws.before;
+        const {raws, source} = ar;
+        let arBefore = raws.before;
         // 兼容 background-position-x: 170px;; 属性后有多个分号的情况
         arBefore = arBefore.replace(/^[^\n]*/, '');
         // 把 arBefore 里面的多个空行换成一个，便于之后的计算
         arBefore = arBefore.replace(/\n*/, '\n');
 
-        const startCol = ar.source.start.column;
+        const startCol = source.start.column;
 
         // 判断第一行，只需要看开头的 col 是否等于 startPos
         if (index === 0) {

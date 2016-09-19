@@ -96,7 +96,7 @@ export const check = postcss.plugin(RULENAME, opts =>
                                 ruleName: RULENAME,
                                 line: line,
                                 col: col,
-                                message: m.MSG,
+                                message: m.msg,
                                 colorMessage: '`'
                                     + lineContent.replace(part, chalk.magenta(part))
                                     + '` '

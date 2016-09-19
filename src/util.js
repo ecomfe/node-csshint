@@ -223,7 +223,7 @@ export function changeColorByIndex(source, startIndex, colorStr) {
  *
  * @return {string} 改变颜色后的字符串
  */
-export function changeColorByStartAndEndIndex(source, startIndex, endIndex) {
+export function changeColorByStartAndEndIndex(source, startIndex = 0, endIndex = 0) {
     if (!source) {
         return '';
     }
@@ -252,8 +252,9 @@ export function getPropertyValue(text) {
     const arr = postcss.list.space(String(text));
 
     for (let i = 0, len = arr.length; i < len; i++) {
-        const part = {};
-        part.text = arr[i];
+        const part = {
+            text: arr[i]
+        };
 
         let temp;
 

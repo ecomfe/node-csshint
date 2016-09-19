@@ -87,6 +87,7 @@ const prefixes = {
 const arrayPush = Array.prototype.push;
 const allPrefixes = [];
 
+/* eslint-disable fecs-use-for-of, fecs-valid-map-set */
 for (const prop in prefixes) {
     if (prefixes.hasOwnProperty(prop)) {
         const variations = [];
@@ -104,6 +105,7 @@ for (const prop in prefixes) {
         arrayPush.apply(allPrefixes, variations);
     }
 }
+/* eslint-enable fecs-use-for-of, fecs-valid-map-set */
 
 /**
  * 获取所有的 prefixes

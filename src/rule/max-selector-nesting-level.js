@@ -32,12 +32,11 @@ const PATTERN_COMBINATORS = /[\s>+~]+/g;
  *
  * @return {string} 错误信息
  */
-const getMsg = level => {
-    return ''
+const getMsg = level =>
+    ''
         + 'A nested hierarchy selector should be no more than '
         + level
         + ' levels';
-};
 
 /**
  * 具体的检测逻辑

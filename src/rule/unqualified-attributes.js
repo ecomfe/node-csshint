@@ -54,9 +54,8 @@ export const check = postcss.plugin(RULENAME, opts =>
                 return;
             }
 
-            const selector = rule.selector;
+            const {selector, source} = rule;
             const selectorGroup = selector.split(',');
-            const source = rule.source;
             let line = source.start.line;
             let lineContent = getLineContent(line, source.input.css);
 
@@ -65,13 +64,13 @@ export const check = postcss.plugin(RULENAME, opts =>
                 const segments = selectorInGroup.split(PATTERN_COMBINATORS);
                 const l = segments.length;
                 if (l) {
-                    var last = segments[l - 1];
+                    const last = segments[l - 1];
                     if (last.match(/\[.+?\](?::[^\s>+~\.#\[]+)?/g)) {
                         if (selectorInGroup.slice(0, 1) === '\n') {
                             line = line + 1;
                             lineContent = getLineContent(line, source.input.css);
                         }
-                        var col = lineContent.indexOf(segments[l - 1]) + 1;
+                        const col = lineContent.indexOf(segments[l - 1]) + 1;
                         result.warn(RULENAME, {
                             node: rule,
                             ruleName: RULENAME,

@@ -45,7 +45,7 @@ let properties = {};
  * @param {string} msg 错误消息要添加的部分
  */
 const addWarn = (result, prop, display, msg) => {
-    var decl = properties[prop];
+    const decl = properties[prop];
     if (decl) {
         if (typeof propertiesToCheck[prop] !== 'string'
             || decl.value.toLowerCase() !== propertiesToCheck[prop]

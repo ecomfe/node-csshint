@@ -39,7 +39,7 @@
     "mocha": "^3.0.2"
   },
   "scripts": {
-    "lint": "fecs src test/**/*.spec.js --type=js --rule",
+    "lint": "fecs src test/**/*.spec.js --type=js",
     "compile": "rm -rf lib && ./node_modules/.bin/babel src -d lib --source-maps inline --copy-files",
     "debug": "npm run compile && ./node_modules/.bin/babel-node-debug lib/index.js",
     "test": "npm run compile && ./node_modules/.bin/_mocha --compilers js:babel-core/register --recursive",

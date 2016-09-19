@@ -10,7 +10,7 @@ import postcss from 'postcss';
 
 import {getPropertyValue} from '../util';
 
- 'use strict';
+'use strict';
 
 /**
  * 当前文件所代表的规则名称
@@ -60,6 +60,7 @@ const getHeightMsg = prop => {
     };
 };
 
+/* eslint-disable fecs-valid-map-set */
 const widthProperties = {
     'border': 1,
     'border-left': 1,
@@ -77,6 +78,7 @@ const heightProperties = {
     'padding-bottom': 1,
     'padding-top': 1
 };
+/* eslint-enable fecs-valid-map-set */
 
 let properties = {};
 let boxSizing = false;
@@ -121,6 +123,7 @@ export const check = postcss.plugin(RULENAME, opts =>
             }
 
             if (properties.height) {
+                /* eslint-disable fecs-use-for-of, fecs-valid-map-set */
                 for (const hp in heightProperties) {
                     if (heightProperties.hasOwnProperty(hp) && properties[hp]) {
                         const hpValue = properties[hp].value;
@@ -141,9 +144,11 @@ export const check = postcss.plugin(RULENAME, opts =>
                         }
                     }
                 }
+                /* eslint-enable fecs-use-for-of, fecs-valid-map-set */
             }
 
             if (properties.width) {
+                /* eslint-disable fecs-use-for-of, fecs-valid-map-set */
                 for (const wp in widthProperties) {
                     if (widthProperties.hasOwnProperty(wp) && properties[wp]) {
                         const wpValue = properties[wp].value;
@@ -164,6 +169,7 @@ export const check = postcss.plugin(RULENAME, opts =>
                         }
                     }
                 }
+                /* eslint-enable fecs-use-for-of, fecs-valid-map-set */
             }
         });
     }

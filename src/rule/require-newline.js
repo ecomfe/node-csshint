@@ -29,20 +29,32 @@ const RULENAME = 'require-newline';
 const PATTERN_NOTLF = /(,(?!\s*\n))/;
 
 /**
- * 错误的信息
+ * 错误信息
  *
  * @const
  * @type {string}
  */
-const mediaMsg = ''
+const MEDIA_MSG = ''
     + '`Media Query` if there is more than one comma separated condition,'
     + ' should put each on a separate line condition';
 
-const selectorMsg = ''
+/**
+ * 错误信息
+ *
+ * @const
+ * @type {string}
+ */
+const SELECTOR_MSG = ''
     + 'When a rule contains multiple selector, '
     + 'each selector statement must be on a separate line';
 
-const propertyMsg = 'The attribute definition must be on a new line';
+/**
+ * 错误信息
+ *
+ * @const
+ * @type {string}
+ */
+const PROPERTY_MSG = 'The attribute definition must be on a new line';
 
 const arrayProto = Array.prototype;
 
@@ -89,11 +101,11 @@ export const check = postcss.plugin(RULENAME, opts =>
                             errorChar: 'selector',
                             line: line,
                             col: col,
-                            message: selectorMsg,
+                            message: SELECTOR_MSG,
                             colorMessage: '`'
                                 + lineContent.replace(colorStr, chalk.magenta(colorStr))
                                 + '` '
-                                + chalk.grey(selectorMsg)
+                                + chalk.grey(SELECTOR_MSG)
                         });
                         global.CSSHINT_INVALID_ALL_COUNT++;
                     }
@@ -124,12 +136,12 @@ export const check = postcss.plugin(RULENAME, opts =>
                             errorChar: 'media-query-condition',
                             line: line,
                             col: col,
-                            message: mediaMsg,
+                            message: MEDIA_MSG,
                             colorMessage: '`'
                                 + lineContent.replace('@media', chalk.magenta('@media'))
                                     .replace(colorStr, chalk.magenta(colorStr))
                                 + '` '
-                                + chalk.grey(mediaMsg)
+                                + chalk.grey(MEDIA_MSG)
                         });
                         global.CSSHINT_INVALID_ALL_COUNT++;
                     }
@@ -154,13 +166,13 @@ export const check = postcss.plugin(RULENAME, opts =>
                             errorChar: 'property',
                             line: line,
                             col: col,
-                            message: propertyMsg,
+                            message: PROPERTY_MSG,
                             colorMessage: '`'
                                 + changeColorByStartAndEndIndex(
                                     lineContent, col, source.end.column
                                 )
                                 + '` '
-                                + chalk.grey(propertyMsg)
+                                + chalk.grey(PROPERTY_MSG)
                         });
 
                         global.CSSHINT_INVALID_ALL_COUNT++;

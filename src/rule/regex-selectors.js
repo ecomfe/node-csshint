@@ -44,10 +44,9 @@ export const check = postcss.plugin(RULENAME, opts =>
                     return;
                 }
 
-                const selector = rule.selector;
+                const {selector, source} = rule;
 
                 const selectorGroup = selector.split(',');
-                const source = rule.source;
                 let line = source.start.line;
                 let lineContent = getLineContent(line, source.input.css);
 

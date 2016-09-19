@@ -82,11 +82,13 @@ const analyzeInlineRule = (fileContent, rcConfig) => {
         catch (e) {}
 
         if (inlineObj) {
+            /* eslint-disable fecs-use-for-of */
             for (const p in inlineObj) {
                 if (rcConfig.hasOwnProperty(p)) {
                     ret[p] = inlineObj[p];
                 }
             }
+            /* eslint-enable fecs-use-for-of */
         }
     }
     /* eslint-enable no-extra-boolean-cast, no-loop-func */
@@ -96,6 +98,7 @@ const analyzeInlineRule = (fileContent, rcConfig) => {
 /**
  * 匹配行内 csshint-disable xxx, yyy, zzz 的正则
  *
+ * @const
  * @type {RegExp}
  */
 const INLINE_DISABLE_PATTERN = /\/\*+\s*\bcsshint\-disable\b\s*([^\*\/]*)\s*\*\//gmi;
@@ -121,11 +124,13 @@ const analyzeInlineDisableRule = (fileContent, rcConfig) => {
             }
         }
         else {
+            /* eslint-disable fecs-use-for-of */
             for (const p in rcConfig) {
                 if (rcConfig.hasOwnProperty(p)) {
                     ret[p] = false;
                 }
             }
+            /* eslint-enable fecs-use-for-of */
         }
     }
     /* eslint-enable no-extra-boolean-cast */
@@ -169,7 +174,7 @@ export function checkString(fileContent, filePath, rcConfig = DEFAULT_CONFIG) {
     Object.getOwnPropertyNames(
         realConfig
     ).forEach(prop => {
-        var ruleFilePath = join(ruleDir, prop) + '.js';
+        const ruleFilePath = join(ruleDir, prop) + '.js';
         if (existsSync(ruleFilePath)) {
             plugins.push(
                 require(join(ruleDir, prop)).check({
@@ -216,7 +221,7 @@ export function checkString(fileContent, filePath, rcConfig = DEFAULT_CONFIG) {
             // 根据 line 是否存在来判断是 css parse 的错误还是程序的错误
             /* istanbul ignore else */
             if (line) {
-                var lineContent = getLineContent(e.line, fileContent) || '';
+                const lineContent = getLineContent(e.line, fileContent) || '';
                 invalid.messages.push({
                     line: e.line,
                     col: e.column,

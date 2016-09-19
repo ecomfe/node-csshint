@@ -18,6 +18,7 @@ import {getPropertyValue} from '../util';
  */
 const RULENAME = 'fallback-colors';
 
+/* eslint-disable fecs-valid-map-set */
 const propertiesToCheck = {
     'color': 1,
     'background': 1,
@@ -33,6 +34,7 @@ const propertiesToCheck = {
     'border-left': 1,
     'background-color': 1
 };
+/* eslint-enable fecs-valid-map-set */
 
 let lastProperty;
 

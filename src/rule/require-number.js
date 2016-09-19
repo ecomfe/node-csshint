@@ -26,7 +26,7 @@ const PATTERN_NUMERIC = /^\d*[\.\d%]*$/;
  * @const
  * @type {string}
  */
-const msg = ' must be a number value';
+const MSG = ' must be a number value';
 
 const arrayProto = Array.prototype;
 
@@ -66,13 +66,13 @@ export const check = postcss.plugin(RULENAME, opts =>
                             errorChar: prop,
                             line: line,
                             col: col,
-                            message: prop + msg,
+                            message: prop + MSG,
                             colorMessage: '`'
                                 + changeColorByStartAndEndIndex(
                                     lineContent, col, source.end.column
                                 )
                                 + '` '
-                                + chalk.grey(prop + msg)
+                                + chalk.grey(prop + MSG)
                         });
                         global.CSSHINT_INVALID_ALL_COUNT++;
                     }

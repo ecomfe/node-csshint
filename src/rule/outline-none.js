@@ -19,13 +19,20 @@ import {getLineContent} from '../util';
 const RULENAME = 'outline-none';
 
 /**
- * 错误的信息
+ * 错误信息
  *
  * @const
  * @type {string}
  */
-const msg1 = 'Outlines should only be modified using :focus';
-const msg2 = 'Outlines shouldn\'t be hidden unless other visual changes are made';
+const MSG1 = 'Outlines should only be modified using :focus';
+
+/**
+ * 错误信息
+ *
+ * @const
+ * @type {string}
+ */
+const MSG2 = 'Outlines shouldn\'t be hidden unless other visual changes are made';
 
 let lastRule;
 
@@ -84,11 +91,11 @@ export const check = postcss.plugin(RULENAME, opts =>
                             ruleName: RULENAME,
                             line: line,
                             col: col,
-                            message: msg1,
+                            message: MSG1,
                             colorMessage: '`'
                                 + lineContent.replace(selector, chalk.magenta(selector))
                                 + '` '
-                                + chalk.grey(msg1)
+                                + chalk.grey(MSG1)
                         });
 
                         global.CSSHINT_INVALID_ALL_COUNT++;
@@ -99,11 +106,11 @@ export const check = postcss.plugin(RULENAME, opts =>
                             ruleName: RULENAME,
                             line: line,
                             col: col,
-                            message: msg2,
+                            message: MSG2,
                             colorMessage: '`'
                                 + lineContent.replace(selector, chalk.magenta(selector))
                                 + '` '
-                                + chalk.grey(msg2)
+                                + chalk.grey(MSG2)
                         });
 
                         global.CSSHINT_INVALID_ALL_COUNT++;

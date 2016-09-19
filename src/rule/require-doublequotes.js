@@ -85,7 +85,7 @@ export const check = postcss.plugin(RULENAME, opts =>
                 });
 
                 invalidRules.forEach(invalidRule => {
-                    const source = invalidRule.source;
+                    const {source, selector} = invalidRule;
                     const line = source.start.line;
                     const lineContent = getLineContent(line, source.input.css);
                     const col = source.start.column;
@@ -97,7 +97,7 @@ export const check = postcss.plugin(RULENAME, opts =>
                         col: col,
                         message: selectorAttrMsg,
                         colorMessage: '`'
-                            + lineContent.replace(invalidRule.selector, chalk.magenta(invalidRule.selector))
+                            + lineContent.replace(selector, chalk.magenta(selector))
                             + '` '
                             + chalk.grey(selectorAttrMsg)
                     });

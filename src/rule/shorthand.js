@@ -32,7 +32,7 @@ const PATTERN_COLOR = /^#([\da-f])\1([\da-f])\2([\da-f])\3$/i;
  * @const
  * @type {string}
  */
-const colorMsg = 'Color value can be abbreviated, must use the abbreviation form';
+const COLOR_MSG = 'Color value can be abbreviated, must use the abbreviation form';
 
 const arrayProto = Array.prototype;
 
@@ -59,13 +59,15 @@ const mapping = {
 };
 
 (() => {
-    for (var prop in mapping) {
+    /* eslint-disable fecs-use-for-of, fecs-valid-map-set */
+    for (let prop in mapping) {
         if (mapping.hasOwnProperty(prop)) {
-            for (var i = 0, len = mapping[prop].length; i < len; i++) {
+            for (let i = 0, len = mapping[prop].length; i < len; i++) {
                 propertiesToCheck[mapping[prop][i]] = prop;
             }
         }
     }
+    /* eslint-enable fecs-use-for-of, fecs-valid-map-set */
 })();
 
 /**
@@ -136,13 +138,13 @@ export const check = postcss.plugin(RULENAME, opts =>
                                     errorChar: 'color',
                                     line: line,
                                     col: col,
-                                    message: colorMsg,
+                                    message: COLOR_MSG,
                                     colorMessage: '`'
                                         + changeColorByStartAndEndIndex(
                                             lineContent, col, source.end.column
                                         )
                                         + '` '
-                                        + chalk.grey(colorMsg)
+                                        + chalk.grey(COLOR_MSG)
                                 });
                                 global.CSSHINT_INVALID_ALL_COUNT++;
                             }
@@ -155,8 +157,7 @@ export const check = postcss.plugin(RULENAME, opts =>
                 let tmp = {};
                 css.walkRules(rule => {
                     tmp = {};
-                    const nodes = rule.nodes;
-                    const selector = rule.selector;
+                    const {nodes, selector} = rule;
                     for (let i = 0, len = nodes.length; i < len; i++) {
                         const decl = nodes[i];
                         if (decl.type === 'decl') {

@@ -24,7 +24,7 @@ const RULENAME = 'text-indent';
  * @const
  * @type {string}
  */
-const msg = ''
+const MSG = ''
     + 'Negative text-indent doesn\'t work well with RTL.'
     + 'If you use text-indent for image replacement explicitly set direction for that item to ltr';
 
@@ -75,14 +75,14 @@ export const check = postcss.plugin(RULENAME, opts =>
                     ruleName: RULENAME,
                     line: line,
                     col: col,
-                    message: msg,
+                    message: MSG,
                     colorMessage: '`'
                         + lineContent.replace(
                             textIndentDecl.prop,
                             chalk.magenta(textIndentDecl.prop)
                         )
                         + '` '
-                        + chalk.grey(msg)
+                        + chalk.grey(MSG)
                 });
                 global.CSSHINT_INVALID_ALL_COUNT++;
             }

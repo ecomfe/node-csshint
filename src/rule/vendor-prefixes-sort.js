@@ -26,7 +26,7 @@ const RULENAME = 'vendor-prefixes-sort';
  * @const
  * @type {string}
  */
-const colonMsg = 'Property with private prefix should be according to the colon position alignment';
+const COLON_MSG = 'Property with private prefix should be according to the colon position alignment';
 
 /**
  * 错误信息，带私有前缀的属性由长到短排列
@@ -34,7 +34,7 @@ const colonMsg = 'Property with private prefix should be according to the colon 
  * @const
  * @type {string}
  */
-const shortMsg = 'Property with private prefix from long to short arrangement';
+const SHORT_MSG = 'Property with private prefix from long to short arrangement';
 
 let countMap = {};
 
@@ -45,7 +45,7 @@ let countMap = {};
  *
  * @return {boolean} 结果
  */
-const isValidVendorProp = (decl) => {
+const isValidVendorProp = decl => {
     const prop = decl.prop;
     const standardProperty = prop.replace(/^\-(webkit|moz|ms|o)\-/g, '');
     // 标准模式在 prefixList 中，那么如果 propertyName 不在 prefixList 中
@@ -105,6 +105,7 @@ export const check = postcss.plugin(RULENAME, opts =>
             }
         });
 
+        /* eslint-disable fecs-use-for-of, fecs-valid-map-set */
         for (let selector in countMap) {
             if (!countMap.hasOwnProperty(selector)) {
                 continue;
@@ -145,11 +146,11 @@ export const check = postcss.plugin(RULENAME, opts =>
                             message: '`'
                                 + lineContent
                                 + '` '
-                                + colonMsg,
+                                + COLON_MSG,
                             colorMessage: '`'
                                 + chalk.magenta(lineContent)
                                 + '` '
-                                + chalk.grey(colonMsg)
+                                + chalk.grey(COLON_MSG)
                         });
 
                         global.CSSHINT_INVALID_ALL_COUNT++;
@@ -163,11 +164,11 @@ export const check = postcss.plugin(RULENAME, opts =>
                             message: '`'
                                 + lineContent
                                 + '` '
-                                + shortMsg,
+                                + SHORT_MSG,
                             colorMessage: '`'
                                 + chalk.magenta(lineContent)
                                 + '` '
-                                + chalk.grey(shortMsg)
+                                + chalk.grey(SHORT_MSG)
                         });
 
                         global.CSSHINT_INVALID_ALL_COUNT++;
@@ -175,5 +176,6 @@ export const check = postcss.plugin(RULENAME, opts =>
                 }
             }
         }
+        /* eslint-enable fecs-use-for-of, fecs-valid-map-set */
     }
 );

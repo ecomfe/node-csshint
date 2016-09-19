@@ -6,10 +6,10 @@
  * @author ielgnaw(wuji0223@gmail.com)
  */
 
- import chalk from 'chalk';
- import postcss from 'postcss';
+import chalk from 'chalk';
+import postcss from 'postcss';
 
- import {getLineContent, changeColorByStartAndEndIndex} from '../util';
+import {getLineContent, changeColorByStartAndEndIndex} from '../util';
 
 /**
  * 当前文件所代表的规则名称

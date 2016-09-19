@@ -23,6 +23,7 @@ const RULENAME = 'adjoining-classes';
 /**
  * css 组合的正则匹配
  *
+ * @const
  * @type {RegExp}
  */
 const PATTERN_COMBINATORS = /[\s>+~,[]+/;

@@ -37,6 +37,7 @@ const COMMA = ',';
 /**
  * 匹配 css 属性值的 url(...);
  *
+ * @const
  * @type {RegExp}
  */
 const PATTERN_URI = /url\(["']?([^\)"']+)["']?\)/i;

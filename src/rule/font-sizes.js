@@ -22,7 +22,7 @@ const RULENAME = 'font-sizes';
  * @const
  * @type {string}
  */
-const msg = '`font-size` must not be greater than ';
+const MSG = '`font-size` must not be greater than ';
 
 let fontSizeCount = 0;
 
@@ -54,7 +54,7 @@ export const check = postcss.plugin(RULENAME, opts =>
         });
 
         if (fontSizeCount > opts.ruleVal) {
-            const str = msg + opts.ruleVal + ', current file `font-size` is ' + fontSizeCount;
+            const str = MSG + opts.ruleVal + ', current file `font-size` is ' + fontSizeCount;
             result.warn(RULENAME, {
                 node: css,
                 ruleName: RULENAME,
