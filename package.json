@@ -1,7 +1,7 @@
 {
   "name": "csshint",
   "description": "lint your css code",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "keywords": [
     "csslint",
     "csshint"
