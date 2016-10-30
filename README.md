@@ -6,25 +6,26 @@ CSSHint
 [![Dependency Status](https://david-dm.org/ecomfe/node-csshint.png)](https://david-dm.org/ecomfe/node-csshint)
 [![devDependency Status](https://david-dm.org/ecomfe/node-csshint/dev-status.png)](https://david-dm.org/ecomfe/node-csshint#info=devDependencies)
 
-CSSHint 是一个基于 NodeJS 的代码规范审查工具，目前的规则是基于 ecomfe 的 [CSS 编码规范](https://github.com/ecomfe/spec/blob/master/css-style-guide.md)，同时也覆盖了 [CSSLint](https://github.com/CSSLint/csslint) 的[规则](https://github.com/CSSLint/csslint/wiki/Rules)。
+CSSHint is a code review tool based on NodeJS. The current rules are based on ecomfe [CSS STYLE SPEC](https://github.com/ecomfe/spec/blob/master/css-style-guide.md). It also covers [CSSLint](https://github.com/CSSLint/csslint) [rules](https://github.com/CSSLint/csslint/wiki/Rules).
 
-经过了一段时间的重构，终于来到这个版本。在这个版本中，`css`解析器切换成 [postcss](https://github.com/postcss/postcss)。此外，这个版本里，改变了实现方式，性能较以前的版本有比较大的提升。同时，在全局`global`对象上挂载了如下三个属性：
+After a period of code refactoring, we finally came to this version, in which `CSS` parser is replaced with [postcss](https://github.com/postcss/postcss).
+In addition, we changed the way of implementation which was also able to improve the performance by a large margin. Meanwhile, the following `global` object has three attributes as follows:
 
-- `global.CSSHINT_INVALID_ALL_COUNT`: 用于记录全局的`warn`个数，为`max-error`规则服务。
-- `global.CSSHINT_HEXCOLOR_CASE_FLAG`: 记录项目级别的颜色值的大小写信息，0: 小写， 1: 大写，为`unifying-color-case-sensitive`规则服务。
-- `global.CSSHINT_FONTFAMILY_CASE_FLAG`: 记录项目级别的`font-family`大小写信息，为`unifying-font-family-case-sensitive`规则服务。
+- `global.CSSHINT_INVALID_ALL_COUNT`: it is used to count the number of `warn` to serve `max-error`.
+- `global.CSSHINT_HEXCOLOR_CASE_FLAG`: it is used to record project's color value, whether the letters are small or capital. `0` is for small and `1` is for capital. This attribute is to serve `unifying-color-case-sensitive`.
+- `global.CSSHINT_FONTFAMILY_CASE_FLAG`: it is used to record whether `font-family` is small or capital to serve `unifying-font-family-case-sensitive`.
 
-[配置参考](https://github.com/ecomfe/node-csshint/blob/master/lib/config.js)
+[CONFIG Reference](https://github.com/ecomfe/node-csshint/blob/master/lib/config.js)
 
 
 Install & Update
 -------
 
-CSSHint 已发布到 npm 上，可通过如下命令安装。
+CSSHint has been released on npm. It can be installed following the instructions.
 
     $ [sudo] npm install csshint [-g]
 
-升级 CSSHint 请用如下命令。
+Follow the following instruction if you are to update your CSSHint.
 
     $ [sudo] npm update csshint [-g]
     
@@ -34,32 +35,33 @@ Usage
 
 - in CLI
 	
-		$ csshint -v   // 显示版本信息
-		$ csshint [filePath|dirPath]   // 对 file 或 dir 执行 csshint 		
+		$ csshint -v   // show version
+		$ csshint [filePath|dirPath]   // run csshint on file or dir
+
 - in Node.js
         
     	/**
-	     * 检测 css 文件内容
+	     * detect css file content
 	     *
-	     * @param {string} fileContent 文件内容
-	     * @param {Object=} config 检测规则的配置，可选
+	     * @param {string} fileContent file content
+	     * @param {Object=} config config of rule, optional
 	     *
-	     * @return {Promise} Promise 对象，
-	     * Promise 对象的 reject 和 resolve 的回调函数的参数格式如下，
+	     * @return {Promise} Promise Object
+	     * reject and resolve arguments:
 	     * {
-	     * 		path: {string} 文件路径
-	     * 		messages: {Array.<Object>} 错误信息集合，[{ruleName, line, col, errorChar, message, colorMessage}]
+	     * 		path: {string} file path
+	     * 		messages: {Array.<Object>} warning messages, [{ruleName, line, col, errorChar, message, colorMessage}]
 	     * }
 	     */
 	    exports.checkString(fileContent, config);
     
     
 	    /**
-	     * 校验文件
+	     * detect file
 	     *
-	     * @param {Object} file 包含 path, content 键的对象
-	     * @param {Array} errors 本分类的错误信息数组
-	     * @param {Function} done 校验完成的通知回调
+	     * @param {Object} file the object has path and content key
+	     * @param {Array} errors warning messages
+	     * @param {Function} done detect callback
 	     */
 	    check(file, errors, done);
  
@@ -67,8 +69,7 @@ Usage
 TODO
 ------
 
-- [x] 完全覆盖 [csslint](https://github.com/CSSLint/csslint) 里的[规则](https://github.com/CSSLint/csslint/wiki/Rules)。
-- [ ] 支持`/* csshint-enable ruleName */` 这样的配置，这就意味着要让 `/* csshint-disable ruleName1 */` 和 `/* csshint-enable ruleName1 */` 之间的内容满足行内注释的规则配置。
-
+- [x] Complete coverage [csslint](https://github.com/CSSLint/csslint) [rule](https://github.com/CSSLint/csslint/wiki/Rules)。
+- [ ] support `/* csshint-disable ruleName */` and `/* csshint-enable ruleName1 */`.
 
 ### [CHANGELOG](https://github.com/ecomfe/node-csshint/blob/master/CHANGELOG.md)
