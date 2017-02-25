@@ -218,7 +218,6 @@ export function checkString(fileContent, filePath, rcConfig = DEFAULT_CONFIG) {
             });
             resolve(invalidList);
         }).catch(e => {
-            console.log('e: ', e);
             const line = e.line;
             // 根据 line 是否存在来判断是 css parse 的错误还是程序的错误
             /* istanbul ignore else */
