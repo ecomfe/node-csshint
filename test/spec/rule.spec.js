@@ -362,7 +362,7 @@ describe('rule test suite\n', () => {
 
         it('should return right message length', () =>
             postcss([plugin]).process(fileContent).then(result => {
-                expect(result.messages.length).to.equal(3);
+                expect(result.messages.length).to.equal(6);
             })
         );
     });

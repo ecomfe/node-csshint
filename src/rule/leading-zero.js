@@ -45,17 +45,18 @@ export const check = postcss.plugin(RULENAME, opts =>
             css.walkDecls(decl => {
                 const parts = postcss.list.space(decl.value);
                 const source = decl.source;
-                const line = source.start.line;
-                for (let i = 0, len = parts.length; i < len; i++) {
-                    const part = parts[i];
+                const lineNum = source.start.line;
+
+                function check(part, startCol) {
                     const numericVal = parseFloat(part);
-                    if (numericVal < 1 && numericVal > 0) {
-                        if (part.slice(0, 2) === '0.') {
-                            const lineContent = getLineContent(line, source.input.css);
+                    if (numericVal < 1 && numericVal > 0 || numericVal < 0 && numericVal > -1) {
+                        if (part.slice(0, 2) === '0.' || part.slice(0, 3) === '-0.') {
+                            const lineContent = getLineContent(lineNum, source.input.css);
+                            const col = lineContent.indexOf(part, startCol);
                             result.warn(RULENAME, {
                                 node: decl,
                                 ruleName: RULENAME,
-                                line: line,
+                                line: lineNum,
                                 col: lineContent.indexOf(part) + 1,
                                 message: MSG,
                                 colorMessage: '`'
@@ -63,8 +64,23 @@ export const check = postcss.plugin(RULENAME, opts =>
                                     + '` '
                                     + chalk.grey(MSG)
                             });
-                            global.CSSHINT_INVALID_ALL_COUNT++;
                         }
+                    }
+                }
+
+                const pattern = /\(([^\)]+)\)/;
+                for (var i = 0, len = parts.length; i < len; i++) {
+                    var part = parts[i];
+                    const match = part.match(pattern);
+                    if (match) {
+                        var start = match.index;
+                        match[1].split(/,\s*/).forEach(function (property) {
+                            start = part.indexOf(property, start);
+                            check(property, start);
+                        });
+                    }
+                    else {
+                        check(part, 0);
                     }
                 }
             });
