@@ -4,7 +4,7 @@ CSSHint
 [![npm version](https://badge.fury.io/js/csshint.svg)](http://badge.fury.io/js/csshint)
 [![Coverage Status](https://img.shields.io/coveralls/ecomfe/node-csshint.svg?style=flat)](https://coveralls.io/r/ecomfe/node-csshint)
 [![Dependency Status](https://david-dm.org/ecomfe/node-csshint.png)](https://david-dm.org/ecomfe/node-csshint)
-[![devDependency Status](https://david-dm.org/ecomfe/node-csshint/dev-status.png)](https://david-dm.org/ecomfe/node-csshint#info=devDependencies)
+[![devDependency Status](https://david-dm.org/ecomfe/node-csshint/dev-status.png)](https://david-dm.org/ecomfe/node-csshint#info=devDependencies) [![Greenkeeper badge](https://badges.greenkeeper.io/ecomfe/node-csshint.svg)](https://greenkeeper.io/)
 
 CSSHint is a code review tool based on NodeJS. The current rules are based on ecomfe [CSS STYLE SPEC](https://github.com/ecomfe/spec/blob/master/css-style-guide.md). It also covers [CSSLint](https://github.com/CSSLint/csslint) [rules](https://github.com/CSSLint/csslint/wiki/Rules).
 
